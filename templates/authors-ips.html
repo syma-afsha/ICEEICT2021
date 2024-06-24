@@ -1,0 +1,952 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Initial Paper Submission</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+    ul {
+        list-style-type: none;
+
+        padding: 0px;
+    }
+
+    /* h3 {
+        text-shadow: 2px 2px yellowgreen;
+    } */
+
+
+
+
+    ol {
+
+        list-style-position: inside;
+    }
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+    i+h3 {
+        display: inline-block;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+
+        <h2><b>Initial Paper Submission</b></h2>
+    </div>
+
+
+
+
+    <section>
+
+        <div class="box">
+
+
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+                <i class="fas fa-file-alt" style="font-size: 24px;"></i>
+                <h3>How to Submit Your Initial Paper?</h3>
+            </div>
+
+
+            <hr>
+
+
+            <p>
+                <b>Welcome to ICEEICT 2021 Paper Submission Guideline.</b>
+
+                <br>
+                <b>Before you proceed for submission, you are
+                    requested to go through the paper submission requirments and paper assessment criteria in the
+                    following sections.</b>
+
+            </p>
+
+            <ul class="tracks">
+
+
+
+                <li><i class="fas fa-check"></i> If you do not have a CMT login ID, Register below:
+
+                    <br>
+                    <br>
+
+                    <a href="https://cmt3.research.microsoft.com/User/Register" target="_blank"><button type="button"
+                            class="btn btn-dark" style="margin-left:1rem;"> <i class="fas fa-user-plus"></i>
+                            Register</button></a>
+
+
+                    <!-- <a href="https://cmt3.research.microsoft.com/User/Register" target="_blank">REGISTER</a><a
+                        href="https://cmt3.research.microsoft.com/User/Register" target="_blank"
+                        style=" text-decoration:none;color:inherit;"><span style="font-weight:bolder">
+                            (https://cmt3.research.microsoft.com/User/Register)
+                        </span></a>
+ -->
+
+
+                    <br>
+                    <br>
+
+
+                    <!--<b>(Registration
+                            link will be updated soon)</b>-->
+                </li>
+
+                <li><i class="fas fa-check"></i> Submit your paper at the
+                    Microsoft CMT site of
+                    ICEEICT 2021.
+
+                    <br>
+                    <br>
+
+
+                    <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICEEICT2021"
+                        target="_blank"><button type="button" class="btn btn-dark" style="margin-left:1rem;"> <i
+                                class="fab fa-microsoft"></i> Microsoft CMT</button></a>
+
+
+                    <!-- <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICEEICT2021" target="_blank"
+                        style=" text-decoration:none;color:inherit;"><span style="font-weight:bolder">
+                            (https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICEEICT2021)
+                        </span></a> -->
+                </li>
+
+
+
+
+                <br>
+
+
+
+
+                <li><i class="fas fa-check"></i> You should click on the “Create New Submission”. Please fill up all
+                    the
+                    necessary information including Title, Abstract, Co-authors, Subject Areas and the
+                    full paper in their respective field.
+                </li>
+
+
+                <li><i class="fas fa-check"></i> To add coauthors, please use “Enter email to add new
+                    author” field. We would recommend all co-authors open their respective CMT Accounts before
+                    submission.
+                </li>
+
+                <li><i class="fas fa-check"></i> You may also try Microsoft CMT app at Google Playstore and Appstore to
+                    keep track of your
+                    submitted papers on the move, and receive notification from chairs about their paper's
+                    status by
+                    following the below links:
+                    <br>
+                    <br>
+
+
+                    <a href="https://play.google.com/store/apps/details?id=com.microsoft.research.cmt"
+                        target="_blank"><button type="button" class="btn btn-dark" style="margin-left:1rem;"> <i
+                                class="fab fa-google-play"></i> Google
+                            Playstore</button></a>
+
+
+                    <a href="https://apps.apple.com/us/app/conference-management-toolkit/id1532488001"
+                        target="_blank"><button type="button" class="btn btn-dark" style="margin-left:1rem;"> <i
+                                class="fab fa-apple"></i> App Store
+                        </button></a>
+
+
+
+                    <!-- <a href="https://play.google.com/store/apps/details?id=com.microsoft.research.cmt"
+                        target="_blank"> Google Playstore</a> -->
+
+                    <!-- <a href="https://play.google.com/store/apps/details?id=com.microsoft.research.cmt" target="_blank"
+                        style=" text-decoration:none;color:inherit;"><span style="font-weight:bolder">
+                            (https://play.google.com/store/apps/details?id=com.microsoft.research.cmt)
+                        </span></a> -->
+
+
+                    <!-- or
+                    <a href="https://apps.apple.com/us/app/conference-management-toolkit/id1532488001"
+                        target="_blank">App
+                        store</a>
+
+                    <a href="https://apps.apple.com/us/app/conference-management-toolkit/id1532488001" target="_blank"
+                        style=" text-decoration:none;color:inherit;"><span style="font-weight:bolder">
+                            (https://apps.apple.com/us/app/conference-management-toolkit/id1532488001)
+                        </span></a> -->
+
+
+                </li>
+
+            </ul>
+
+
+
+            <br>
+
+
+
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+                <!-- <p style="vertical-align:middle;   ">Organizing Committee</p> -->
+                <i class="fas fa-book" style="font-size: 24px;"></i>
+                <h3>Requirements for Initial Paper Submission</h3>
+
+            </div>
+
+
+
+
+
+            <hr>
+
+
+
+
+            <!-- Prospective authors are kindly invited to submit original papers (4 page pdf version following IEEE
+            double-column template) to ICEEICT 2021 through our Online Paper Submission System. All submitted papers
+            should contain original, unpublished results, experimental or theoretical.-->
+
+            <!--     The IEEE guidelines must be exercised for the authorship and paper preparation.
+
+
+
+
+            <br>
+            <a href="https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/"
+                target="_blank">IEEE
+                Guidelines and Policies</a>
+            <a href="https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/"
+                target="_blank" style=" text-decoration:none;color:inherit;"><span
+                    style="font-weight:bolder">(https://conferences.ieeeauthorcenter.ieee.org/author-ethics/guidelines-and-policies/)</span></a>
+
+
+            <br>
+            <br>
+
+            -->
+            Submitted papers should SATISFY the criteria listed below.
+
+            <br>
+
+            <br>
+
+            <h4 style="font-weight: bolder;">
+                Paper Typesetting and Structure
+            </h4>
+            <ul class="tracks">
+
+                <li><i class="fas fa-check"></i><span style="font-weight:bolder;"> Paper template:
+                    </span>The paper
+                    submission template (IEEE double-column) can be found in the following link :
+
+
+
+                    <br>
+
+
+                    <a href="https://www.ieee.org/conferences/publishing/templates.html" target="_blank"><button
+                            type="button" class="btn btn-dark"
+                            style="margin-left:1rem;margin-top:10px;margin-bottom:10px"><i class="far fa-newspaper"></i>
+                            Template </button></a>
+
+
+                    <br>
+                    <!-- <a href="https://www.ieee.org/conferences/publishing/templates.html " target="_blank">
+                        here</a> -->
+                </li>
+
+
+
+                <li><i class="fas fa-check"></i> <span style="font-weight:bolder;">File Format:</span> PDF
+                    (FileName.pdf)
+                </li>
+
+                <li><i class="fas fa-check"></i><span style="font-weight:bolder;"> File size:</span> 3 MB
+                </li>
+
+                <li><i class="fas fa-check"></i><span style="font-weight:bolder;"> Paper Size: </span>A4
+                </li>
+
+                <li><i class="fas fa-check"></i> <span style="font-weight:bolder">Paper
+                        length:</span> 4 to 6 pages
+                    including all figures, tables, and
+                    references
+                </li>
+
+                <li><i class="fas fa-check"></i> <span style="font-weight:bolder;">Fonts: </span>
+                    Type 3 fonts are not allowed. All fonts are to be embedded in the PDF file.
+
+                </li>
+
+
+                <!--
+
+                <li><i class="fas fa-check"></i> <span style="font-weight:bolder;">Paper submission: </span>Submit
+                    the
+                    paper through the ICEEICT2021 CMT Online Paper Submission System.
+                </li>
+
+
+                <li><i class="fas fa-check"></i> <span style="font-weight:bolder;">Initial Submission: </span> At
+                    this
+                    stage, to maintain the double-blind policy, the authors SHOULD NOT include their names,
+                    affiliations, postal addresses, email addresses or any other pertinent information in the paper
+                    that
+                    directly or indirectly disclose the complete or partial identity of any of the authors.
+
+                </li>
+-->
+
+
+
+
+
+
+
+            </ul>
+
+
+            <!--
+            A paper will appear in the proceedings if at least one of the authors of accepted paper registers before
+            the
+            registration deadline. Presenting the accepted paper is a prerequisite for appearing it in the IEEE
+            Xplore.
+            “IEEE reserves the right to exclude a paper from distribution after the conference (e.g., removal from
+            IEEE
+            Xplore) if the paper is not presented at the conference.”
+-->
+
+
+            <!--<h3>Authors Checklist for Initial Submission</h3>
+
+            <hr>-->
+
+
+
+
+
+
+            <ul class="tracks">
+
+
+                <li>
+                    <h4 style="font-weight: bolder;">IEEE Publication Policy</h4>
+
+                </li>
+
+                <b>Accepted and presented papers will be submitted for inclusion into IEEE Xplore subject to meeting
+                    IEEE
+                    Xplore’s scope and quality requirements.</b>
+
+
+                <br>
+
+
+                All the authors confirm through the corresponding/submitting author that they:
+
+                <ul type="tracks">
+
+
+                    <li><i class="fas fa-check"></i> Contributed to the development of the paper as per the IEEE
+                        publication policy including the
+                        authorship criteria
+                    </li>
+
+                    <li><i class="fas fa-check"></i> Strictly followed the IEEE type-setting and bibliographic
+                        requirements</li>
+
+                    <li><i class="fas fa-check"></i> Agreed to the current sequence of the authors</li>
+
+                    <li><i class="fas fa-check"></i> Approved the paper for submission to ICEEICT 2021</li>
+
+
+
+
+                </ul>
+                <br>
+
+
+
+
+                <li>
+                    <h4 style="font-weight: bolder;">Contribution and Multiple Submission
+                    </h4>
+
+                    <p>
+
+
+                        <ul class="tracks">
+
+
+                            <li><i class="fas fa-check"></i> The paper contains the original contribution of the
+                                authors and it is neither
+                                published
+                                previously nor has been submitted for any publication.</li>
+
+                            <li><i class="fas fa-check"></i> The authors also agree that they will not submit this
+                                paper simultaneously anywhere
+                                during
+                                this
+                                conference without prior approval of the ICEEICT 2021 TPC chair.
+
+                            <li> <i class="fas fa-check"></i> As per IEEE policy, similarity index must be less than
+                                30%.
+                            </li>
+
+                            <li> <i class="fas fa-check"></i> For plagiarism and multiple
+                                submissions, please check details in the
+                                following
+                                links:
+
+
+
+
+                                <br>
+
+                                <a href="https://www.ieee.org/publications/rights/plagiarism/plagiarism.html"
+                                    target="_blank">IEEE
+                                    policies for plagiarism</a><a
+                                    href="https://www.ieee.org/publications/rights/plagiarism/plagiarism.html"
+                                    target="_blank" style=" text-decoration:none;color:inherit;"><span
+                                        style="font-weight:bolder">
+                                        (https://www.ieee.org/publications/rights/plagiarism/plagiarism.html)
+                                    </span></a>
+
+
+
+
+
+                                <br>
+
+                                <a href="https://www.ieee.org/publications/rights/multi-sub-guidelines-intro.html"
+                                    target="_blank">IEEE
+                                    policies for multiple
+                                    submissions</a> <a
+                                    href="https://www.ieee.org/publications/rights/multi-sub-guidelines-intro.html"
+                                    target="_blank" style=" text-decoration:none;color:inherit;"><span
+                                        style="font-weight:bolder">
+                                        (https://www.ieee.org/publications/rights/multi-sub-guidelines-intro.html)
+                                    </span></a>
+
+                        </ul>
+
+                    </p>
+
+
+                </li>
+
+
+
+
+
+                <li>
+                    <h4 style="font-weight: bolder;">Double-blind Review Requirements
+
+                    </h4>
+
+                    <p>
+                        In support of the double-blind review policy of ICEEICT, the authors confirm that the
+                        submitted
+                        paper is anonymized by excluding the authors' names, affiliations, postal and email
+                        addresses,
+                        direct form (e.g., with the words 'our previous/earlier work') of self-citation, and any
+                        other
+                        pertinent information that directly or indirectly disclose the complete or partial identity
+                        of
+                        any of the authors.
+
+                    </p>
+
+
+                </li>
+
+
+                <li>
+                    <h4 style="font-weight: bolder;">No-Show Policy
+                    </h4>
+
+                    <ul type="tracks">
+
+
+                        <li><i class="fas fa-check"></i> Please take note that IEEE has a strict policy on no-show.
+                        </li>
+
+                        <li><i class="fas fa-check"></i> For any accepted paper, one of the authors or his/her
+                            representative having similar technical skills <b>must present</b> the paper at the
+                            conference.
+                        </li>
+
+                        <li><i class="fas fa-check"></i> Papers with no-show participants <b>will not</b> be
+                            submitted
+                            to IEEE
+                            Xplore.</li>
+
+                        <li><i class="fas fa-check"></i> <b>No refund</b> of the paid fees may be claimed by the
+                            no-show
+                            author.</li>
+
+
+                    </ul>
+
+
+
+                </li>
+
+                <br>
+
+
+
+                <li>
+                    <h4 style="font-weight: bolder;">Microsoft CMT Account
+
+
+                    </h4>
+
+                    <p>
+                        All the co-authors of a submission must have their CMT accounts with their given email
+                        addresses.
+
+
+                    </p>
+
+
+                </li>
+
+
+
+            </ul>
+
+            <br>
+
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+                <i class="far fa-calendar-check" style="font-size: 24px;"></i>
+
+
+                <h3>ICEEICT Paper Assessment Criteria</h3>
+
+
+            </div>
+
+            <hr>
+
+
+            <p>
+                The ICEEICT TPC sets the following publication criteria to be considered in assessing the
+                initially
+                submitted papers.
+
+                The ICEEICT TPC would prescreen each paper to categorize the papers into two
+                groups:
+                <b>‘Desk Accept’ </b> and <b>‘Desk Reject’</b>. The ‘Desk-Accept’ category papers are then sent
+                for
+                double-blind
+                review, where three reviewers of respective tracks will review each paper. Each criterion can
+                have
+                any
+                one of the five levels: Very Poor (-1), Poor (0), Average (1), Good (2), and Excellent (3).
+                Accumulating
+                these criteria-based scores, a total review score is determined for a paper to be shortlisted
+                for
+                the
+                final acceptance and rejection.
+
+            </p>
+
+            <ul class="tracks">
+
+
+                <li>
+
+                    <h4 style="font-weight: bolder;">Justification/Rationale
+
+
+                    </h4>
+
+                    <ol type="i" style="padding: 0px;">
+
+                        <li>How well is the work motivated and grounded in theory and prior literature?</li>
+                        <li>How close does the paper fall within the scope of ICEEICT? </li>
+                    </ol>
+
+
+                </li>
+
+
+                <br>
+
+                <li>
+
+                    <h4 style="font-weight: bolder;">Importance of the contribution
+
+
+                    </h4>
+
+                    <ol type="i" style="padding: 0px;">
+
+                        <li>How important question does the manuscript address?</li>
+                        <li>How innovative is the presented work in nature, approach, or scope?
+                        </li>
+
+                        <li>How much potential does the manuscript have to advance the discipline?
+
+                        </li>
+                    </ol>
+
+
+                </li>
+
+
+                <br>
+
+
+                <li>
+
+                    <h4 style="font-weight: bolder;">Clarity and Format
+
+
+                    </h4>
+
+                    <ol type="i" style="padding: 0px;">
+
+                        <li>How clearly is the paper written?
+                        </li>
+                        <li>How is the paper’s organizational coherence (e.g., is the heading structure clear
+                            and
+                            helpful to the reader? does the flow of the sections work well to convey the key
+                            points?)
+
+                        </li>
+
+                        <li>How appropriate/complete is the list of references?
+
+                        </li>
+
+                        <li>How is the IEEE style followed in organizing and type-setting the content (i.e.,
+                            texts,
+                            figures, tables, citations, and references) of the paper?
+
+                        </li>
+                    </ol>
+
+
+                </li>
+
+                <br>
+
+
+                <li>
+
+                    <h4 style="font-weight: bolder;">Methods/Approach
+
+
+                    </h4>
+
+                    <ol type="i" style="padding: 0px;">
+
+                        <li>How clear, well-reasoned, appropriate, and current are the overall strategy,
+                            methodology,
+                            research design, and techniques?
+
+                        </li>
+                        <li>How adequate is the given information for reproducibility?
+
+                        </li>
+
+                        <li>How was the methodology implemented with rigor and applicable reporting standards?
+
+
+                        </li>
+
+                        <li>How appropriate were the data analyses for the purpose of the study and research
+                            questions?
+
+
+
+                        </li>
+                    </ol>
+
+
+                </li>
+
+
+                <br>
+
+
+                <li>
+
+                    <h4 style="font-weight: bolder;">Results/Findings
+
+
+                    </h4>
+
+                    <ol type="i" style="padding: 0px;">
+
+                        <li>How appropriately were the data collected, analyzed, and reported with clarity?
+
+
+                        </li>
+                        <li>How well-reasoned and succinct are the presented results and findings?
+
+
+                        </li>
+
+                        <li>How clear and effective are the presented tables and figures in the body of the
+                            manuscript?
+
+
+                        </li>
+
+                        <li>How appropriate is the use of any supplemental material incorporated?
+
+
+
+
+                        </li>
+                    </ol>
+
+
+                </li>
+
+
+                <br>
+
+
+                <li>
+
+                    <h4 style="font-weight: bolder;">Discussion/Conclusions
+
+
+                    </h4>
+
+                    <ol type="i" style="padding: 0px;">
+
+                        <li>How well are the results/findings synthesized and interpreted within the context of
+                            previous
+                            literature, existing models, or theories?
+
+
+                        </li>
+                        <li>How are the significant study limitations disclosed for future research?
+
+                    </ol>
+
+
+                </li>
+
+            </ul>
+
+
+
+
+    </section>
+    <br>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+
+{{footer}}
+
+
+</html>

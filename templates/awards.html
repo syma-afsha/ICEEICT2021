@@ -1,0 +1,713 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Awards </title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    /*Fun begins*/
+    .tab_container {
+        width: auto;
+        margin: 0 auto;
+        padding-top: 20px;
+        position: relative;
+    }
+
+
+    .tab_container1 {
+        width: auto;
+        margin: 0 auto;
+        padding-top: 20px;
+        position: relative;
+    }
+
+
+    .award,
+    section {
+        clear: both;
+        padding-top: 10px;
+        display: none;
+    }
+
+
+
+    .award1 {
+        clear: both;
+        padding-top: 10px;
+        display: none;
+    }
+
+    .prize {
+        font-weight: 700;
+        font-size: 18px;
+        display: block;
+        float: left;
+        width: 33%;
+        padding: 1.5em;
+        color: #757575;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        background: #f0f0f0;
+    }
+
+    .prize1 {
+        font-weight: 700;
+        font-size: 18px;
+        display: block;
+        float: left;
+        width: 33%;
+        padding: 1.5em;
+        color: #757575;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        background: #f0f0f0;
+    }
+
+
+    #tab1:checked~#content1,
+    #tab2:checked~#content2,
+    #tab3:checked~#content3 {
+        display: block;
+        padding: 20px;
+        background: #fff;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+
+
+    #tab4:checked~#content4,
+    #tab5:checked~#content5,
+    #tab6:checked~#content6 {
+        display: block;
+        padding: 20px;
+        background: #fff;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+
+    .tab_container .tab-content p,
+    .tab_container .tab-content h3,
+    h5 {
+        -webkit-animation: fadeInScale 0.7s ease-in-out;
+        -moz-animation: fadeInScale 0.7s ease-in-out;
+        animation: fadeInScale 0.7s ease-in-out;
+    }
+
+
+
+    .tab_container1 .tab-content1 p,
+    .tab_container1 .tab-content1 h3,
+    h5 {
+        -webkit-animation: fadeInScale 0.7s ease-in-out;
+        -moz-animation: fadeInScale 0.7s ease-in-out;
+        animation: fadeInScale 0.7s ease-in-out;
+    }
+
+
+
+    .tab_container .tab-content h3 {
+        text-align: center;
+    }
+
+    .tab_container1 .tab-content1 h3 {
+        text-align: center;
+    }
+
+
+    .tab_container [id^="tab"]:checked+label {
+        background: #fff;
+        box-shadow: inset 0 3px black;
+    }
+
+
+    .tab_container1 [id^="tab"]:checked+label {
+        background: #fff;
+        box-shadow: inset 0 3px black;
+    }
+
+    .tab_container [id^="tab"]:checked+label .fa {
+        color: black;
+    }
+
+
+    .tab_container1 [id^="tab"]:checked+label .fa {
+        color: black;
+    }
+
+
+
+
+    label .fa {
+        font-size: 1.3em;
+        margin: 0 0.4em 0 0;
+    }
+
+    /*Media query*/
+    @media only screen and (max-width: 900px) {
+        label span {
+            display: none;
+        }
+
+        .tab_container {
+            width: 98%;
+        }
+    }
+
+    /*Content Animation*/
+    @keyframes fadeInScale {
+        0% {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .no_wrap {
+        text-align: center;
+        color: black;
+    }
+
+    .link {
+        text-align: center;
+    }
+
+
+
+
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+
+        h1 {
+            animation: move 3s;
+            -webkit-animation: move 3s;
+        }
+
+        @keyframes move {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+
+        @-webkit-keyframes move {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+
+        h5 {
+            text-align: center;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+        h2,
+        h5 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+
+    ul {
+        list-style-type: none;
+
+        padding: 0px;
+    }
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b>Awards </b></h2>
+    </div>
+
+
+
+    <div class="container">
+
+
+        <div class="box">
+
+
+            <!-- <img src="{{STATIC_PREFIX}}images/awards.png" width="50%" height="60%"> -->
+
+
+
+            <p
+                style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle ;text-align:center;margin-left:0%; margin-right:0%">
+                ICEEICT Awards
+            </p>
+
+
+
+
+            <!-- 
+            <p style="text-align: justify;">
+                A registered paper will be considered for the award competition if it is presented by its author(s).
+                Best papers shall be selected based on reviewers’ scores and comments, comments from the Track Chair
+                and
+                Track Co-Chairs, overall presentation of the camera ready version, similarity measures (obtained
+                from
+                IEEE Crosscheck), prohibited author list, marks and comments from Session Chair.
+
+            </p> -->
+
+
+
+            <!-- <p style="text-align: justify;">A number of awards shall be declared in the following categories:</p> -->
+
+            <!-- <p style="text-align: justify;"><i class="fas fa-check-circle"></i> Best Paper Award</p>
+            <p style="text-align: justify;"><i class="fas fa-check-circle"></i> Best Presentation Award</p>
+            <p style="text-align: justify;"><i class="fas fa-check-circle"></i> Best Poster Award</p> -->
+
+            <!-- <img src="{{STATIC_PREFIX}}images/awards/best_paper_large1.png" alt="">
+            <br>
+
+            <img src="{{STATIC_PREFIX}}images/awards/industry_sponsored_large1.png" alt=""> -->
+
+
+            <center>
+                <img src="{{STATIC_PREFIX}}images/prize/best_paper.png" width="20%" height="25%">
+            </center>
+
+            <div class="tab_container">
+                <input class="award" id="tab1" type="radio" name="tabs" checked>
+                <label class="prize" for="tab1"><i class="fas fa-award"></i><span> 1st</span></label>
+
+                <input class="award" id="tab2" type="radio" name="tabs">
+                <label class="prize" for="tab2"><i class="fas fa-award"></i><span> 2nd</span></label>
+
+                <input class="award" id="tab3" type="radio" name="tabs">
+                <label class="prize" for="tab3"><i class="fas fa-award"></i><span> 3rd</span></label>
+
+
+
+                <section id="content1" class="tab-content">
+
+
+                    <h3>Paper ID – 054</h3>
+                    <br>
+                    <h3>An Adaptive System for Detecting Driving Abnormality of Individual Drivers Using Gaussian
+                        Mixture Model</h3>
+
+
+
+                    <h5>Md. Nazmus Shakib, Md. Shamim, Md. Nazirul Hasan Shawon, Most. Kaniz Fatema Isha, M.M.A Hashem
+                        and M.A.S Kamal </h5>
+                    <br>
+                    <b> Abstract:</b> Abnormal driving of a driver often leads to many undesirable situations. To avoid
+                    such
+                    circumstances, this paper proposes a driver-adaptive system that can detect abnormality within
+                    one's own driving style. To achieve such a feat, firstly, a soft clustering approach is proposed
+                    to determine the driving style in three categories - aggressive, moderate, and protective. Then, it
+                    proposes an algorithm to analyze the driving profile and detect the variation of abnormality of the
+                    driver. Statistics of different vehicle kinetic characteristics, i.e., velocity, space and time
+                    headway, acceleration, jerk factor, etc., are considered for the clustering process. Maximal
+                    Information Coefficient (MIC) is used to select the important features. Analyzing the results of
+                    different clustering algorithms such as Gaussian Mixture Model (GMM), FCM, and K-means, we used GMM
+                    in the proposed system for determining real-time driving style. The actual driving style is
+                    determined using the long-term driving history of the subject vehicle. Using GMM's soft clustering
+                    properties, the current deviation is measured by comparing the real- time driving style to the
+                    actual style. A learning factor is accommodated to update the actual style in every cycle so that
+                    the proposed system can adapt to the driver's skill-changing state. Real-life driving depends
+                    on real-time human decisions. Therefore, we have used the reconstructed NGSIM I-80 real-life traffic
+                    data to build and validate the proposed system.
+
+
+                    <br>
+
+                </section>
+
+                <section id="content2" class="tab-content">
+                    <h3>Paper ID – 153</h3>
+                    <br>
+                    <h3>Optimization of Reconfigurable Intelligent Surface for M2M Communications over Cellular Networks
+                    </h3>
+
+
+
+                    <h5>Zarin Tarannum Azim, Shaba Altaf Shaon, Sree Krishna Das and Md Golam Mostafa </h5>
+                    <br>
+                    <b> Abstract:</b> Combined optimization of position and phase shift of reconfigurable intelligent
+                    surface (RIS) in machine- to-machine (M2M) communications is performed to maximize the throughput of
+                    the M2M as well as cellular networks. A novel deep Q network (DQN) algorithm is proposed, which
+                    reduces complexity in optimizing the RIS position and its phase shift. Simulation results show that
+                    the proposed algorithm can obtain a higher sum-rate contrasting to the existing algorithm and
+                    therefore can be used to achieve a better quality of service (QoS) at M2M receivers and the evolved
+                    node B (eNB).
+
+                </section>
+
+                <section id="content3" class="tab-content">
+                    <h3>Paper ID – 185</h3>
+                    <br>
+                    <h3>The Gold Coated Plasmonic Refractive Index Sensor with Low Propagation Loss</h3>
+
+
+
+                    <h5>K.M. Mustafizur Rahman and Atik Yasir Rahman </h5>
+                    <br>
+                    <b> Abstract:</b> A refractive index (RI) sensor based on photonic crystal fiber (PCF) utilizing
+                    surface plasmon resonance (SPR) is modeled and numerically investigated. Gold, a chemically stable
+                    plasmonic material, is deposited on the outer surface of the sensor structure. The sensor has been
+                    designed with COMSOL Multiphysics, and its transmission characteristics have been studied with the
+                    finite element method (FEM). The sensor structure consists of 24 circular air-holes, out of which 14
+                    are larger and 10 are smaller. The step-by-step optimized design shows enhanced sensing performance
+                    such as wavelength sensitivity of 22500 nm/RIU, amplitude sensitivity of -830.353 RIU<sup>-1</sup>.
+                    and a figure of
+                    merit (FOM) of 321.42 RIU<sup>-1</sup>. In the case of accurate detection, the sensor reaches the
+                    highest level
+                    of 4.44 x 10<sup>-6</sup> RIU<sup>-1</sup> in wavelength resolution and 1.28 x 10<sup>-5</sup> RIU
+                    in amplitude
+                    resolution. The outer annular
+                    analyte channel, simple design, remarkable sensing performance, and very low propagation loss make
+                    the proposed sensor a viable candidate in sensing and biosensing.
+
+                </section>
+
+                <br>
+                <br>
+
+
+            </div>
+
+
+
+
+            <center>
+                <img src="{{STATIC_PREFIX}}images/prize/best_presentation1.png" width="20%" height="25%">
+            </center>
+
+
+            <div class="tab_container1">
+                <input class="award1" id="tab4" type="radio" name="tabs1" checked>
+                <label class="prize1" for="tab4"><i class="fas fa-award"></i><span> 1st</span></label>
+
+                <input class="award1" id="tab5" type="radio" name="tabs1">
+                <label class="prize1" for="tab5"><i class="fas fa-award"></i><span> 2nd</span></label>
+
+                <input class="award1" id="tab6" type="radio" name="tabs1">
+                <label class="prize1" for="tab6"><i class="fas fa-award"></i><span> 3rd</span></label>
+
+
+                <section id="content4" class="tab-content1">
+
+
+                    <h3>Paper ID – 098</h3>
+                    <br>
+                    <h3>Estimation of ZnO Nanoparticles Crystallite Parameters at Different Compression Temperatures
+                    </h3>
+
+
+
+                    <h5>Zia Uddin, Md. Jaber Uddin, Md. Shamimul Haque Choudhury, M. Shafiul Alam, Mohammad Rafiqul
+                        Islam and Tetsuo Soga </h5>
+                    <br>
+                    <b> Abstract:</b> In this work, ZnO films were processed utilizing a standard blade coating
+                    procedure at different compression temperatures (50 to 90°C temperature at 120 MPa compression).
+                    The X-ray Diffraction (XRD) technique is used to characterize the films. The crystallite sizes,
+                    microstrains, and dislocation densities of the ZnO nanoparticles (NPs) sample were studied using
+                    several methods, including the Modified Scherrer method, the Wagner-Agua (W-A) method, and the
+                    Halder-Wagner (H-W) method, based on XRD data. The results were compared to observe the effects of
+                    compression temperatures on various structural parameters. From the analysis, it is evident that ZnO
+                    nanoparticles are crystallite in nature with a hexagonal wurtzite phase. The crystallite size
+                    calculated from the Modified Scherrer method, the H-W, and the W-A methods match very well, are
+                    greatly inter- correlated, and range from 12.7 to 15.29 nm. The dislocation density and lattice
+                    strain exhibited an inverse relationship with crystallite size. The crystallinity improves gradually
+                    up to 70°C with increasing compression temperatures, then decreases. However, impacts on various
+                    crystallite components caused by various temperatures at 120 MPa pressure are also utilized to
+                    characterize the Dye-sensitized solar cells (DSSCs) behavior. The photovoltaic performance of the
+                    70°C temperature 120 MPa compressed cell was shown to be better where the average crystallite size
+                    was
+                    comparatively large.
+                </section>
+
+                <section id="content5" class="tab-content1">
+                    <h3>Paper ID – 035</h3>
+                    <br>
+                    <h3>Comparison of Total Electron Content with International Reference Ionosphere Model Predictions
+                        near the Northern Crest of EIA at Bangladesh
+                    </h3>
+
+
+
+                    <h5>Md Golam Mostafa, Christina Oikonomou and Haris Haralambous </h5>
+                    <br>
+                    <b> Abstract:</b> Total electron content (TEC) observations extracted from a Global Positioning
+                    System (GPS) receiver station in Dhaka, Bangladesh (geographic latitude 23.8°N, longitude 90.4°E,
+                    geomagnetic latitude 14°N) under the northern crest of equatorial ionospheric anomaly (EIA) is
+                    investigated. Eight years of TEC measurements from 2004-2011 constitutes an extensive dataset, which
+                    provides an excellent opportunity to perform such a study for the first time over this area. The
+                    analysis reveals that the diurnal maximum of TEC occurs around 13:00-14:00 BST. Peak TEC values
+                    during noontime are maximum during March and April (~70 TECU) and autumnal equinox (~50- 60 TECU),
+                    and lowest during winter (~35-43 TECU) at high solar activity period. During low solar activity
+                    period, the peak TEC values reduce to ~35-50 TECU during equinoxes and to ~24 TECU during winter.
+                    TEC values minimise (~2-10 TECU) after sunset to predawn hours. Observed monthly median TEC values
+                    are compared with predictions the from International Reference Ionosphere (IRI-2012) model. Results
+                    indicate that during high solar activity period, IRI-2012 underestimates TEC values (~8-17 TECU) at
+                    vernal and autumnal equinoxes during noon. IRI predictability is better as the values are
+                    underestimated by ~4 TECU from after sunset to pre-dawn hours and overestimated by ~4 TECU during
+                    early hours of the day. IRI predictions are more accurate in summer and winter months than in
+                    equinoctial months. IRI exhibits improved prediction accuracy during low solar activity period with
+                    discrepancies as low as ~0.13 TECU.
+
+                </section>
+
+                <section id="content6" class="tab-content1">
+                    <h3>Paper ID – 075</h3>
+                    <br>
+                    <h3>An Efficient Adjustable Duty Control Based Current Limiter for Grid-Connected Solar PV System
+                    </h3>
+
+
+
+                    <h5>M. Shafiul Alam, Fahad Saleh Al-Ismail, Md. Shamimul Haque Choudhury, Md Shafiullah, S. M. G.
+                        Mostafa and M. A. Abido</h5>
+                    <br>
+                    <b> Abstract:</b> Solar photovoltaic (PV) is heavily integrated with the power system network
+                    through power electronic converters. Such power electronic converter-based distributed generators
+                    (DGs) increase the vulnerability of the system due to AC and DC side faults. This paper proposes an
+                    efficient adjustable duty-based controller of modified bridge fault current limiter (MBFCL) for
+                    solar PV integrated DG system. The advantages of the proposed approach are manifolds: simplest
+                    detection and control of system faults, autonomous duty to limit the fault current, and lossless
+                    operation during normal conditions. The detailed modeling for the MBFCL, solar PV, voltage source
+                    inverter (VSI) and DC-DC converter control, and fault detection and suppression control is
+                    presented. The MBFCL activation controller uses the simplest approach using point of common coupling
+                    (PCC) voltage and current. The root-mean-square (RMS) current deviation at PCC is used to adjust the
+                    duty cycle of MBFCL. To study the efficacy of the proposed control approach, several disturbances
+                    are applied in the system. The proposed approach outperforms in suppressing fault current over
+                    without current limiter and with traditional control-based current limiter as verified by the
+                    simulation studies.
+
+                </section>
+
+            </div>
+
+
+        </div>
+
+
+        <br>
+
+
+    </div>
+
+
+
+</body>
+
+{{footer}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+</html>

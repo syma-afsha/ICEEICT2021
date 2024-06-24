@@ -1,0 +1,290 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    /*Social media  icons */
+
+    .social_links {
+        /* padding: 1rem;*/
+        /*background: #383838;*/
+        border-radius: 1rem;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: center;*/
+        justify-content: left;
+    }
+
+    .social_links .combo {
+        transform: scale(0.9);
+        transition: 0.4s ease-in;
+
+        height: 3em;
+        width: 3em;
+        line-height: 3em;
+    }
+
+    .combo .circle {
+        color: #f9f9f9;
+        transition: 0.4s ease-in;
+        font-size: 3em;
+    }
+
+    .combo .icon {
+        color: #444343;
+        font-size: 2rem;
+        transform: translateY(1px);
+        transition: 0.2s ease-in;
+    }
+
+    .combo:hover {
+        transform: scale(1.1);
+    }
+
+    .combo:hover,
+    .combo:hover .icon {
+        color: white;
+    }
+
+    .ig:hover,
+    .ig:hover .circle {
+        color: #e91e63;
+    }
+
+    .fb:hover,
+    .fb:hover .circle {
+        color: #2196f3;
+    }
+
+    .yt:hover,
+    .yt:hover .circle {
+        color: #7360f2;
+    }
+
+    .tw:hover,
+    .tw:hover .circle {
+        color: #25D366;
+    }
+
+    .gt:hover,
+    .gt:hover .circle {
+        color: #1f1f1f;
+    }
+
+    .email-list {
+        padding-bottom: 10x;
+    }
+</style>
+<footer class="footer " style="display:block; background-attachment:cover">
+
+    <div class="row" style="padding-left:2%;">
+        <div class="col">
+            <h3 style=" color:white;padding-left:10px">Organized By</h3>
+            <br>
+            <a href="https://mist.ac.bd/"><img width="93%" height="auto"
+                    src="{{STATIC_PREFIX}}images/logo-03_final.png"></a>
+
+            <p style="padding-top:3%;padding-left:10px">
+
+                Mirpur Cantonment, Dhaka-1216
+
+
+                <br>
+
+
+                &#169 ICEEICT-2021
+
+            </p>
+        </div>
+
+
+        <div class="col">
+
+            <h3 style=" color:white;padding-bottom:2%"> Technical <br> Co-Sponsor</h3>
+
+            <div class="sp"> <a href="http://www.ieeebd.net/" target="_blank"><img class="img-responsive "
+                        src="{{STATIC_PREFIX}}images/sponsor12.jpeg" width="52%" height="25%"
+                        style="padding-bottom:2%;"></a>
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+        <div class="col">
+
+            <h3 style=" color:white;padding-bottom:2%">Support <br> Partner</h3>
+
+            <div class="sp"> <a href="https://ieee-comsocbd.org/" target="_blank"><img class="img-responsive "
+                        src="{{STATIC_PREFIX}}images/sponsor_logo.png" width="52%" height="25%"
+                        style="padding-bottom:2%;"></a>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="col" style="padding-top:0.1%">
+            <ul class="list-unstyled ">
+                <h3 style=" color:white;padding-bottom:2%">Contact Us</h3>
+
+                <li class="email-list">
+
+
+                    <i class="fas fa-user-alt float-left" style="margin-right: 20px;"></i>
+                    <p class="ml-3" style="margin-bottom:0px">
+                        <!--Chair, Organizing Committee--><a href="mailto:chair.org@iceeict.mist.ac.bd"
+                            style="margin-left: 0px">chair.org@iceeict.mist.ac.bd</a>
+                    </p>
+                    <!--<a href="mailto:chair.org@iceeict.mist.ac.bd"
+                        style="margin-left: 35px">chair.org@iceeict.mist.ac.bd</a></p>-->
+
+
+                </li>
+
+
+
+                <li>
+
+
+                    <i class="fas fa-user-alt float-left" style="margin-right: 20px;"></i>
+                    <p class="ml-3" style="margin-bottom:0px">
+                        <!--Secretary, Organizing Committee--><a href="mailto:sec.org@iceeict.mist.ac.bd"
+                            style="margin-left: 0px">sec.org@iceeict.mist.ac.bd</a>
+                    </p>
+                    <!--<a href="mailto:sec.org@iceeict.mist.ac.bd" style="margin-left: 35px">sec.org@iceeict.mist.ac.bd</a>
+                    </p>-->
+
+
+                </li>
+
+
+
+                <li class="email-list">
+
+
+                    <i class="fas fa-user-alt float-left" style="margin-right: 20px;"></i>
+                    <p class="ml-3" style="margin-bottom:0px">
+                        <!--Chair, Technical Program Committee--><a href="mailto:chair.tech@iceeict.mist.ac.bd"
+                            style="margin-left: 0px">chair.tech@iceeict.mist.ac.bd</a>
+                    </p>
+                    <!--<a href="mailto:chair.tech@iceeict.mist.ac.bd"
+                        style="margin-left: 35px">chair.tech@iceeict.mist.ac.bd</a></p>-->
+
+
+                </li>
+
+
+                <li class="email-list">
+
+
+                    <i class="fas fa-user-alt float-left" style="margin-right: 20px;"></i>
+                    <p class="ml-3" style="margin-bottom:0px">
+                        <!--Secretary, Technical Program Committee--><a href="mailto:sec.tech@iceeict.mist.ac.bd"
+                            style="margin-left: 0px">sec.tech@iceeict.mist.ac.bd</a>
+                    </p>
+                    <!--<a href="mailto:sec.tech@iceeict.mist.ac.bd"
+                        style="margin-left: 35px">sec.tech@iceeict.mist.ac.bd</a></p>-->
+
+
+                </li>
+
+
+                <!--- Social Media icons -->
+
+
+                <div class="social_links">
+
+                    <a href="https://www.facebook.com/iceeict" target="_blank">
+                        <span class="fa-stack fa-lg fb combo">
+                            <i class="fa fa-circle fa-stack-2x circle"></i>
+                            <i class="fa fa-facebook fa-stack-1x fa-inverse icon"></i>
+                        </span>
+                    </a>
+                    <a href="viber://chat?number=8801926662864" target="_blank">
+                        <span class="fa-stack fa-lg yt combo">
+                            <i class="fa fa-circle fa-stack-2x circle"></i>
+                            <i class="fab fa-viber fa-stack-1x fa-inverse icon"></i>
+                        </span>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=+8801926662864" target="_blank">
+                        <span class="fa-stack fa-lg tw combo">
+                            <i class="fa fa-circle fa-stack-2x circle"></i>
+                            <i class="fab fa-whatsapp fa-stack-1x fa-inverse icon"></i>
+                        </span>
+                    </a>
+
+
+                </div>
+
+
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="col">
+            <h3 style=" color:white ;padding-bottom:2%">Message Us</h3>
+
+            <form
+                action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSePCJ-Y7gCKsnpDya7zK5bYKlojl6rvrSx1a0xEwEVA949ztA/formResponse"
+                method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="email" name="entry.462499948" placeholder="Your Email" required=""
+                        style="width:80%; height: 80%">
+                </div>
+                <!-- <form action=" #" method="post">
+            </form> -->
+                <div class="form-group">
+                    <input class="form-control" type="text" name="entry.1014926503" placeholder="Your Message"
+                        required="" style="padding-bottom:20px; width:80%; height: 80%;">
+                </div>
+                <input type="checkbox" name="check" id="check" required="">
+                <label for="check" style="padding-right:9%;">I am not a robot</label>
+
+                <button class="btn" type="submit"
+                    style="background-color: rgba(172, 255, 47, 0.816);color:BLACK; "><b>Send</b></button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!-- <div class="row">
+        <div class="col-sm-5 col-md-4">
+            <p class="footer_text" style="color:white; padding-top:20px;text-align:center"> iCEEiCT-2021
+            </p>
+        </div> -->
+    <!-- <div class="col-sm-5 text-center col-md">
+            <p class="footer_text" style="color:white; padding-top:20px">Hosted By <a style="color:white; "
+                    href="http://www.MIST.ac.bd/">Military Institute of Science and Technology</a></p>
+        </div> -->
+
+
+</footer>

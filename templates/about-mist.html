@@ -1,0 +1,609 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>About MIST</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+
+
+    .timeline-block {
+        width: -webkit-calc(50% + 8px);
+        width: -moz-calc(50% + 8px);
+        width: calc(50% + 8px);
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: start;
+        -moz-box-pack: justify;
+        justify-content: start;
+        clear: both;
+    }
+
+    .marker {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid #F5F7FA;
+        background: #b8b8b8;
+        margin-top: 10px;
+        z-index: 9999;
+        text-align: center;
+        position: relative;
+        left: 4px;
+    }
+
+    .marker.active {
+        width: 40px;
+        height: 37px;
+        background: #000000;
+        left: 0px;
+    }
+
+    .timeline-content {
+        width: 95%;
+        padding: 0;
+        color: #666
+    }
+
+
+
+    i.fa.fa-check.active {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+        height: 50%;
+        color: #fff;
+    }
+
+
+
+    .timeline-content h3 {
+
+        align-self: stretch;
+        margin-left: 20px;
+        padding-top: 1rem;
+        font-size: 17px;
+
+        text-align: left;
+        font-weight: bold;
+
+    }
+
+
+
+
+    .timeline-block {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+
+    .timeline-block-right {
+        float: none;
+    }
+
+    .timeline-block-left {
+        float: none;
+        direction: ltr;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b>About MIST</b></h2>
+    </div>
+
+
+
+
+    <center>
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6">
+
+
+                    <h1 style="text-shadow: none !important;">OUR VISION </h1>
+
+                    <hr>
+
+                    <p style="line-height: 2em;text-align: left;">To be a center of excellence for providing quality
+                        education in
+                        the field of science,
+                        engineering and technology and conduct research to meet the national and global
+                        challenges.</p>
+
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <img src="{{STATIC_PREFIX}}images/about_mist2.jpeg" width="95%" height="85%"
+                        style="border-radius: 2%;box-shadow: rgba(0,0,0,0.15) 0px 0px 25px 0px" alt="">
+                </div>
+
+            </div>
+
+
+            <br>
+
+            <br>
+
+            <br>
+
+
+
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6">
+
+
+
+
+                    <img src="{{STATIC_PREFIX}}images/about_mist1.jpeg" width="87%" height="87%"
+                        style="border-radius: 2%; box-shadow: rgba(0,0,0,0.15) 0px 0px 25px 0px" alt="">
+
+
+
+
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+
+
+
+                    <h1 style="text-shadow: none !important;">OUR MISSION </h1>
+
+                    <hr>
+
+
+                    <p style="line-height: 2em;text-align: left;">
+
+                        Provide comprehensive education and conduct research in diverse disciplines of science,
+                        engineering, technology, and engineering management.
+
+                        Produce technologically advanced intellectual leaders and professionals with high moral
+                        and ethical values to meet the socio-economic development of Bangladesh and global
+                        needs.
+
+                        Conduct collaborative research activities with national and international communities for
+                        continuous interaction with academia and industry.
+
+                    </p>
+
+
+                </div>
+
+            </div>
+            <br>
+
+            <br>
+
+            <br>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6">
+
+
+                    <h1 style="text-shadow: none !important;">KEY FACTS </h1>
+
+                    <hr>
+
+                    <p style="line-height: 2em; text-align: left;">
+                        Military Institute of Science and Technology (MIST) started its journey since 19 April 1998. It
+                        is the pioneer Technical Institute of Bangladesh Armed Forces. It was the visionary leadership
+                        of the Honorable Prime Minister of People’s Republic of Bangladesh Sheikh Hasina to establish
+                        this Institute.
+                    </p>
+
+
+                    <p style="line-height: 2em; text-align: left;">
+                        MIST is steadily upholding its motto “Technology for Advancement” and remains committed to
+                        contributing to the wider spectrum of national educational arena, play a significant role in the
+                        development of human resources and gradually pursuing its goal to grow into a ‘Centre of
+                        Excellence’.
+                    </p>
+
+
+
+
+
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <img src="{{STATIC_PREFIX}}images/about_mist3.jpeg" width="87%" height="90%"
+                        style="border-radius: 2%; box-shadow: rgba(0,0,0,0.15) 0px 0px 25px 0px" alt="">
+                </div>
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+
+            <h1 style="text-shadow: none !important;">Engineering Programs currently offered in MIST</h1>
+
+
+            <br>
+            <br>
+
+            <hr>
+        </div>
+
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4">
+
+
+                    <div class="container">
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Civil Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Computer Science and Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Electrical, Electronic and Communication Engineering</h3>
+
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Industrial Production and Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+
+
+                    <div class="container">
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Mechanical Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Aeronautical Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Naval Architecture and Marine Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Environmental, Water Resources & Coastal Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+
+                    <div class="container">
+
+                        <div class="timeline-block timeline-block-right">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Nuclear Science & Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Biomedical Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Architecture</h3>
+
+
+                            </div>
+                        </div>
+
+                        <div class="timeline-block timeline-block-right active">
+                            <div class="marker active"><i class="fa fa-check active" aria-hidden="true"></i></div>
+                            <div class="timeline-content">
+                                <h3>Petroleum and Mining Engineering</h3>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </center>
+
+    <br>
+    <br>
+    <br>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+</body>
+
+{{footer}}
+
+</html>

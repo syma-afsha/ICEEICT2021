@@ -1,0 +1,1663 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX }}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Industrial and Academia Session</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+    .column1 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+    /* Clear floats after image containers */
+    .row1::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .vl {
+        border-left: 1px solid black;
+        height: 200px;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+            </div>
+
+
+
+        </nav>
+        <h2><b> Industrial and Academia Session</b></h2>
+
+    </div>
+
+
+    <br>
+
+    <br>
+
+
+
+
+
+    <section>
+
+
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-3">
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/cumulus_neuro2.png">
+
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Cumulus Neuro </h4>
+
+                    <hr>
+
+
+
+                    <div class="row1">
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/laura.jpg" style="width:65%">
+
+                                <br>
+                                <br>
+
+                                <p>Laura M. Rueda-Delgado</p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#k1">
+                                    More Details
+                                </button>
+
+                            </center>
+
+                        </div>
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/nurul.jpg" style="width:65%">
+                                <br>
+                                <br>
+
+                                <p>Md Nurul Islam</p>
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#c2">
+                                    More Details
+                                </button>
+                            </center>
+
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="k1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=10% height=45%
+                                            src="{{STATIC_PREFIX}}images/industrial/cumulus_neuro.png">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="k1"> Cumulus Neuro
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/laura.jpg">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Laura M. Rueda-Delgado
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Laura M. Rueda-Delgado is a Marie Skłodowska Curie Research Fellow at
+                                            Cumulus Neuroscience Limited. She has pioneered the research line on EEG
+                                            applied to motor control in the Motor Control and Neuroplasticity
+                                            research
+                                            group. Before that, Laura was a postdoctoral researcher in Trinity
+                                            College
+                                            Dublin and BrainWaveBank Ltd. (Oct. 2019 – Sept. 2020) and Trinity
+                                            College
+                                            Dublin, School of Psychology (Jul. 2017 – Sep. 2019), where she has
+                                            received
+                                            SFI Industry Fellowship for developing a model for prediction of
+                                            behavioral
+                                            performance in older adults with advanced machine learning methods. As a
+                                            result of her continuous research activity, 13 manuscripts have been
+                                            published in peer-reviewed journals with impact factor (IF) between 2.8
+                                            and
+                                            9.42. As part of her achievements, she received a scholarship for a
+                                            2-year
+                                            master’s in biomedical engineering in the CEMACUBE consortium, funded by
+                                            the
+                                            European Commission, and got a silver medal for academic performance-
+                                            best
+                                            GPA of the class from the Bachelor in Electronics Engineering,
+                                            Universidad
+                                            del Norte.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="c2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=10% height=45%
+                                            src="{{STATIC_PREFIX}}images/industrial/cumulus_neuro.png">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="c2"> Cumulus Neuro
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/nurul.jpg">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Md Nurul Islam
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Md Nurul is a multidisciplinary result-driven researcher with training
+                                            in
+                                            Engineering, Neuroscience, Statistics, and software development- geared
+                                            with
+                                            research expertise. At present, he is an EEG Research Engineer at
+                                            Cumulus
+                                            Neuroscience Limited. Before that, he was a postdoctoral associate in
+                                            the
+                                            Department of Neuroscience and Center for Visual Science, University of
+                                            Rochester, NY, USA. As a Psychology, Trinity College Dublin, Ireland,
+                                            Nurul
+                                            has developed an open-source, peer-reviewed, GUI-based computational
+                                            platform for systematic analysis of the large volume of data. His
+                                            ongoing
+                                            research has resulted in several publications in peer-reviewed journals
+                                            with
+                                            impact factor ranging between 2.7 to 13.2 (300+ citations as of Oct 8,
+                                            2021). As part of his academic excellence, he received a scholarship for
+                                            a
+                                            2-year master's in Common European Master’s in Biomedical Engineering
+                                            (CEMACUBE) funded by the European Commission. Nurul graduated from
+                                            Bangladesh University of Engineering and Technology with Dean’s list
+                                            award
+                                            for outstanding achievements in consecutive terms in junior years.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-3">
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/microsoft2.png">
+                    &nbsp
+
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Microsoft </h4>
+
+                    <hr>
+
+
+
+                    <div class="row1">
+                        <center>
+                            <div class="column1">
+                                <img src="{{STATIC_PREFIX}}images/industrial/marcus2.png" style="width:65%">
+
+                                <br>
+                                <br>
+
+                                <p> Marcus Tee </p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#m1">
+                                    More Details
+                                </button>
+
+
+
+                            </div>
+                            <div class="column1">
+
+                                <img src="{{STATIC_PREFIX}}images/industrial/popy2.png" style="width:65%">
+                                <br>
+                                <br>
+
+                                <p>Jannatul Popy</p>
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#m2">
+                                    More Details
+                                </button>
+                        </center>
+
+                    </div>
+
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade bd-example-modal-lg" id="m1" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <img src="{{STATIC_PREFIX}}images/industrial/microsoft2.png">
+                                    &nbsp
+                                    <h5 class="modal-title" style="padding-top: 20px;" id="m1"> Microsoft </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+
+
+
+                                <div class="modal-body">
+                                    <center>
+                                        <img width=30% height=80% src="{{STATIC_PREFIX}}images/industrial/marcus2.png">
+
+
+
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <span style="font-weight: bolder;"> Marcus Tee
+                                        </span>
+
+                                    </center>
+
+
+                                    <hr>
+                                    <p>
+
+                                        Marcus is part of Microsoft Germany Global Account team, serving as a
+                                        Cloud
+                                        Solution Architect. His focus is to drive digital transformation and
+                                        public
+                                        cloud adoption to realize business outcome. Prior to this role, Marcus
+                                        was
+                                        Client Technology lead for Microsoft Singapore’s Public sector team,
+                                        which
+                                        drove several nation-wide cloud transformation projects aligning with
+                                        Singapore’s Smart Nation Initiatives. Some notable project includes
+                                        Singapore Government Commercial Cloud, Tax System, as well as Nationwide
+                                        Park’s Management System. In addition to enterprise customer engagement,
+                                        Marcus is also actively engages the community to share his passion in
+                                        technology. In the recent Microsoft Annual Internal Global Hackathon,
+                                        Marcus
+                                        took part in “Hack for Africa” with a global team and developed a
+                                        wildlife
+                                        identification system to enable non-intrusive wildlife monitoring and
+                                        preservation using artificial intelligence. Prior to joining Microsoft,
+                                        Marcus graduated from Nanyang Technological University (NTU) with a
+                                        degree
+                                        in Mathematics and Economics. As an undergraduate, he developed “NTU Bus
+                                        Arrival”, an AI chatbot that served 20,000 students on campus, and was
+                                        featured in The Nanyang Chronicle and Vulcan Post. This chatbot received
+                                        high demand and reached 100,000 messages in less than two months from
+                                        the
+                                        day that the chatbot is published.
+                                    </p>
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade bd-example-modal-lg" id="m2" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <img src="{{STATIC_PREFIX}}images/industrial/microsoft2.png">
+                                    &nbsp
+                                    <h5 class="modal-title" style="padding-top: 20px;" id="m2"> Microsoft </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+
+
+
+                                <div class="modal-body">
+                                    <center>
+                                        <img width=30% height=80% src="{{STATIC_PREFIX}}images/industrial/popy2.png">
+
+
+
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <span style="font-weight: bolder;"> Jannatul Popy
+                                        </span>
+
+                                    </center>
+
+
+                                    <hr>
+                                    <p>
+
+                                        Popy is a tech enthusiast currently working as Partner Technical
+                                        Strategist
+                                        at Microsoft Bangladesh and leading the partner technical transformation
+                                        for
+                                        the Microsoft Bangladesh ecosystem. As part of her role at Microsoft she
+                                        has
+                                        taken care of partner transformation from other countries like Myanmar,
+                                        Nepal, Brunei etc. As a proud ex-student of MIST, Popy is very keen and
+                                        working towards the goal of bringing the right technical enablement
+                                        which
+                                        will drive the overall digital transformation across organizations.
+                                        Prior
+                                        working at Microsoft Popy has worked with one of the largest IT Solution
+                                        Providers in the country for over 7 years where she drove the Cloud
+                                        Business
+                                        as a Technical and Solutions Lead starting from very scratch at the time
+                                        when the country was trying to evangelize the new cloud solutions. Popy
+                                        has
+                                        completed here BSc in EECE from MIST in year 2011 and with the growth
+                                        mindset towards technological learning, her passion for innovation and
+                                        adoption of technology has brought the digital transformation in many
+                                        major
+                                        organizations in the country including Banks, large conglomerates,
+                                        telcos
+                                        and the regional Microsoft partners who are the key stakeholders when
+                                        comes
+                                        to innovation and transformation in areas like cloud computing, data and
+                                        AI,
+                                        advanced security etc.
+                                    </p>
+                                </div>
+
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-3">
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/samsung2.png">
+
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Samsung </h4>
+
+                    <hr>
+
+
+
+                    <div class="row1">
+
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/raquibul2.png" style="width:65%">
+
+                                <br>
+                                <br>
+
+                                <p>Raquibul Hasan</p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#s1">
+                                    More Details
+                                </button>
+
+                            </center>
+
+                        </div>
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/hissian2.png" style="width:65%">
+                                <br>
+                                <br>
+
+                                <p>Md. Sazzad Hissain Khan</p>
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#s2">
+                                    More Details
+                                </button>
+                            </center>
+
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="s1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img src="{{STATIC_PREFIX}}images/industrial/samsung2.png"
+                                            style="padding-top: 10px;">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="s1"> Samsung</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/raquibul_hasan.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Raquibul Hasan
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Raquibul Hasan has 16+ years of experience in software engineering
+                                            industry,
+                                            currently serving as Head of the Department, Health Application Group,
+                                            Samsung Electronics, Bangladesh (SRBD). His interest lies in mobile and
+                                            wearable computing especially in Health and fitness domain. Raquibul
+                                            started
+                                            his career as a software engineering intern in 2003, and after
+                                            completing
+                                            his BSc from RMIT, Melbourne, AUS he worked full time as a developer and
+                                            database engineer. He then completed his master’s part time while
+                                            working.
+                                            He moved to USA in 2008 and worked for various teams in Microsoft for
+                                            almost
+                                            7 years before returning to Bangladesh in 2014 when he joined Samsung.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="s2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=10% height=45% src="{{STATIC_PREFIX}}images/industrial/samsung2.png"
+                                            style="padding-top: 15px;">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="s2"> Samsung </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/sazzad_hissain_khan.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Md. Sazzad Hissain Khan
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Md. Sazzad Hissain Khan received his Bachelor of Science in 2010 and
+                                            Master
+                                            of Computer Science and Engineering degree in 2011 from University of
+                                            Dhaka,
+                                            Bangladesh. He joined Samsung R&D Institute Bangladesh (SRBD) as a
+                                            Software
+                                            Engineer and throughout his 10+ years of experience on mobile software
+                                            development he has acquired a deep understanding on how to overcome the
+                                            real
+                                            hurdles of developing performant, robust, testable and maintainable
+                                            applications from the requirement analysis to the architecture, design,
+                                            development, continuous integration and continuous deployment. He has a
+                                            strong fascination for CLEAN coding and precise communication. Problem
+                                            solving is his passion regardless of if its design related or
+                                            architectural
+                                            and he values the passion for problem solving minds. Usability,
+                                            especially
+                                            user intuitive and interactive UX for frontends and fault tolerance and
+                                            resilience for backends are his prime concerns on developing any
+                                            product. He
+                                            achieved his Associate Software Architect certification from SATTI
+                                            (Samsung
+                                            Advance Technical Training Institute, South Korea) in 2019 and till then
+                                            he
+                                            has been working to improve Samsung Health iOS which is a popular health
+                                            application of Samsung Electronics for Apple users. In 2019, one of his
+                                            developed products CareBot, received the best product award on robotic
+                                            category in CES'2019 (Consumer Electronics Show - 2019, Las Vegas, US).
+                                            Throughout his engineering career he received many awards and
+                                            certifications. Mr Khan attained two utility patents in 2021.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-3">
+
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/grammenphone2.jpg">
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Grameenphone </h4>
+
+                    &nbsp
+                    &nbsp
+
+                    &nbsp
+                    &nbsp
+
+                    &nbsp
+                    &nbsp
+
+
+
+                    &nbsp
+                    &nbsp
+
+
+
+                    &nbsp
+
+
+
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/walton2.jpg">
+
+
+                    <!-- <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Walton </h4> -->
+                    <hr>
+
+
+
+
+
+                    <div class="row1">
+
+                        <div class="column1">
+
+                            <center>
+
+                                <img src="{{STATIC_PREFIX}}images/industrial/monirul.jpg" style="width:65%;">
+
+
+                                <br>
+                                <br>
+
+                                <p>S M Monirul Haque </p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#g1">
+                                    More Details
+                                </button>
+                            </center>
+
+
+                        </div>
+
+
+
+
+                        <div class="column1">
+
+                            <center>
+
+                                <img src="{{STATIC_PREFIX}}images/industrial/tapash1.png" style="width:65%;">
+
+
+                                <br>
+                                <br>
+
+                                <p> Tapash Kumer Mojumder </p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#w1">
+                                    More Details
+                                </button>
+                            </center>
+
+
+                        </div>
+
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="g1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=8% height=40%
+                                            src="{{STATIC_PREFIX}}images/industrial/grammenphone2.jpg">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 12px;" id="g1"> Grameenphone
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/monirul.jpg">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> S M Monirul Haque
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            S M Monirul Haque, well known as Murad, has a long professional career
+                                            in
+                                            corporate world. After having graduation in EEE, he was a faculty member
+                                            in
+                                            University of Asia Pacific, Bangladesh for a year. After that he started
+                                            his
+                                            journey in telecommunication area in 2002 at Grameenphone. He has
+                                            worked,
+                                            moved and lead various functions in Technology division covering
+                                            Implementation, Operation and Planning in NW & IT and presently working
+                                            as
+                                            Director and Head of IT at GP. Throughout his career he has been an
+                                            ambassador for Change Management and People Leadership. He has been part
+                                            of
+                                            and lead so many technical projects, Operating model change and various
+                                            critical modernization drive. He is graduated from BUET in Electrical &
+                                            Electronics Engineering and also earned his MBA degree from IBA, Dhaka
+                                            University. He has undergone professional trainings in LUMS, Norwegian
+                                            School of Economics, London Business School, McKinsey Academy, INSEAD to
+                                            keep him relevant in this changing world.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="w1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=8% height=40% src="{{STATIC_PREFIX}}images/industrial/walton2.jpg">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 12px;" id="w1"> Walton
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/tapash1.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Tapash Kumer Mojumder
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+                                            Tapash is leading Research and Innovation of Walton, a top ranked
+                                            Company on
+                                            Electrical and Electronic Home appliances in Bangladesh. He joined with
+                                            Walton family in 2008 as a Product Design Engineer. Currently he is
+                                            holding
+                                            Senior Executive Director of Walton and participating as a CTO of
+                                            NUSDAT-
+                                            UTS (laboratory, accredited on ISO 17025). His focus is to incorporate
+                                            innovations with Electrical and Electronics Industries to make better
+                                            Bangladesh Tomorrow. He is collaborating research issues with
+                                            Universities.
+                                            He has been contributing a lot of significant activities to reduce ODP
+                                            and
+                                            GWP since 2010. Prior to this role, He was a lead Industrial Engineer of
+                                            various Garment Industry in Dhaka, Bangladesh. Overall, he has 17 years
+                                            of
+                                            professional experience. He received one year CAD experience from Japan
+                                            on
+                                            2006. He completed his BSc. Engineering on Industrial and Production
+                                            Engineering from Shahjalal University of Science and Technology (SUST)
+                                            in
+                                            2005.
+
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="content p-4 bg-white rounded shadow mb-3">
+
+
+
+            <img src="{{STATIC_PREFIX}}images/industrial/code19_2.png" class="img-fluid">
+
+
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp
+
+
+
+
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+
+
+            &nbsp
+            &nbsp
+
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+
+            &nbsp
+            &nbsp
+
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+
+
+
+            <img width=15% height=50% src="{{STATIC_PREFIX}}images/industrial/lnmiit.png" class="img-fluid">
+
+
+
+            <hr>
+
+
+
+
+            <div class="container">
+
+                <center>
+                    <div class="row">
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/1.jpg">
+                            <br>
+                            <br>
+                            <p>Imtiaz Farhan</p>
+
+
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f1">
+                                More Details
+                            </button>
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f1" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=12% height=45%
+                                                src="{{STATIC_PREFIX}}images/industrial/code19_2.png">
+                                            &nbsp
+
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/industrial/imtiaz_farhan.jpg">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Imtiaz Farhan
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Imtiaz Farhan is a dynamic entrepreneur with expertise in marketing,
+                                                business development, financial analysis and information technology.
+                                                He
+                                                is leading Code 19 Business and challenging operations in Bangladesh
+                                                with an extraordinary.
+
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/2.png">
+
+                            <br>
+                            <br>
+                            <p>Massimo Sacchi</p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f2">
+                                More Details
+                            </button>
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f2" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=12% height=45%
+                                                src="{{STATIC_PREFIX}}images/industrial/code19_2.png">
+                                            &nbsp
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/industrial/massimo_sacchi.png">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Massimo Sacchi
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Massimo Sacchi is an enthusiastic and determined engineer, featuring
+                                                a
+                                                vivid interest for innovation, with a solid background in industrial
+                                                automation based on over 13 years of extensive experience in
+                                                managing
+                                                projects in multinational contests. He has deep knowledge of markets
+                                                and
+                                                technologies of automated plants for the steel and logistic
+                                                industries
+                                                that turns him into an experienced decision maker, always lined up
+                                                with
+                                                the company business vision. almost 7 years before returning to
+                                                Bangladesh in 2014 when he joined Samsung.
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/3.png">
+
+                            <br>
+                            <br>
+                            <p>Ms Khadija Akhter</p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f3">
+                                More Details
+                            </button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f3" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=12% height=45%
+                                                src="{{STATIC_PREFIX}}images/industrial/code19_2.png">
+                                            &nbsp
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/industrial/khadija_akhter.png">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Ms Khadija Akhter
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Khadija Akhter is an experienced IoT engineer and lead trainer on
+                                                Arduino boards. She is currently working as an IoT engineer at Code
+                                                19
+                                                and has extensive experience in IoT based product development for
+                                                smart
+                                                agriculture, smart security and automation. Her skills and interest
+                                                are
+                                                Arduino, IoT systems, cloud architecture and advanced industry 4.0
+                                                technology.
+
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="vl"></div>
+
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/4.jpg">
+
+                            <br>
+                            <br>
+                            <p>Anirudh Agarwal</p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f4">
+                                More Details
+                            </button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f4" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=15% height=50%
+                                                src="{{STATIC_PREFIX}}images/industrial/lnmiit.png">
+                                            &nbsp
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/speakers/anirudh_agarwal.jpg">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Anirudh Agarwal
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Dr. Agarwal received the Ph.D. in wireless communications from
+                                                LNMIIT, Jaipur, India, where he is currently working as an Assistant
+                                                Professor in the Dept. of ECE. He has published several papers in
+                                                refereed journals and conferences including IEEE Wireless Comm
+                                                Letter,
+                                                Networking Letter, Globecom and ICC. Dr. Agarwal is the reviewer of
+                                                various peer-reviewed journals, viz. IEEE TCOM, IEEE TMC, IEEE TCCN,
+                                                IEEE WCL, IEEE Access, ETT (Wiley). His research interests include
+                                                reflecting intelligent surfaces assisted 6G, UAV and D2D
+                                                communication,
+                                                intrabody communication, with special emphasis on applied deep
+                                                learning
+                                                and
+                                                optimization techniques for resource allocation.
+
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </center>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="container" style="padding-left:8%;text-align:left; padding-right:10%">
+
+            <p style="text-align: justify; font-weight: 400;font-size:18px ">
+                A special session on the industry-academia bridging is planned to better prepare the future leaders of
+                the
+                developing and underdeveloped countries. ICEEICT 2021 are soliciting interest from the academic experts
+                and
+                representatives of the leading industries to magnify the session in supporting the dreams of our fresh
+                graduates
+                and young stars.
+
+                <br>
+                <br>
+
+                The session is expected to explore the reasons for potential gaps between academia and industries and
+                their
+                way-outs. The needs and expectations of the industries, technology development initiatives, and
+                opportunities
+                for internships and projects would also provide new insights to those future leaders to change the
+                world!
+
+                <br>
+                <br>
+
+            </p>
+            <!-- <h5 style="text-align:center; padding-right:50px;font-weight:bolder !important">
+                Industry Representatives
+            </h5>
+            <br>
+
+            <center>
+                <img src="{{STATIC_PREFIX}}images/industrial/all_industry2.png" alt="" class="img-fluid">
+            </center> -->
+
+            <br>
+        </div>
+
+
+
+    </section>
+
+</body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
+
+
+{{footer}}
+
+
+
+</html>

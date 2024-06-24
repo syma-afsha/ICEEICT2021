@@ -1,0 +1,399 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Special Technical Sessions</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+
+        display: block;
+    }
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b>Special Technical Sessions </b></h2>
+    </div>
+
+
+    <section>
+
+        <!-- 
+        <center>
+
+
+            <img src="{{STATIC_PREFIX}}images/under_construction.png" width="60%" height="60%">
+
+        </center> -->
+
+
+
+
+
+
+        <div class="box">
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+
+                <h3>Session Title</h3>
+
+            </div>
+            <hr>
+
+            <h5 style="font-weight:bolder;"> Imaging and next generation networks for smart applications (iNGN4SmartApp)
+            </h5>
+
+
+            <br>
+            <br>
+
+
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+
+                <h3> Session Chairs</h3>
+
+            </div>
+            <hr>
+
+
+
+            <ul>
+
+                <li>Brigadier General A K M Nazrul Islam </li>
+                <li>Md Golam Mostafa</li>
+                <li>Lieutenant Colonel Hussain Md Abu Nyeem</li>
+                <li>M. Shamim Kaiser</li>
+            </ul>
+
+
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+
+                <h3>About the Special Session</h3>
+
+            </div>
+            <hr>
+
+
+
+            <p>Smart technologies have an increasing and remarkable impact on today’s life-hood, society, research,
+                and
+                industry with its enormous promises for a spectrum of emerging applications. Particularly, it widens
+                the
+                scope of research and development with the acquisition, processing, analysis and prediction, and
+                presentation of the information to make this information actionable for users and to improve
+                experiences. A high-quality user experience with real- time big data for such smart apps further
+                require
+                research and development on higher capacity and greatly lower latency transmission networks. The
+                rapid
+                growth of visual information also demands innovative systems that gather huge amounts of data from
+                sensors and other sources, using machine learning algorithms and predictive analytics for the
+                real-world
+                applications with many dynamic solutions and new opportunities to reshape the entire industries.
+            </p>
+
+
+            <p>
+
+                In support of engaging a timely discussion on the advances of smart applications, a special session
+                is
+                included in the ICEEICT technical program. This session primarily focuses on new smart applications
+                of
+                imaging and next generation of network capturing intelligent, contextual, proactive, cooperative,
+                and
+                distant systems and services in different areas including medical, space, military, security,
+                surveillance, communication, control etc.
+            </p>
+
+
+
+            <p>Topics of Interest: specially focused but not limited to:
+            </p>
+
+
+            <ul class="tracks">
+
+                <li>Quantum Cognitive Imaging and Neural Networks</li>
+                <li>Computer Vision and High-speed Network for Healthcare Application</li>
+                <li>Robotic vision, and Low latency network for Remote patient monitoring and Surgery</li>
+                <li>Multi- und Hyperspectral Image Communication</li>
+                <li>Multimedia Networking and Traffic Management</li>
+                <li>Smart Motion Estimation, Registration, and Fusion</li>
+                <li>Deep Learning for Images and Videos</li>
+                <li>Multi-view, 3D, and Computational Imaging</li>
+                <li>Integration of Imaging Informatics & Bioinformatics</li>
+                <li>Low Delay and Multipath Video Communication</li>
+                <li>Green Communication System and Networks</li>
+                <li>Fog/Edge Computing and Big data System with 5G and beyond</li>
+                <li>Resource Allocation for Next generation Networks</li>
+                <li>Artificial Intelligence and 6G Networks for Smart Applications</li>
+                <li>Visible Light Communication for 6G</li>
+                <li>Smart Control, Sensor and Actuator Networks</li>
+                <li>Medical Imaging and High Speed Network</li>
+                <li>Applications and Implementations of 6G Internet of Things</li>
+                <li>Biometrics, Forensics, and Security</li>
+                <li>Wearables, Body Sensor Networks, and Smart Portable Devices</li>
+                <li>Emerging Smart Applications and Systems</li>
+
+
+
+            </ul>
+
+
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+
+                <h3>Expected Journal and/or Book Publications</h3>
+
+            </div>
+            <hr>
+
+            <p>A set of selected papers for the sessions would be invited for submitting the extended versions of
+                the
+                presented papers to the selected special issues of the following book chapters/journals:
+            </p>
+
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-4">
+
+                        <img style="flex:33%;" src="{{STATIC_PREFIX}}images/Special_Sessions/springer_3.png">
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+
+                        <img style="flex:33%; padding-top:2%"
+                            src="{{STATIC_PREFIX}}images/Special_Sessions/electronics_4.jpg">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+
+                        <img style="flex:33%; align-items: center;"
+                            src="{{STATIC_PREFIX}}images/Special_Sessions/taylor_francis_4.png">
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <br>
+        <br>
+
+
+    </section>
+
+</body>
+
+
+{{footer}}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+
+</html>

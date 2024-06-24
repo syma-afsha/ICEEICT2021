@@ -1,0 +1,877 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX }}{{styles.styles}}">
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title> Keynote Sessions </title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b> Keynote Sessions </b></h2>
+    </div>
+
+
+
+    <section>
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px">Power Electronics Technology -
+                Quo Vadis
+
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger">Frede Blaabjerg
+                <br>
+
+                Aalborg University, Denmark</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/aalborg.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p style="text-align:justify">
+                <b> Abstract: </b> The world is becoming more and more electrified combined with that the consumption is
+                steadily
+                increasing – at the
+                same time there is a large transition of power generation from fossil fuel to renewable energy based
+                which all
+                together challenges the modern power system but also gives many opportunities. We see also now big steps
+                being taken
+                to electrify the transportation – both better environment as well as higher efficiency are driving
+                factors. One of
+                the most important technologies to move this forward is the power electronics technology which has been
+                emerging for
+                decades and still challenges are seen in the technology and the applications it is used. This
+                presentation will be a
+                little forward looking (Quo Vadis) in some exciting research areas in order further to improve the
+                technology and
+                the systems it is used in. Following main topics will be discussed.
+            </p>
+            <ul style="text-align:justify">
+
+                <li>The evolution of power devices</li>
+                <li>Renewable Generation</li>
+                <li>Reliability in power electronics</li>
+                <li>Power Electronic based Power System stability</li>
+            </ul>
+
+            <p style="text-align:justify">At last some discussions about other hot topics will be given.
+
+            </p>
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/frede-blaabjerg.png" class="float-left"
+                alt="" style="margin:8px 8px 8px 0px">
+
+
+
+            <p><b>Frede Blaabjerg</b> (S’86–M’88–SM’97–F’03) was with ABB-Scandia, Randers, Denmark, from 1987 to 1988.
+                From 1988
+                to
+                1992,
+                he got the PhD degree in Electrical Engineering at Aalborg University in 1995. He became an Assistant
+                Professor in
+                1992, an Associate Professor in 1996, and a Full Professor of power electronics and drives in 1998. From
+                2017 he
+                became a Villum Investigator. He is honoris causa at University Politehnica Timisoara (UPT), Romania and
+                Tallinn
+                Technical University (TTU) in Estonia.<br><br>
+
+                His current research interests include power electronics and its applications such as in wind turbines,
+                PV
+                systems,
+                reliability, harmonics and adjustable speed drives. He has published more than 600 journal papers in the
+                fields of
+                power electronics and its applications. He is the co-author of four monographs and editor of ten books
+                in
+                power
+                electronics and its applications.<br><br>
+
+                He has received 33 IEEE Prize Paper Awards, the IEEE PELS Distinguished Service Award in 2009, the
+                EPE-PEMC
+                Council
+                Award in 2010, the IEEE William E. Newell Power Electronics Award 2014, the Villum Kann Rasmussen
+                Research
+                Award
+                2014, the Global Energy Prize in 2019 and the 2020 IEEE Edison Medal. He was the Editor-in-Chief of the
+                IEEE
+                TRANSACTIONS ON POWER ELECTRONICS from 2006 to 2012. He has been Distinguished Lecturer for the IEEE
+                Power
+                Electronics Society from 2005 to 2007 and for the IEEE Industry Applications Society from 2010 to 2011
+                as
+                well as
+                2017 to 2018. In 2019-2020 he served as a President of IEEE Power Electronics Society. He has been
+                Vice-President of
+                the Danish Academy of Technical Sciences. <br><br>
+
+                He is nominated in 2014-2020 by Thomson Reuters to be between the most 250 cited researchers in
+                Engineering
+                in the
+                world.</p>
+
+
+        </div>
+
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px">Unlocking the hidden capacity of the electrical grid
+                through power electronics
+
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger">Marco Liserre
+                <br>
+
+                University of Kiel, Germany</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/kiel.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <b> Abstract : </b> Studies have revealed that the actual electrical grid is less utilized than 25 years
+            ago: there is a higher
+            utilization for a shorter time. This “greater demand variability” has been mostly caused by new loads, like
+            air conditioning, but also by changes in the industrialization landscape. The wider integration of renewable
+            energies and new loads(like heat pumps and electric vehicle charging stations) is expected to worsen the
+            situation resulting in further congestion or underutilization of the electrical network, while their
+            control(e. g. Load Demand Response) could relive the problem. The use of direct current(Hybrid grid) and the
+            coordination among more energy carriers(Multimodal grids) together with Smart Grid technologies, is
+            attempting to give to the electrical grid more flexibility in controlling the power flow by exchanging it
+            with the dc-infrastructure or with other energy layers. Power Electronics is a key technology in all these
+            solutions and offer the possibility to unlock the hidden potential of the grid without the need of a massive
+            reinforcement of the electrical infrastructure.
+            <br>
+            <br>
+
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/marco.jpg" class="float-left" alt=""
+                style="margin:8px 8px 8px 0px">
+
+            <p>
+                <b> Marco Liserre </b> received the MSc and PhD degree in Electrical Engineering from the Bari
+                Polytechnic,
+                respectively in 1998
+                and 2002. He has been Associate Professor at Bari Polytechnic and from 2012 Professor in reliable power
+                electronics at
+                Aalborg University (Denmark). From 2013 he is Full Professor and he holds the Chair of Power Electronics
+                at
+                Kiel
+                University (Germany). At Kiel University he is leading a team of 25 researchers with a 2 Million Euro
+                annual
+                budget
+                through third-party funded projects, with a Power Electronics Laboratory, a Medium Voltage Laboratory
+                and a
+                Laboratory
+                on Batteries and Energy Conversion, in cooperation with colleagues in material science, approved for 2
+                Million Euro. He
+                has been leading in the last 7 years’ third-party projects for more than 13 Million Euro (of which 5 %
+                direct company
+                assignment) having responsibility role, among the other, within the strategic governmental 10 years’
+                initiative
+                “Copernicus” in Germany for the Energy Change towards 80 % renewable based energy society and in a
+                priority
+                program of
+                the German research Foundation DFG within a cooperative project with EPFL.
+
+                <br><br>
+                Notably he has been awarded in 2013 with an ERC Consolidator Grant (European Excellence Grants) for the
+                project “The
+                Highly Efficient And Reliable smart Transformer (HEART), a new Heart for the Electric Distribution
+                System”.
+                He has published 500 technical papers (1/3 of them in international peer-reviewed journals) and a book.
+                These works have
+                received more than 35000 citations. Marco Liserre is listed in ISI Thomson report “The world’s most
+                influential
+                scientific minds” from 2014.
+
+                <br><br>
+
+                He is fellow of IEEE (achieved at the age of 38) and member of IAS, PELS, PES and IES. He has been
+                serving
+                all these
+                societies in different capacities. He has received the IES 2009 Early Career Award, the IES 2011 Anthony
+                J.
+                Hornfeck
+                Service Award, the 2014 Dr. Bimal Bose Energy Systems Award, the 2011 Industrial Electronics Magazine
+                best
+                paper award
+                in 2011 and 2020 and the Third Prize paper award by the Industrial Power Converter Committee at ECCE
+                2012,
+                2012, 2017
+                IEEE PELS Sustainable Energy Systems Technical Achievement Award and the 2018 IEEE-IES Mittelmann
+                Achievement Award,
+                which is the highest award of the IEEE-IES.
+            </p>
+
+
+
+        </div>
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px"> The Internet of Things that Shouldn't be on the Internet
+
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger"> Henning Schulzrinne
+                <br>
+
+                Columbia University, NY, USA</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/columbia.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p style="text-align:justify">
+                <b> Abstract: </b> The Internet of Things promises to make homes, factories, cars and cities smarter,
+                promising better information and better outcomes. We have made significant progress in making these
+                devices cheaper and allow them to communicate in many more places than a few years ago. But the promise
+                of the Internet of Things faces significant obstacles: Security, usability, programmability and impact.
+                I will discuss challenges to making the Internet of Things more secure, why using IoT services and
+                devices remains difficult, how to effectively control thousands of devices within a single campus,
+                factory or hospital, and how to think about possible impacts on the public.
+            </p>
+
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/henning-schulzrinne.png" class="float-left"
+                alt="" style="margin:8px 8px 8px 0px">
+
+
+
+            <p> <b> Henning Schulzrinne </b> was the Chief Technology Officer (CTO) for the United States Federal
+                Communications
+                Commission,
+                having been appointed to that role on December 19, 2011 to 2014.Previously he was chair and Julian
+                Clarence Levi
+                Professor of the Computer Science department at Columbia University. He is a co-chair of the Internet
+                Technical
+                Committee of the IEEE Communications Society.<br>
+                Schulzrinne studied engineering management at the Department of Electrical Engineering and Information
+                Technology of the
+                German Technische Universität Darmstadt in Darmstadt, where he earned his Vordiplom (cf. Diplom), then
+                went on to earn
+                his M.Sc. at the University of Cincinnati and his Ph.D. at the University of Massachusetts Amherst.
+                <br><br>
+                Schulzrinne has contributed to standards. He co-designed the Session Initiation Protocol along with Mark
+                Handley, the
+                Real Time Streaming Protocol, the Real-time Transport Protocol, the General Internet Signaling Transport
+                Protocol, part
+                of the Next Steps in Signaling protocol suite. He was elected as an ACM Fellow (2014) for contributions
+                to the design of
+                protocols, applications, and algorithms for Internet multimedia.<br><br></p>
+
+
+        </div>
+
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px"> Using Everyday Routines for Understanding Health
+                Behaviors
+
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger"> Anind K. Dey
+                <br>
+
+                University of Washington, USA</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/washington.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p> <b> Abstract: </b> We live in a world where the promise of ubiquitous computing and the Internet of
+                Things is coming true.
+                We have smart devices that pervade our lives, and that are constantly collecting data about us and
+                mostly discarded as irrelevant. I will demonstrate how researchers can extract relevance from this
+                passively collected data and use it to "image" people's behaviors. I will describe approaches for
+                extracting behavioral routines from smart devices, and then how these routines can help us better
+                understand individual and group human behaviors, as well as anomalies. Using examples from healthcare, I
+                will describe how we can leverage both the routines and anomalies to improve our understanding of
+                health-related behaviors and support behavior change.</p>
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/anind-k-dey.png" class="float-left" alt=""
+                style="margin:8px 8px 8px 0px">
+
+
+
+            <p> <b> Anind K. Dey </b> is a Professor and Dean of the Information School and Adjunct Professor in the
+                Department of
+                Human-Centered Design and Engineering. Anind is renowned for his early work in context-aware computing,
+                an important theme in modern computing, where computational processes are aware of the context in which
+                they operate and can adapt appropriately to that context. His research is at the intersection of
+                human-computer interaction, machine learning, and ubiquitous computing. For the past few years, Anind
+                has focused on passively collecting large amounts of data about how people interact with their phones
+                and the objects around them, to use for producing detection and classification models for human
+                behaviors of interest. He applies a human-centered and problem-based approach through a collaboration
+                with an amazing collection of domain experts in areas of substance abuse (alcohol, marijuana, opioids),
+                mental health, driving and transportation needs, smart spaces, sustainability, and education. Anind was
+                inducted into the ACM SIGCHI Academy for his significant contributions to the field of human-computer
+                interaction in 2015.</p>
+
+
+
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px"> Energy Technologies for Future Grids
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger"> Kashem M. Muttaqi
+                <br>
+
+                University of Wollongong, Australia</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/wollongang.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p style="text-align:justify">
+                <b> Abstract: </b> New and modern energy technologies will make a significant change in the operation of
+                electricity systems in future power grids. The current power grids are undergoing an unprecedented
+                transformation, changing the way we have been producing, delivering, and consuming energy over the past
+                century. This new energy era includes renewable sources and energy storage, integrated to power grids
+                through power converters and transformers. In the future, these resources will be interfaced through
+                high frequency magnetic links and solid state transformers. Electric vehicles and energy efficient
+                technologies are also rapidly emerging and interacting with the grids. As these connections are being
+                evolved, it is causing the engineers to rethink the current paradigms of system analysis and planning
+                with a focus on how they can achieve the most flexible, efficient, and reliable power grid for the
+                future.
+            </p>
+
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/kashem-muttaqi.jpg" class="float-left"
+                alt="" style="margin:8px 8px 8px 0px">
+
+
+
+            <p> <b> Dr. Kashem Muttaqi </b> received his Bachelor of Science in Electrical and Electronic Engineering
+                degree from
+                Bangladesh University of Engineering and Technology (BUET), Bangladesh in 1993. He then received a
+                Masters of Engineering in Science degree from the University of Malaya (UM), Malaysia in 1997, and
+                received his Doctor of Philosophy degree from Multimedia University (MMU), Malaysia in 2001. Currently,
+                he is the Director of the Australian Power and Energy Research Institute (APERI) and a Professor at the
+                School of Electrical, Computer and Telecommunications Engineering at the University of Wollongong. He is
+                also serving as the Discipline Leader for Electrical Engineering at the School of Electrical, Computer
+                and Telecommunications Engineering (SECTE), University of wollongong. He served as the Postgraduate
+                Coursework Degree Coordinator at the School of Electrical, Computer and Telecommunications Engineering,
+                University of Wollongong from 2008 to 2010, and the Cluster Head for 09 Engineering, Faculty of
+                Engineering and Information Sciences (EIS) at the University of Wollongong from 2019 to 2021. He was
+                associated with the University of Tasmania, Australia as a Research Fellow/Lecturer/Senior Lecturer from
+                2002 to 2007, and with the Queensland University of Technology, Australia as a Research Fellow from 2000
+                to 2002. Previously, he worked for Multimedia University, Malaysia as a Lecturer from 1997 to 2000. </p>
+
+
+        </div>
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px">Recent Advances in Learned Image and Video Compression
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger">Ahmet Murat Tekalp
+                <br>
+
+                Koç University, Turkey</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/koc.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p style="text-align:justify">
+                <b> Abstract: </b> Conventional video compression methods employ a linear transform and block motion
+                model,
+                and the steps of motion estimation, mode and quantization parameter selection, and entropy coding
+                are optimized individually due to the combinatorial nature of the end-to-end optimization problem.
+                Learned video compression allows end-to-end rate-distortion (R-D) optimized training of nonlinear
+                transform, motion compensation and entropy model simultaneously. I will first review recent advances
+                in learned image compression. Then, I will discuss the state-of-the-art in learned video compression
+                and present recent results on learned hierarchical bi-directional video compression that combines
+                the benefits of hierarchical bi-directional motion compensation and~end-to-end rate-distortion
+                optimization.
+
+            </p>
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/murat-tekalp.jpg" class="float-left" alt=""
+                style="margin:8px 8px 8px 0px">
+
+
+
+            <p>
+                <b> A. Murat Tekalp </b> received BS degrees in Electrical Engineering and Mathematics from Bogazici
+                University
+                in 1980 with high honors, and the M.S. and Ph.D. degrees in Electrical, Computer, and Systems
+                Engineering from Rensselaer Polytechnic Institute (RPI) respectively. Since June 2001, he has been a
+                Professor at Koc University, Istanbul, Turkey. He was the Dean of Engineering at Koç University between
+                2010-2013. His research interests are in the area of digital image and video processing, including video
+                compression and streaming, motion-compensated filtering, super-resolution, video segmentation, object
+                tracking, content-based video analysis and summarization, 3D video processing, deep learning for image
+                and video processing, video streaming and real-time video communications services, and software-defined
+                networking. Prof. Tekalp is a Fellow of IEEE and a member of Turkish Academy of Sciences and Academia
+                Europaea.
+
+            </p>
+            <br>
+            <br>
+            <br>
+
+
+        </div>
+
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px"> Medical image analysis with artificial intelligence
+
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger"> Syoji Kobashi
+                <br>
+
+                University of Hyogo, Japan </span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/hygo.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p style="text-align:justify">
+                <b> Abstract: </b> Computer-aided diagnosis (CAD) in medical image analysis (MIA) is one of the expected
+                fields that artificial intelligence (AI), especially deep learning (DL), improves the performance.
+                However, DL alone is not enough to analyze medical images. DL process is just one processing step in the
+                overall CAD system. Rather, the main role of researcher is to develop methods to synthesize data that
+                are processed by the DL models, and methods that derive satisfactory results from the inferred results
+                of the DL model. In order to discuss how to develop AI-based-CAD systems, I will introduce some CAD
+                applications using DL models. It will include fatigue fracture detection in 3-D computer tomography (CT)
+                images, tooth recognition in dental panorama radiograph, finger joint detection in hand radiograph.
+                Through the applications, I am going to summarize the strategy to develop AI-based-CAD systems.
+            </p>
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/syoji-kobashi.png" class="float-left" alt=""
+                style="margin:8px 8px 8px 0px">
+
+
+
+            <p>
+
+
+                <b> Syoji Kobashi </b> received BE in 1995, ME in 1997, and Doctor of Engineering in 2000, all from
+                Himeji
+                institute of Technology. He was an assistant professor at Himeji Institute of Technology (2000-2004), an
+                associate professor (2005-2016), currently a professor (2016-) and the manager of advanced medical
+                engineering research center (2016-), University of Hyogo. And, he was a guest associate professor at
+                Osaka University, WPI immunology frontier research center (2010-2016), and was a visiting scholar at
+                University of Pennsylvania (2011- 2012). His research interests include computer-aided diagnosis in
+                medical images and artificial intelligence. He received 16 international awards, including Lifetime
+                Achievement Award (WAC, 2016), Franklin V. Taylor Memorial Award (IEEE-SMCS, 2009). He has been serving
+                on Program Chair of WAC2021, Publication Chair SMC2018, of and many others. Moreover, he is an
+                editor-at-large of Intelligent Automation & Soft Computing journal, an editor-in-chief of International
+                Journal of Biomedical Soft Computing and Human Sciences, etc. He is the senior member of IEEE.
+
+            </p>
+
+            <br>
+            <br>
+
+        </div>
+
+
+
+        <div class="content p-5 bg-white rounded shadow mb-5">
+
+            <h3 style="display: inline-block;padding-top:35px"> Multi-perspectives of New and
+                Next Generation Radio
+
+            </h3>
+
+            <br>
+            <span style="font-weight: bolder;font-size:larger"> Ranjan Gangopadhyay
+                <br>
+
+                The LNM Institute of Information Technology, India</span>
+
+
+
+
+
+
+            <img src="{{STATIC_PREFIX}}images/speakers/lnmiit.png" alt="" style="display:inline-block; 
+            vertical-align:middle;float: right">
+
+
+            <br>
+            <br>
+
+            <br>
+            <hr>
+
+            <p style="text-align:justify">
+                <b> Abstract: </b> With the spectacular technological advances in wireless technology, the 5G - the new
+                Radio has a great promise to expand its range of applications and versatility. Specifically, the target
+                services aim at accomplishing enhanced mobile broadband ultra-reliable low-latency and massive machine
+                type communication. With the recent upsurge of diversified mobile applications supported by AI and deep
+                learning, the next generation radio (6G) will cater the needed communication services for 2030 using the
+                THz-band. The Talk will dwell on multi-perspective visions, challenges, and prospects of both new Radio
+                5G and the XG Radio wireless.
+            </p>
+
+
+            <img width=25% height=75% src="{{STATIC_PREFIX}}images/speakers/ranjan-gangopadhyay.jpg" class="float-left"
+                alt="" style="margin:8px 8px 8px 0px">
+
+
+
+            <p> <b> Professor Ranjan Gangopadhyay </b> , currently a Research Professor in the Department of Electronics
+                and
+                Communication
+                Engineering, as well as the Centre Lead of one of the most vibrant research centres of LNMIIT, the
+                Centre of Excellence
+                for Next Generation Communication and Networking (C-NGCN). He has guided so far 10 PhD students and has
+                published more
+                than 135 research papers in journals and conferences.
+
+                <br><br>
+
+                Before joining LNMIIT as a Distinguished Professor in 2008, Prof. Gangopadhyay, was Professor and Head
+                of E&ECE, Indian
+                Institute of Technology (IIT), Kharagpur and also served as an Emeritus Professor in G. S. Sanyal School
+                of
+                Telecommunication, IIT-Kharagpur. He was Visiting Professor in the University of Parma, Italy; Chonbuk
+                National
+                University, South Korea and Scuola Superiore Sant’Anna, Pisa, Italy. He was a member of the Scientific
+                Advisory
+                Committee in Scuola Sant’Anna, Pisa, Italy for three consecutive terms. He also received European
+                Commission Senior
+                Post-Doctoral Fellowship, INSA-Royal Society Fellowship (x2); JSPS (Japan) Senior Fellowship and CIDA
+                (Canada)
+                Fellowship.
+
+                <br><br>
+
+                He was the Chief Investigator of several bilateral foreign projects: European Commission, Indo-Italy,
+                Indo-Japan,
+                Indo-UK and of the projects funded by National Agencies: DST, DOE, ISRO, MHRD. At LNMIIT, as the
+                Principal Investigator,
+                he has successfully completed a high value (~1.56 crores) project titled, “Mobile Broadband Service
+                Support for
+                Cognitive Radio” sponsored by ITRA, Government of India. He also served as a Referee for Peer Review
+                Evaluation,
+                European Commission till 2013. </p>
+
+
+        </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+</body>
+
+
+{{footer}}
+
+
+</html>

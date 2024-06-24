@@ -1,0 +1,557 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}flipdown/src/flipdown.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Important Dates</title>
+</head>
+<style>
+    section {
+        padding-left: 22%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+
+    /* Calender */
+    .date-card {
+        width: 25rem;
+    }
+
+    .datestamp {
+        width: 4rem;
+    }
+
+    .datestamp *:not(.sr-only) {
+        display: block;
+        font-size: 1rem;
+        line-height: 1rem;
+        text-align: center;
+    }
+
+    .datestamp .datestamp-month {
+        background-color: black;
+        color: white;
+        position: relative;
+    }
+
+    .datestamp .datestamp-month abbr {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .datestamp .datestamp-day {
+        color: #1f7bc1;
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    .datestamp.small {
+        width: 3rem;
+    }
+
+    .datestamp.small *:not(.sr-only) {
+        font-size: 0.875rem;
+    }
+
+    .datestamp.small .datestamp-day {
+        font-size: 2rem;
+        line-height: 1;
+    }
+
+    .date-summary .date-time,
+    .date-card .date-time,
+    .date-summary .date-location,
+    .date-card .date-location {
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .date-summary .date-time::before,
+    .date-card .date-time::before,
+    .date-summary .date-location::before,
+    .date-card .date-location::before {
+        color: rgba(0, 0, 0, 0.4);
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        width: 1rem;
+    }
+
+    .date-summary .date-time::before,
+    .date-card .date-time::before {
+        content: "\f017";
+    }
+
+    .date-summary .date-location::before,
+    .date-card .date-location::before {
+        content: "\f3c5";
+    }
+
+    .date-card {
+        padding-top: -2px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .date-card:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+
+    .date-card .datestamp,
+    .date-card .date-body {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+    }
+
+    .date-card.js-date-clickthrough:hover {
+        border-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .date-card.js-date-clickthrough:hover::before {
+        transform: scale(4);
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b>Important Dates</b></h2>
+    </div>
+
+    <section>
+        <center>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6">
+                        <br>
+                        <div class="box">
+
+                            <!-- Important date card -->
+                            <div class="card date-card d-flex flex-row">
+                                <div class="datestamp small m-3">
+                                    <span class="datestamp-month badge rounded-0">
+                                        <abbr>Aug</abbr>
+                                    </span>
+
+                                    <del> <span class="datestamp-day py-1">14</span></del><span
+                                        class="datestamp-day py-1">30</span><span class="sr-only">,</span>
+                                    <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                </div>
+                                <div class="date-body border-left p-4">
+
+                                    <h5 class="h5 font-weight-bold date-title mt-4 " style="color: red;">Submission
+                                        System is Closed
+                                    </h5>
+                                    <!--- <div class="date-description">
+                                <p>Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Velit
+                                    <a href="#">sed ullamcorper</a> morbi tincidunt ornare massa eget
+                                    egestas purus.</p>
+                            </div>
+                        -->
+                                </div>
+                            </div>
+                            <!-- Important date card -->
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="col-xs-12 col-sm-6">
+
+
+                        <div id="submission_deadline" class="flipdown"></div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6">
+
+                        <br>
+
+                        <div class="box">
+
+                            <!-- Important date card -->
+                            <div class="card date-card d-flex flex-row">
+                                <div class="datestamp small m-3">
+                                    <span class="datestamp-month badge rounded-0">
+                                        <abbr>Oct</abbr>
+                                    </span>
+                                    <span class="datestamp-day py-1">5</span><span class="sr-only">,</span>
+                                    <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                </div>
+                                <div class="date-body border-left p-4">
+
+                                    <h5 class="h5 font-weight-bold date-title mt-4" style="color: red;">Acceptance <br>
+                                        Notification Sent
+                                    </h5>
+                                    <span style="font-size:Medium"><del>30 SEP 2021</del></span>
+                                    <!--- <div class="date-description">
+<p>Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Velit
+    <a href="#">sed ullamcorper</a> morbi tincidunt ornare massa eget
+    egestas purus.</p>
+</div>
+-->
+                                </div>
+                            </div>
+                            <!-- Important date card -->
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+
+                        <div id="result_notification" class="flipdown"></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6">
+
+                        <br>
+
+                        <div class="box">
+
+                            <!-- Important date card -->
+                            <div class="card date-card d-flex flex-row">
+                                <div class="datestamp small m-3">
+                                    <span class="datestamp-month badge rounded-0">
+                                        <abbr>Oct</abbr>
+                                    </span>
+                                    <span class="datestamp-day py-1">21</span><span class="sr-only">,</span>
+                                    <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                </div>
+                                <div class="date-body border-left p-4">
+
+                                    <h5 class="h5 font-weight-bold date-title mt-4"> Authors Registration
+
+                                    </h5>
+
+                                    <span style="font-size:Medium">Firm Deadline </span>
+                                </div>
+                            </div>
+                            <!-- Important date card -->
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+
+                        <div id="camera_ready_deadline" class="flipdown"></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- 
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6">
+
+                        <br>
+
+                        <div class="box">
+
+                       
+                            <div class="card date-card d-flex flex-row">
+                                <div class="datestamp small m-3">
+                                    <span class="datestamp-month badge rounded-0">
+                                        <abbr>NOV</abbr>
+                                    </span>
+                                    <span class="datestamp-day py-1">5</span><span class="sr-only">,</span>
+                                    <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                </div>
+                                <div class="date-body border-left p-4">
+
+                                    <h5 class="h5 font-weight-bold date-title mt-4">Camera-Ready Deadline
+                                    </h5>
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+
+                        <div id="registration_deadline" class="flipdown"></div>
+
+                    </div>
+
+                </div>
+            </div> -->
+
+
+
+
+
+
+
+
+        </center>
+    </section>
+
+
+
+
+
+
+
+
+    <script src="{{STATIC_PREFIX}}flipdown/src/flipdown1.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+
+            // Set up FlipDown
+            var flipdown = new FlipDown(1630312463, "submission_deadline").start() // Start the countdown
+            var flipdown2 = new FlipDown(1633441925, "result_notification").start() // Start the countdown
+            var flipdown3 = new FlipDown(1634812218, "camera_ready_deadline").start() // Start the countdown
+            var flipdown4 = new FlipDown(1636108218, "registration_deadline").start() // Start the countdown
+
+
+
+            // Show version number
+            var ver = document.getElementById('ver');
+            ver.innerHTML = flipdown.version;
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+<br>
+{{footer}}
+
+
+</html>

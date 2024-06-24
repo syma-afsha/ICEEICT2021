@@ -1,0 +1,625 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>About ICEEICT</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+    ul {
+        list-style-type: none;
+
+        padding: 0px;
+    }
+
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+
+
+    .tabs {
+        display: flex;
+        position: relative;
+    }
+
+    .tabs .line {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 6px;
+        border-radius: 15px;
+        background-color: black;
+        transition: all 2s ease;
+    }
+
+    .tab-item {
+        min-width: 80px;
+        padding: 16px 20px 11px 20px;
+        font-size: 20px;
+        text-align: center;
+        color: black;
+        background-color: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 5px solid transparent;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 0.5s ease;
+    }
+
+    .tab-icon {
+        font-size: 24px;
+        width: 32px;
+        position: relative;
+        top: 2px;
+    }
+
+    .tab-item:hover {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-item.active {
+        opacity: 1;
+    }
+
+    .tab-content {
+        padding: 28px 0;
+    }
+
+    .tab-pane {
+        color: black;
+        display: none;
+    }
+
+    .tab-pane.active {
+        display: block;
+    }
+
+    .tab-pane h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        background-color: #04012e;
+
+
+    }
+
+    .nav-link.active {
+
+        color: white !important;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b>
+                                    {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+
+
+        <h2><b>About ICEEICT</b></h2>
+    </div>
+
+    <!--
+    <div class="container">
+        <div class="box">
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+
+                <h3>About ICEEICT</h3>
+            </div>
+
+            <br>
+            <br>
+
+
+
+            <div class="container" style="padding-bottom:20px">
+                <div class="row" >
+                  
+                    <div class="col-3"  style=" background-color:rgba(245, 222, 179, 0.027); color:black">
+                       
+                    <ul class="nav nav-pills">
+                        <li class="nav-item active " style="color:black; ">
+                            <a href="#step1" class="nav-link active" id="step1-tab" data-toggle="tab" role="tab"
+                                aria-controls="step1" aria-selected="false" style="color:black ;
+              
+                       text-align: center;
+                      ">ICEEICT 2016</a>
+                        </li>
+                        <li class="nav-item" style="color:black; ">
+                            <a href="#step2" class="nav-link" id="step2-tab" data-toggle="tab" role="tab"
+                                aria-controls="step2" aria-selected="true" style="color:black; 
+                     
+                        text-align: center;
+                      ">ICEEICT 2018</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content " id="myTabContent" style="padding-top:10px; padding-bottom:10px">
+                            <div class="tab-pane  active" id="step1" role="tabpanel">
+                        <div id="mycarousel" class="carousel slide " data-ride="carousel">
+                            <ul class="carousel-indicators" style="justify-content:center;">
+                                <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#mycarousel" data-slide-to="1"></li>
+                                <li data-target="#mycarousel" data-slide-to="2"></li>
+                
+                                <li data-target="#mycarousel" data-slide-to="3"></li>
+                                
+                                <li data-target="#mycarousel" data-slide-to="4"></li>
+                                
+                                <li data-target="#mycarousel" data-slide-to="5"></li>
+                
+                
+                
+                            </ul>
+                          
+                            <div class="carousel-inner">
+                
+                
+                                <div class="carousel-item active">
+                                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2016/1.jpg" height="auto" width="100%">
+                
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-rersponsive" src="{{STATIC_PREFIX}}images/ICEEICT_2016/2.jpg" height="auto">
+                
+                
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2016/3.jpg" height="auto">
+                
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2016/4.jpg" height="auto">
+                
+                
+                                </div>
+                
+                                <div class="carousel-item">
+                                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2016/5.jpg" height="auto">
+                
+                
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2016/6.jpg" height="auto">
+                
+                
+                                </div>
+                
+                            </div>
+                
+                </div>
+                   </div>    
+                
+                    
+                <div class="tab-pane  " id="step2" role="tabpanel">
+                <div id=" mycarousel1" class="carousel slide " data-ride="carousel">
+                    <ul class="carousel-indicators" style="justify-content:center;">
+                        <li data-target="#mycarousel1" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel1" data-slide-to="1"></li>
+                        <li data-target="#mycarousel1" data-slide-to="2"></li>
+        
+                        <li data-target="#mycarousel1" data-slide-to="3"></li>
+                        
+        
+        
+        
+        
+                    </ul>
+                  
+                    <div class="carousel-inner">
+        
+        
+                        <div class="carousel-item active">
+                            <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2018/1.jpg" height="auto" width="100%">
+        
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-rersponsive" src="{{STATIC_PREFIX}}images/ICEEICT_2018/2.jpg" height="auto">
+        
+        
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2018/3.jpg" height="auto">
+        
+                        </div>
+                    
+        
+                      
+                        <div class="carousel-item">
+                            <img class="img-responsive" src="{{STATIC_PREFIX}}images/ICEEICT_2018/XAMPP.jpg" height="auto">
+        
+        
+                        </div>
+        
+                    </div>
+        </div>
+        
+                </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
+      -->
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div>
+
+                    <img src="{{STATIC_PREFIX}}images/proceedings/Cover-ICEEICT-2014.jpg" height=250px width=175px>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div>
+                    <img src="{{STATIC_PREFIX}}images/proceedings/Cover-ICEEICT-2015.jpg" height=250px width=175px>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div>
+                    <img src="{{STATIC_PREFIX}}images/proceedings/Cover-ICEEICT-2016_s.jpg" height=250px width=175px>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div>
+                    <img src="{{STATIC_PREFIX}}images/proceedings/Cover-ICEEICT-2018.jpg" height=250px width=175px>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <br>
+        <br>
+
+
+        <p>
+
+            The International Conference on Electrical Engineering and Information & Communication
+            Technology (ICEEICT) has been a featuring biannual event of the Military Institute of Science
+            and Technology (MIST). The conference aims to bring together leading academic scientists,
+            researchers, scholars to exchange and share their experiences, research results about all
+            aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the
+            solutions adopted. The conference features a comprehensive technical program offering
+            numerous technical sessions with papers showcasing the latest technologies, applications and
+            services. In addition, the conference program includes workshops, tutorials, keynote talks from
+            renowned academics, panel discussions, poster presentations, and a large exhibition.
+        </p>
+
+
+        <p>
+
+            The best paper, poster, and presentation awards are announced during the conference based on the
+            recommendations of reviewers and the program committee. Accepted and presented papers are
+            published in the conference proceedings and submitted for inclusion into IEEE Xplore subject to
+            meeting IEEE Xplore’s scope and quality requirements.
+
+
+        </p>
+
+
+        <p>
+            Thanks to the Founding ICEEICT Conference Chair Professor Dr Satya Prasad Majumder, the first
+            edition of this conference series was organized in 2014 at MIST. Being jointly organized with
+            the Institute of Information Technology (IIT), Jahangirnagar University, the conference was an
+            annual MIST event up to 2016. From the 4th edition in 2018, the conference was planned to be
+            organized biannually by the Dept. of EECE. However, due to the ongoing pandemic situation of
+            COVID-19, the scheduled event was postponed for 2020. The conference resumed this year and being
+            organized by the Electrical, Electronic and Communication Engineering (EECE) Department of MIST,
+            Mirpur, Dhaka.
+
+
+
+
+        </p>
+
+
+
+
+        <h5 style="font-weight: bolder;">Objectives</h5>
+
+        <ul class="tracks">
+
+            <li>
+                <i class="fas fa-check"></i> Follow-up of the latest advances in electrical, electronic &
+                communication engineering
+
+            </li>
+
+
+            <li>
+                <i class="fas fa-check"></i> Exchange of information, expertise and ideas amongst participants
+
+
+            </li>
+
+
+
+            <li>
+                <i class="fas fa-check"></i> Strengthen the relationship between academicians, entrepreneurs and
+                industries
+
+
+
+            </li>
+
+
+            <li>
+                <i class="fas fa-check"></i> Focus on engineering education in the new millennium
+
+
+            </li>
+
+
+
+            <li>
+                <i class="fas fa-check"></i> Promote local entrepreneurship
+
+
+            </li>
+
+
+
+        </ul>
+
+
+
+    </div>
+
+
+    </div>
+
+    </div>
+
+
+    <br>
+
+    <br>
+
+    <br>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        const tabs = $$(".tab-item");
+        const panes = $$(".tab-pane");
+
+        const tabActive = $(".tab-item.active");
+        const line = $(".tabs .line");
+
+
+        line.style.width = tabActive.offsetWidth + "px";
+
+        tabs.forEach((tab, index) => {
+            const pane = panes[index];
+
+            tab.onclick = function () {
+                $(".tab-item.active").classList.remove("active");
+                $(".tab-pane.active").classList.remove("active");
+
+                line.style.left = this.offsetLeft + "px";
+                line.style.width = this.offsetWidth + "px";
+
+                this.classList.add("active");
+                pane.classList.add("active");
+            };
+        });
+    </script>
+
+</body>
+
+{{footer}}
+
+</html>

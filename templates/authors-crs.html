@@ -1,0 +1,1220 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Camera Ready Submission</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+    li {
+        display: inline
+    }
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        background-color: #04012e;
+
+
+    }
+
+    .nav-link.active {
+
+        color: white !important;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b>Camera Ready Submission</b></h2>
+    </div>
+    <section>
+        <div class="card">
+            <div class="card-header" style="background-color: #04012e;color:white; font-size:20px; font-family:myfont">
+                <h3 style="text-align:center;">Camera Ready Submission Guideline For ICEEICT 2021</h3>
+
+            </div>
+            <div class="card-body" style="font-family:myfont">
+                <!-- <p>Authors are requested to check the formatting of the paper prior to final submission. A paper will
+                    appear in the proceedings if at least one of the authors of accepted paper registers before the
+                    registration deadline and presents the paper (online). IEEE reserves the right to exclude an
+                    accepted paper from distribution after the conference, including exclusion from IEEE Xplore, if the
+                    submission does not meet IEEE standards for scope and/or quality. Articles excluded from further
+                    distribution shall be archived by IEEE but shall not be indexed or appear on IEEE Xplore.
+                    The final camera ready paper is due on <strong>December 7, 2021</strong>.</p>
+                <p>Please follow the following steps to finalize the camera ready version of your paper:</p>
+                -->
+
+
+                <p>Welcome to ICEEICT 2021 Camera Ready Submission Guideline.</p>
+                <br>
+
+                <!-- </p>
+                The camera-ready paper and its accompanying documents/materials are to be prepared with the following
+                considerations: -->
+
+                <!-- <p>Welcome to ICEEICT 2021 Camera Ready Submission Guideline.</p>
+
+                <br>
+
+                <h4 style="font-weight: bolder;">
+                    ICEEICT Proceedings Requirements
+                </h4>
+                <hr>
+
+                <ul class="tracks">
+
+                    <li>
+
+                        Download and Fill up the docx file given below. This document would contain Title , Author's
+                        name and Affiliation along with abstract of the paper. Kindly cross check all the informations
+                        are correct before mailing as they will appear in ICEEICT conference proceedings.
+                        <br>
+
+
+
+                    </li>
+                    <a href="https://drive.google.com/uc?export=download&id=1qcrvTwxp2YswopC1kJZw2R1v8eqGdPKL"
+                        target="_blank"><button type="button" class="btn btn-dark"
+                            style="margin-top:10px;margin-bottom:10px"><i class="far fa-file-word"></i>
+                            Paper abstract template for proceedings</button></a>
+
+                    <br>
+
+                    <li>
+                        Email the document to <a target="_blank" href="mailto:dibaloke@eece.mist.ac.bd"
+                            style="margin-left: 0px">dibaloke@eece.mist.ac.bd</a> by <b>10 OCT 2021</b>. Rename the
+                        document to your paper ID (paper_id.docx) and Use paper ID as
+                        the subject of the mail. This document is required only for ICEEICT
+                        conference proceedings.
+                    </li>
+
+
+                </ul>
+
+                <p> Other documents related to camera
+                    ready submission is to be uploaded to the authors' portal by <b>16 OCT 2021 </b> upon registration.
+                    More detailed guideline will be updated soon.
+                </p>
+
+
+                <h4 style="font-weight: bolder;">
+                    Paper Revision
+                </h4>
+                <hr>
+
+                You may start revising your paper addressing the reviewers' comments.
+
+                <br>
+                <br>
+
+                <h4 style="font-weight: bolder;">
+                    Slide presentation guideline
+                </h4>
+                <hr>
+                The duration of a presentation slot is 15 minutes. You will have 10 minutes for the presentation and 5
+                minutes for questions and answers.
+                Download the presentation slide template given below and start preparing your presentation based on the
+                template. Rename the pptx with your paper ID (paper_id.pptx).
+                <br>
+
+                <a href="https://drive.google.com/uc?export=download&id=1pjU4vjDUScgEQFSQCinqG9Lnq8js7yM6"
+                    target="_blank"><button type="button" class="btn btn-dark"
+                        style="margin-top:10px;margin-bottom:10px"><i class="far fa-file-powerpoint"></i></i>
+                        Presentation Slide Template </button></a>
+
+                <br>
+                <br>
+
+                <h4 style="font-weight: bolder;">
+                    Video presentation guideline
+                </h4>
+                <hr>
+
+
+                <li><span style="color: #000000;"> Prepare a 10 minute video in MP4 format (maximum 100 MB) with your
+                        voice recorded in the PowerPoint, or recording voice narrated
+                        presentation via zoom or similar platforms. Name the video file as “Paper_id_video.mp4”.The
+                        video file is to be uploaded in CMT. </span>
+                </li>
+
+
+                <br>
+                <br> -->
+
+                <!-- <br>
+                <br>
+
+                <li><i class="fas fa-check"></i> Go to Zoom.us from your computer</li><br>
+                <li><i class="fas fa-check"></i> Sign in to the application with your credentials.</li><br>
+                <li><i class="fas fa-check"></i> Host a new meeting with video.</li><br>
+                <li><i class="fas fa-check"></i> Start a new meeting and then join with computer audio.</li><br>
+                <li><i class="fas fa-check"></i> Activate the camera.</li><br>
+                <li><i class="fas fa-check"></i> Make your zoom window fullscreen.</li><br>
+                <li><i class="fas fa-check"></i> Click the " Record " in ZOOM to start the video presentation.</li><br>
+                <li><i class="fas fa-check"></i> Click the " Share Screen " in Zoom.</li><br>
+                <li><i class="fas fa-check"></i> Click your already opened PowerPoint presentation file.</li><br>
+                <li><i class="fas fa-check"></i> Go to the slide presentation mode and then start your presentation.
+                </li><br>
+                <li><i class="fas fa-check"></i> Give your concluding remarks at the end of the presentation and click
+                    on " Stop Share" on zoom.</li><br>
+                <li><i class="fas fa-check"></i> Click the " Stop Recording " in Zoom.</li><br>
+                <li><i class="fas fa-check"></i> Click " End Meeting " -> " End Meeting for all " in Zoom.</li><br>
+                <li><i class="fas fa-check"></i> Please wait some time for converting your video presentation into a
+                    .mp4 file. After completing the conversion process, the file is saved automatically to your
+                    computer.</li><br>
+                <li><i class="fas fa-check"></i> Rename the file according to the following file naming conversion
+                    PaperID.mp4 (where PaperID is the Paper ID of your paper ).</li><br>
+                <li> <i class="fas fa-check"></i><span style="color: #000000;"></span> Upload the video presentation on
+                    CMT. <br>
+
+                </li>
+
+                <br> -->
+
+                <!-- <h4 style="font-weight: bolder;">
+                    List of documents for camera ready submission
+                </h4>
+                <hr>
+
+                <i class="far fa-check-circle"></i> <b> PDFexpress passed camera-ready</b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> PDF express approval email's pdf</b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> Proof of nationality, studentship, IEEE membership </b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> Video file </b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> PPT/PDF presentation slide </b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> eCF pdf </b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> Payment slip </b>
+                <br>
+                <i class="far fa-check-circle"></i> <b> Registration Information </b>
+ -->
+                <!-- 
+                <p style="font-weight: bolder;">Other submission and registration guidelines are being revised and to be
+                    updated soon.</p>
+                <b>
+                    <p>Final Manuscript Instructions</p>
+                </b> -->
+
+
+                <!-- <h3 style="font-weight: bolder;">
+                    Phase One : Abstract and Registration Form Submission <span style="color:red">(Closed) </span>
+                </h3>
+
+                <hr>
+
+
+                <div class="card-footer" , style="min-height: 400px;">
+                    <div class="row">
+                        <div class="col-sm-4" style=" background-color:rgba(245, 222, 179, 0.027)">
+                            <ul class="nav nav-pills justify-content-center " id="myTab" role="tablist"
+                                style="display:inline; ">
+                                <li class="nav-item active " style="color:black; ">
+                                    <a href="#step1" class="nav-link active  " id="step1-tab" data-toggle="tab"
+                                        role="tab" aria-controls="step1" aria-selected="false" style="color:black ;
+                      
+                               text-align: left; font-size:large
+                              ">Step 1 : Abstract Submission</a>
+                                </li>
+
+
+
+
+                                <li class="nav-item  " style="color:black; ">
+                                    <a href="#step2" class="nav-link " id="step2-tab" data-toggle="tab" role="tab"
+                                        aria-controls="step2" aria-selected="true" style="color:black ;
+                      
+                               text-align: left;font-size:large
+                              ">Step 2 : Payment of Fees</a>
+                                </li>
+
+
+                                <li class="nav-item" style="color:black; ">
+                                    <a href="#step3" class="nav-link" id="step3-tab" data-toggle="tab" role="tab"
+                                        aria-controls="step2" aria-selected="true" style="color:black; 
+                             
+                                        text-align: left;font-size:large
+                              ">Step 3 : Registration Form Submission</a>
+
+
+
+
+                                </li>
+
+
+
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <div class="tab-content " id="myTabContent" style="padding-top:10px;">
+                                <div class="tab-pane active " id="step1" role="tabpanel">
+                                    <h4 style="font-weight: bolder;">Step 1 : Abstract Submission </h4>
+                                    <hr>
+                                    <li>
+
+                                        Download and fill up the *.docx template for ICEEICT 2021 proceedings given
+                                        below. This
+                                        document
+                                        would
+                                        contain
+                                        title , authors'
+                                        names and their affiliations along with abstract of the paper.
+                                        <br>
+                                        <br>
+
+                                        Please cross
+                                        check all
+                                        the information
+                                        before mailing as they will appear in the
+                                        proceedings.
+                                        <br>
+                                        <br>
+
+
+
+                                    </li>
+                                    <a href="https://drive.google.com/uc?export=download&id=1qcrvTwxp2YswopC1kJZw2R1v8eqGdPKL"
+                                        target="_blank"><button type="button" class="btn btn-dark"
+                                            style="margin-top:10px;margin-bottom:10px"><i class="far fa-file-word"></i>
+                                            Paper abstract template for proceedings</button></a>
+
+                                    <br>
+                                    <br>
+
+                                    <li>
+                                        <b> Email the document to <a target="_blank"
+                                                href="mailto:dibaloke@eece.mist.ac.bd"
+                                                style="margin-left: 0px">dibaloke@eece.mist.ac.bd</a> by 10 OCT
+                                            2021</b>.
+                                        <br>
+                                        Rename the
+                                        document to your paper ID (paper_id.docx) and Use paper ID as
+                                        the subject of the mail.
+                                    </li>
+
+
+                                    </ul>
+
+
+
+
+                                </div>
+
+                                <div class="tab-pane " id="step2" role="tabpanel">
+                                    </ <div class="tab-pane  active" id="step1" role="tabpanel">
+                                    <h4 style="font-weight: bolder;">Step 2 : Payment of Registration Fees and Kit
+                                        Delivery Charge
+                                        (if applicable) </h4>
+                                    <hr>
+
+                                    <i class="fas fa-check"></i> A paper will be submitted for the inclusion in the
+                                    proceedings if at least one of the co-authors registers and presents the paper.
+                                    Each paper requires an individual registration in any suitable category (e.g., IEEE
+                                    member/non-member, Student/Non-student, Local/Region-10/International) that apply to
+                                    the registrant.
+                                    <br>
+                                    <br>
+
+
+                                    <i class="fas fa-check"></i> Please NOTE THAT the registration is not transferrable,
+                                    and thus, each presenting
+                                    author of a paper MUST need a registration on his/her name and Paper ID,
+                                    irrespective of the registration(s) made by any of the co-author(s) of the paper
+                                    accepted for the presentation at ICEEICT 2021.
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> Each registered author/participant will receive <b>a
+                                        certificate and conference kit/souvenir
+                                        along with the invitation to the opening and closing ceremony </b> if held in
+                                    person
+                                    (which subjects to the Covid-19 situation and national guideline).
+
+                                    <br>
+                                    <br>
+                                    <i class="fas fa-check"></i> ICEEICT Organizing Team is pleased to deliver the
+                                    conference kit/souvenir to a registered author's/participant's address upon the
+                                    payment of
+                                    additional BDT 200.00 for a local address and USD 85.00 (considering a fixed
+                                    exchange rate) for an international address.
+                                    <br>
+                                    <br>
+                                    To learn about the registration fees and payment procedure, and to complete the
+                                    payment,
+                                    go to the link
+                                    below.
+
+
+                                    <p style="font-weight: bolder;">Preserve a electronic copy of the payment slip.
+                                    </p>
+
+                                    <a href="/registration" target="_blank"><button type="button" class="btn btn-dark"
+                                            style="margin-top:10px;margin-bottom:10px"><i
+                                                class="fas fa-money-check-alt"></i>
+                                            More details on payment</button></a>
+
+
+
+
+                                </div>
+                                <div class="tab-pane  " id="step3" role="tabpanel">
+                                    <h4 style="font-weight: bolder;"> Step 3 : Registration Form Submission </h4>
+                                    <hr>
+                                    <i class="fas fa-check"></i> After the payment of the required fees
+                                    (registration and any home delivery charges),
+                                    you now need to submit the
+                                    registration form, which can be accessed from the link below.
+
+                                    <br>
+                                    <br>
+                                    <i class="fas fa-check"></i> To complete the registration form, you may need the
+                                    following documents:
+                                    <br>
+                                    1. Payment slip/receipt
+                                    <br>
+                                    2. Supporting documents, which applies to the registrant (Proof of the full time
+                                    studentship, IEEE
+                                    membership,
+                                    and/or
+                                    nationality document like a copy of NID or passport or birth certificate).
+
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> An email confirming payment and registration will be
+                                    sent to authors by 23 OCT.
+
+                                    <br>
+                                    <br>
+
+                                    If home delivery is requested for collecting the conference kit/souvenir, please
+                                    provide
+                                    the full address in the form.
+
+                                    <br>
+
+                                    <a href="https://forms.gle/zELPSUrdmk9gcwtAA" target="_blank"><button type="button"
+                                            class="btn btn-dark" style="margin-top:10px;margin-bottom:10px"><i
+                                                class="fas fa-align-justify"></i>
+                                            Registration Form </button></a>
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <br>
+
+
+
+                <h3 style="font-weight: bolder;">
+                    Phase Two : Presentation Documents Submission (Deadline: 23 OCT 2021)
+                </h3>
+
+                <hr>
+
+                <div class="card-footer" , style="min-height: 300px;">
+                    <div class="row">
+                        <div class="col-sm-12" style="background-color:rgba(245, 222, 179, 0.027)">
+
+                            <h4>
+                                <br>
+
+                                <i class="fas fa-align-justify"></i> Submission Guideline
+                                <hr>
+                            </h4>
+
+                            <i class="fas fa-check"></i> For the registered papers, you will now need to submit the
+                            following files using the
+                            submission link below by 23 OCT 2021 (Saturday).
+
+                            <br>
+                            <br>
+
+                            <ul>
+
+                                <li> (i) Updated/revised paper with containing authors information</li>
+                                <br>
+                                <li> (ii) Presentation slide </li>
+                                <br>
+
+                                <li> (iii) Recorded video </li>
+                                <br>
+
+
+
+                            </ul>
+
+
+
+                            <i class="fas fa-check"></i> Use Filename format: "PaperID_XXX" for all those submitting
+                            files.
+
+                            <b>For presentation and video submission see the guideline below. </b>
+
+                            <br>
+
+
+                            <a href="https://forms.gle/SzDKQyfjNX6vHZxS6" target="_blank"><button type="button"
+                                    class="btn btn-dark" style="margin-top:10px;margin-bottom:10px">
+                                    Submission link </button></a>
+
+                            <h4>
+                                <br>
+
+                                <i class="far fa-file-powerpoint"></i> Slide presentation guideline
+                            </h4>
+                            <hr>
+                            <i class="fas fa-check"></i> You will have 10 minutes for the
+                            presentation and 5
+                            minutes for questions and answers. Thus, the total duration of a
+                            presentation
+                            slot
+                            is 15
+                            minutes.
+                            Download the presentation slide template given below and start preparing
+                            your
+                            presentation based on the
+                            template. Rename the *.pptx filename with your paper ID (i.e.,
+                            paper_id.pptx).
+                            <br>
+                            <br>
+
+
+
+                            <a href="https://drive.google.com/uc?export=download&id=1pjU4vjDUScgEQFSQCinqG9Lnq8js7yM6"
+                                target="_blank"><button type="button" class="btn btn-dark"
+                                    style="margin-top:10px;margin-bottom:10px"><i class="far fa-file-powerpoint"></i>
+                                    Presentation Slide Template </button></a>
+
+
+                            <br>
+
+
+                            <h4>
+
+                                <br>
+
+                                <i class="far fa-file-video"></i> Video presentation guideline
+                            </h4>
+                            <hr>
+
+
+                            <li><span style="color: #000000;">
+
+                                    <i class="fas fa-check"></i> Prepare a 10 minute video in MP4 format
+                                    (maximum
+                                    100 MB) with a voice narrated
+                                    presentation and inset video of the presenter via zoom or similar
+                                    platforms.
+                                    <br>
+
+                                    <i class="fas fa-check"></i>
+                                    
+                                    The presenter's
+                                    video is to be kept at the bottom right corner of the
+                                    screen (inset) during recording and must ensure that it does not
+                                    obstruct the contents of the slides.
+                                    <br>
+
+                                    <i class="fas fa-check"></i> Name the video file as
+                                    “Paper_id_video.mp4”.
+
+                                    <br>
+
+                            </li>
+
+
+                            <br>
+                            <br>
+
+
+
+
+                        </div>
+                    </div>
+                </div> -->
+
+
+
+
+
+                <h3 style="font-weight: bolder;">
+                    Camera-ready Documents Submission (Deadline: 30 Nov 2021 )
+                </h3>
+
+
+                <hr>
+
+
+
+
+                <div class="card-footer" , style="min-height: 400px;">
+                    <div class="row">
+                        <div class="col-sm-4" style=" background-color:rgba(245, 222, 179, 0.027)">
+                            <ul class="nav nav-pills justify-content-center " id="myTab" role="tablist"
+                                style="display:inline; ">
+
+
+
+
+                                <li class="nav-item active " style="color:black;">
+                                    <a href="#step4" class="nav-link active " id="step4-tab" data-toggle="tab"
+                                        role="tab" aria-controls="step4" aria-selected="true" style="color:black; 
+                                text-align: left;font-size:large
+                         "> Step 1 : Camera Ready Preparation </a>
+                                </li>
+
+
+                                <!-- <li class="nav-item" style="color:black; ">
+                                    <a href="#step5" class="nav-link " id="step5-tab" data-toggle="tab" role="tab"
+                                        aria-controls="step5" aria-selected="true" style="color:black;  
+                    
+                                text-align: left;font-size:large
+                            "> Step 5 : Presentation</a>
+                                </li>
+ -->
+
+                                <li class="nav-item" style="color:black; ">
+                                    <a href="#step6" class="nav-link" id="step6-tab" data-toggle="tab" role="tab"
+                                        aria-controls="step6" aria-selected="true" style="color:black;  
+                       
+                                text-align: left;font-size:large
+                              "> Step 2 : IEEE PDF eXpress</a>
+                                </li>
+
+
+                                <li class="nav-item" style="color:black; ">
+
+                                    <a href="#step7" class="nav-link " id="step7-tab" data-toggle="tab" role="tab"
+                                        aria-controls="step7" aria-selected="true" style="color:black; 
+                            
+                                text-align: left;font-size:large"> Step 3 : IEEE eCF (Electronic Copyright) Form </a>
+                                </li>
+
+
+                                <li class="nav-item" style="color:black; ">
+
+                                    <a href="#step8" class="nav-link " id="step8-tab" data-toggle="tab" role="tab"
+                                        aria-controls="step8" aria-selected="true" style="color:black; 
+                            
+                                text-align:left;font-size:large"> Step 4 : Required Document Submission </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <div class="tab-content " id="myTabContent" style="padding-top:10px; padding-bottom:10px">
+                                <div class="tab-pane active " id="step4" role="tabpanel">
+                                    <h4 style="font-weight: bolder;">Step 1: Camera Ready Preparation </h4>
+                                    <hr>
+
+
+                                    <i class="fas fa-check"></i> You are required to revise your manuscript
+                                    carefully
+                                    addressing the comments of
+                                    the reviewers and do thorough proofreading of the manuscript.
+
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> Please strictly follow the IEEE type-setting
+                                    (i.e.,
+                                    title, section headings,
+                                    body-texts, and figures and tables with their captions) and bibliographic
+                                    requirements to avoid any ground for delaying the submission of ICEEICT 2021
+                                    papers
+                                    to IEEE Xplore.
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> Ensure that your revised manuscript still
+                                    retains
+                                    the
+                                    criteria of the initial paper submission below.
+                                    <br>
+
+                                    <ol type="1">
+
+                                        <li>1. File size: 3 MB</li>
+
+                                        <br>
+
+                                        <li> 2. Paper Size: A4</li>
+
+                                        <br>
+
+                                        <li> 3. Paper length: 4 to 6 pages including all figures, tables, and
+                                            references
+                                        </li>
+                                        <br>
+                                        <li> 4. Fonts: Type 3 fonts are not allowed. All fonts are to be
+                                            embedded in
+                                            the
+                                            PDF
+                                            file.</li>
+
+
+
+                                    </ol>
+
+
+                                    <i class="fas fa-check"></i> For the paper with similarity score higher than
+                                    30%
+                                    (report sent by email), the
+                                    authors should revise their paper to reduce the score below 30% and the
+                                    similarity
+                                    from a single source below 3%. Please note that it remains solely the
+                                    authors
+                                    responsibility if IEEE does not approve the paper on this similarity ground.
+
+                                    <br>
+                                    <br>
+
+                                    <h3> Conference Name </h3>
+                                    <hr>
+
+                                    <i class="fas fa-check"></i>
+                                    Add the conference name on the top left
+                                    corner of the first page of your manuscript as shown in the sample page
+                                    given
+                                    below.
+
+
+
+                                    <!-- Please see the sample first page and
+                                    ensure
+                                    similar appearance of the conference name and address in your paper.  -->
+                                    <br>
+                                    <br>
+
+
+
+                                    <b>2021 5th International Conference on
+                                        Electrical Engineering and Information & Communication Technology
+                                        (ICEEICT)
+
+                                        <br>
+                                        Military Institute of Science and Technology (MIST), Dhaka-1216,
+                                        Bangladesh
+                                    </b>
+
+                                    <br>
+
+
+
+                                    <a href="https://drive.google.com/uc?export=download&id=1qmGNKfWXvK42sxf1EBZsNJBNQ4hXBYSO"
+                                        target="_blank"><button type="button" class="btn btn-dark"
+                                            style="margin-top:10px;margin-bottom:10px">
+                                            Sample page </button></a>
+
+                                    <br>
+                                    <br>
+
+
+                                    <!-- <i class="fas fa-check"></i>
+                                    The IEEE Copyright notice is not available yet. Once the copyright notice is
+                                    available, an
+                                    email
+                                    notification will be sent to you and it will be given
+                                    below. Then you need to add the copyright notice to the bottom left corner
+                                    of
+                                    the
+                                    first page of your manuscript as shown in the above sample page.
+                                    <br> -->
+
+                                    <!-- <b>978-0-7381-1102-5/20/\$31.00
+                                        02021 IEEE</b> -->
+
+                                    <h3> Copyright Code </h3>
+                                    <hr>
+
+                                    <i class="fas fa-check"></i> The appropriate copyright clearance code notice is to
+                                    appear on the bottom of the
+                                    first page of each paper according to the guidelines set forth in the
+                                    Cataloging/Copyright Instructions for an IEEE Conference Proceeding. Detailed
+                                    instructions can be found at:
+
+                                    <br>
+
+                                    <a href="https://www.ieee.org/publications/rights/index.html"
+                                        target="_blank">https://www.ieee.org/publications/rights/index.html</a>
+
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> For papers in which all authors are employed by the US
+                                    government, the copyright
+                                    notice is: U.S. Government work not protected by U.S. copyright
+
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> For papers in which all authors are employed by a Crown
+                                    government (UK, Canada, and
+                                    Australia), the copyright notice is: <b>978-1-6654-9522-6/21/$31.00 ©2021 Crown</b>
+
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> For papers in which all authors are employed by the
+                                    European Union, the copyright notice is: <br> <b>978-1-6654-9522-6/21/$31.00 ©2021
+                                        European
+                                        Union</b>
+                                    <br>
+                                    <br>
+
+
+                                    <i class="fas fa-check"></i> For all other papers, whose authors are employed in
+                                    Bangladesh the copyright notice is: <br><b>978-1-6654-9522-6/21/$31.00 ©2021
+                                        IEEE</b>
+
+                                </div>
+
+                                <div class="tab-pane" id="step5" role="tabpanel">
+                                    <h4 style="font-weight: bolder;"> Step 1 : Presentation </h4>
+                                    <hr>
+
+                                    <h4>
+                                        <i class="far fa-file-powerpoint"></i> Slide presentation guideline
+                                    </h4>
+                                    <hr>
+                                    <i class="fas fa-check"></i> You will have 10 minutes for the
+                                    presentation and 5
+                                    minutes for questions and answers. Thus, the total duration of a
+                                    presentation
+                                    slot
+                                    is 15
+                                    minutes.
+                                    Download the presentation slide template given below and start preparing
+                                    your
+                                    presentation based on the
+                                    template. Rename the *.pptx filename with your paper ID (i.e.,
+                                    paper_id.pptx).
+                                    <br>
+
+
+
+                                    <a href="https://drive.google.com/uc?export=download&id=1pjU4vjDUScgEQFSQCinqG9Lnq8js7yM6"
+                                        target="_blank"><button type="button" class="btn btn-dark"
+                                            style="margin-top:10px;margin-bottom:10px"><i
+                                                class="far fa-file-powerpoint"></i>
+                                            Presentation Slide Template </button></a>
+
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> The
+                                    presentation slide/file is to be uploaded in CMT (Author portal) during
+                                    camera-ready
+                                    document submission. </span>
+                                    <h4>
+
+                                        <br>
+
+                                        <i class="far fa-file-video"></i> Video presentation guideline
+                                    </h4>
+                                    <hr>
+
+
+                                    <li><span style="color: #000000;">
+
+                                            <i class="fas fa-check"></i> Prepare a 10 minute video in MP4 format
+                                            (maximum
+                                            100 MB) with a voice narrated
+                                            presentation and inset video of the presenter via zoom or similar
+                                            platforms.
+                                            <br>
+
+                                            <i class="fas fa-check"></i>
+                                            <!-- Video of the presenting author
+                                            must be kept turned on during the recording session of the presentation. -->
+                                            The presenter's
+                                            video is to be kept at the bottom right corner of the
+                                            screen (inset) during recording and must ensure that it does not
+                                            obstruct the contents of the slides.
+                                            <br>
+
+                                            <i class="fas fa-check"></i> Name the video file as
+                                            “Paper_id_video.mp4”.
+
+                                            <br>
+
+                                            <i class="fas fa-check"></i> The
+                                            video file is to be uploaded in CMT (Author portal) during
+                                            camera-ready
+                                            document submission. </span>
+                                    </li>
+
+
+
+                                </div>
+
+                                <div class="tab-pane  " id="step6" role="tabpanel">
+                                    <h4 style="font-weight: bolder;">Step 2: IEEE PDF eXpress Compatibility</h4>
+                                    <hr>
+
+                                    <u> <b> First-time users should do the following: </b></u>
+                                    <br>
+
+
+                                    <i class="fas fa-check"></i> Go to the site: <a
+                                        href=" https://ieee-pdf-express.org/account/signup">
+                                        https://ieee-pdf-express.org/account/signup</a>
+
+
+                                    <br>
+
+                                    <i class="fas fa-check"></i> Enter the following:
+
+                                    <ul type="circle">
+                                        <li>1.53905X for the Conference ID</li>
+                                        <br>
+                                        <li>2.your email address</li>
+                                        <br>
+                                        <li>3.a password</li>
+                                        <br>
+                                    </ul>
+
+
+
+                                    <i class="fas fa-check"></i> Continue to enter information as prompted. An Online
+                                    confirmation will be displayed and an email confirmation will be sent verifying your
+                                    account setup.
+
+                                    <br>
+                                    <br>
+                                    <u> <b> Previous Users: </b></u>
+                                    <br>
+                                    <i class="fas fa-check"></i> Go to the site:
+                                    <a href="https://ieee-pdf-express.org"> https://ieee-pdf-express.org </a>
+                                    <br>
+                                    <i class="fas fa-check"></i> Previous users of PDF eXpress need to follow the above
+                                    steps, but should enter the same
+                                    password that was used for previous conferences. Verify that your contact
+                                    information is valid.
+
+                                </div>
+                                <div class="tab-pane  " id="step7" role="tabpanel">
+                                    <h4 style="font-weight: bolder;">Step 3: IEEE eCF (Electronic Copyright) Form </h4>
+                                    <hr>
+
+                                    <i class="fas fa-check"></i> Go to your CMT Author Console
+                                    <br>
+                                    <i class="fas fa-check"></i> Click on the "Submit IEEE Copyright Form" link (can be
+                                    found on the RIGHT most column)
+                                    <br>
+
+
+                                    <i class="fas fa-check"></i> Click the link as marked in the image and complete the
+                                    steps to finally download the eCF pdf file to be preserved for the use in submission
+                                    and personal record.
+                                    <br>
+                                    <br>
+
+                                    <img src="{{STATIC_PREFIX}}images/copyright.png" width="80%" height="80%">
+                                    <br>
+                                    <br>
+
+                                    <i class="fas fa-check"></i> Please note the Bangladeshi Authors:
+                                    <br>
+                                    <ul>
+                                        <li> - Select "None of the above" for the employment category </li>
+                                        <br>
+
+                                        <li> - Use the copyright clearance notice at the bottom of the first page of
+                                            your
+                                            paper: <br>
+                                            <b> 978-1-6654-9522-6/21/$31.00 ©2021 IEEE </b></li>
+                                    </ul>
+
+
+                                </div>
+
+                                <div class="tab-pane  " id="step8" role="tabpanel">
+                                    <h4 style="font-weight: bolder;">Step 4 : Required Document Submission </h4>
+                                    <hr>
+
+                                    <p style="font-weight: bolder;">
+                                        Upon completion of the previous steps, you are supposed to have the following
+                                        documents ready at your hand for the camera-ready submission, which are to be
+                                        finally submitted on the CMT (author portal) >> Camera-ready submission link.
+                                        <p>
+
+                                            <i class="far fa-check-circle"></i> <b> PDF Express passed
+                                                camera-ready</b>
+                                            <br>
+                                            <i class="far fa-check-circle"></i> <b> PDF Express pass
+                                                confirmation
+                                                email's pdf</b>
+
+                                            <br>
+                                            <i class="far fa-check-circle"></i> <b> IEEE electronic copyright
+                                                form
+                                                (eCF)
+                                                pdf
+                                            </b>
+                                            <br>
+
+
+                                            <!-- <i class="far fa-check-circle"></i> <b> Registration information (Form) </b> -->
+
+
+
+
+                                            <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2FICEEICT2021"
+                                                target="_blank"><button type="button" class="btn btn-dark"
+                                                    style="margin-top:10px;margin-bottom:10px"><i
+                                                        class="fab fa-microsoft"></i>
+                                                    Access to Author Portal </button></a>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script>
+
+    </script>
+</body>
+
+{{footer}}
+
+
+</html>

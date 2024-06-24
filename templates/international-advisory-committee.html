@@ -1,0 +1,438 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX}}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>International Advisory Committee</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+    ul {
+        list-style-type: none;
+
+        padding: 0px;
+    }
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+        <h2><b> International Advisory Committee</b></h2>
+    </div>
+    <section>
+        <div class="card" tyle="align: justify-content-center">
+
+            <div class="card-header"
+                style="background-color: #04012e;color:white; font-size:20px; font-family:myfont; padding-top:25px">
+
+                <p style="vertical-align:middle;   ">International Advisory Committee</p>
+
+            </div>
+
+            <div class="card-body" style="font-family:myfont; font-size:18px">
+                <!-- <div class="row">
+                <div class="col-sm-6"> -->
+                <!-- <h style="vertical-align:middle; font-size:20px; padding-bottom:15px  "><b>International Advisory Committee</b></h>
+                    <hr> -->
+                <li><span style="color: #000000;"><b>A. F. M. Anwar, UCONN, USA</b></span></li>
+
+                <li><span style="color: #000000;"><b>AHM Zahirul Alam, ECE, IIUM, Malaysia</b></span></li>
+
+
+                <li><span style="color: #000000;"><b> B. M. Azizur Rahman, City University, UK</b></span></li>
+
+                <li><span style="color: #000000;"><b> B. Mukherjee, CS, UC Davis, USA</b></span></li>
+
+                <li><span style="color: #000000;"><b>F. Adachi, Tohoku University, Japan</b></span></li>
+
+                <!--
+                <li><span style="color: #000000;"><b> Haris Haralambous, Frederick University, Cyprus </b></span>
+                </li>
+                -->
+
+                <li><span style="color: #000000;"><b>Jacob B. Khurgin, ECE, Johns Hopkins University, USA </b></span>
+                </li>
+
+                <li><span style="color: #000000;"><b> M Ashraful Alam, ECE, Purdue University, USA</b></span></li>
+
+                <li><span style="color: #000000;"><b>Mohammad S. Alam, EECS, Texas A&M University, USA</b></span></li>
+
+                <li><span style="color: #000000;"><b>Muhammad H. Rashid, ECE, UWF, USA </b></span></li>
+
+
+                <li><span style="color: #000000;"><b>Nowshad Amin, EESE, ISE, UNITEN , Malaysia</b></span></li>
+
+                <li><span style="color: #000000;"><b>Ramjee Prasad, BDT, AARHUS University, Denmark
+                        </b></span></li>
+
+                <li><span style="color: #000000;"><b>Ranjan Gangopadhyay, LNM IIT, India</b></span></li>
+
+                <li><span style="color: #000000;"><b>Sadiq M. Sait, COE, KFUPM, Saudi Arabia
+                        </b></span></li>
+
+
+                <li><span style="color: #000000;"><b>Saifur Rahman, ECE, Virginia Tech, USA
+                        </b></span></li>
+
+
+
+                <li><span style="color: #000000;"><b>Wageeh Boles, QUT, Australia
+                        </b></span></li>
+
+                <li><span style="color: #000000;"><b>Xavier Fernando, ECE, Ryerson University, Canada
+                        </b></span></li>
+
+
+
+
+
+
+                <!-- </div>
+                    <div class="col-sm">
+                        <h style="vertical-align:middle; font-size:20px; padding-bottom:15px  "><b>Local Advisory Committee</b></h>
+                        <hr>
+                <li><span style="color: #000000;"><b>Professor A. K. M. Ashikur Rahman , PhD, CSE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Md. Monirul Islam, PhD, CSE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor M. Sohel Rahman, PhD, CSE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor S. Shahnawaz Ahmed, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor  Md. Ziaur Rahman Khan, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Abdul Hasib Chowdhury, PhD, EECE DEPT, BUET  </b></span></li>
+                    <li><span style="color: #000000;"><b>Professor Satya Prasad Majumder, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Md. Saifur Rahman, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Md. Shah Alam, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Md. Forkan Uddin, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Mohammad Faisal, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Md. Farhad Hossain, PhD, EECE DEPT, BUET
+                </b></span></li>
+
+                 <li><span style="color: #000000;"><b>Professor Lutfa Akter, PhD, EECE DEPT, BUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor Samia Subrina, PhD, EECE DEPT, BUET
+                </b></span></li>
+            
+                <li><span style="color: #000000;"><b>Professor Md. Shamim Reza, PhD, EECE DEPT, BUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Md. Jahangir Alam, PhD, EECE DEPT, BUET
+                </b></span></li>
+           
+                <li><span style="color: #000000;"><b>Professor Farseem Mannan Mohammedy, PhD, EECE DEPT, BUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Quazi Deen Mohd Khosru, PhD, EECE DEPT, BUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor A.B.M, Harun-ur-rashid, PhD, EECE DEPT, BUET
+                </b></span></li>
+          
+                <li><span style="color: #000000;"><b>Professor Md. Nurunnabi Mollah, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor Ashraful Ghani Bhuiyan, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor Md. Rafiqul Islam, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor Mohiuddin Ahmad, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+           
+                <li><span style="color: #000000;"><b>Professor Md. Abdur Rafiq, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor A. N. M. Enamul Kabir, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor  Md. Salah Uddin Yusuf, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor Md. Mahbub Hasan, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor Md. Sherajul Islam, PhD, EECE DEPT, KUET
+                </b></span></li>
+
+                
+                <li><span style="color: #000000;"><b>Professor Md. Jahedul Islam, PhD, EECE DEPT, KUET
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor  Md. Nazrul Islam Mondal, PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Md. Mortuza Ali, PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Muhammad Abdul Goffar Khan, PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Ajay Krishno Sarkar , PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Md. Rafiqul Islam Sheikh, PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor S M Abdur Razzak, PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Md. Zahurul Islam Sarkar, PhD, EECE DEPT, RUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Mohammad Rubaiyat Tanvir Hossain, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Mohammad Rafiqul Alam, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Mahmud Abdul Matin Bhuiyan, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Muhammad Quamruzzaman, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Quazi Delwar Hossain, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Muhammad Ahsan Ullah, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor Nur Mohammad, PhD, EECE DEPT, CUET
+                </b></span></li>
+
+                <li><span style="color: #000000;"><b>Professor  Anis Ahmed, PhD, EECE DEPT, DU
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor  Md. Adnan Kiber, PhD, EECE DEPT, DU
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor  A. H. M. Asadul Huq, PhD, EECE DEPT, DU
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor  S. M. Mostafa Al Mamun, PhD, EECE DEPT, DU
+                </b></span></li>
+                <li><span style="color: #000000;"><b>Professor  Md. Habibur Rahman, PhD, EECE DEPT, DU
+                </b></span></li>
+            </div> -->
+                <!-- </div> -->
+            </div>
+
+        </div>
+    </section>
+</body>
+
+
+{{footer}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+</html>

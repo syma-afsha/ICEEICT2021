@@ -1,0 +1,2741 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=2)">
+    <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=2)">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css">
+
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX }}{{styles.styles}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Welcome- ICEEICT</title>
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+
+        border: none;
+
+        padding: 0px;
+
+    }
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: absolute;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    /* Show the dropdown menu on hover */
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+    /* Calender */
+    .date-card {
+        width: 25rem;
+    }
+
+    .datestamp {
+        width: 4rem;
+    }
+
+    .datestamp *:not(.sr-only) {
+        display: block;
+        font-size: 1rem;
+        line-height: 1rem;
+        text-align: center;
+    }
+
+    .datestamp .datestamp-month {
+        background-color: black;
+        color: white;
+        position: relative;
+    }
+
+    .datestamp .datestamp-month abbr {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .datestamp .datestamp-day {
+        color: #1f7bc1;
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    .datestamp.small {
+        width: 3rem;
+    }
+
+    .datestamp.small *:not(.sr-only) {
+        font-size: 0.875rem;
+    }
+
+    .datestamp.small .datestamp-day {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .date-summary .date-time,
+    .date-card .date-time,
+    .date-summary .date-location,
+    .date-card .date-location {
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .date-summary .date-time::before,
+    .date-card .date-time::before,
+    .date-summary .date-location::before,
+    .date-card .date-location::before {
+        color: rgba(0, 0, 0, 0.4);
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        width: 1rem;
+    }
+
+    .date-summary .date-time::before,
+    .date-card .date-time::before {
+        content: "\f017";
+    }
+
+    .date-summary .date-location::before,
+    .date-card .date-location::before {
+        content: "\f3c5";
+    }
+
+    .date-card {
+        padding-top: -2px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .date-card:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+
+    .date-card .datestamp,
+    .date-card .date-body {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+    }
+
+    .date-card.js-date-clickthrough:hover {
+        border-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .date-card.js-date-clickthrough:hover::before {
+        transform: scale(4);
+    }
+
+
+    @media screen and (max-width: 600px) {
+
+        .sp_img {
+            display: none;
+        }
+
+    }
+
+
+
+
+    /* Dropdown arrow */
+
+
+    /* Nav bar button padding */
+
+    .nav-button {
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+
+    /*Image responsive*/
+
+
+    @media (max-width: 768px) {
+        .navbar {
+            position: absolute;
+        }
+
+        .sp_img {
+
+            z-index: -100;
+        }
+
+    }
+
+
+    @media (max-width: 768px) {
+
+        .date-card {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+            position: relative;
+
+            width: 107%;
+
+
+            transition: all 0.25s;
+        }
+
+        .date-card:hover {
+
+            box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 107%;
+
+            transition: all 0.25s;
+
+
+        }
+
+
+    }
+
+
+    .container.body-container {
+        padding: 0px;
+
+    }
+
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+
+
+    .keynote_card {
+        width: 90%;
+    }
+
+    .card-body {
+        text-align: center;
+        font-weight: bolder;
+    }
+
+    .card-footer {
+
+        text-align: center;
+        font-size: smaller;
+    }
+
+    .conve_name {
+        font-size: smaller;
+        font-weight: bolder;
+    }
+
+    .col {
+        border-bottom: none;
+    }
+
+
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+    .column1 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+    /* Clear floats after image containers */
+    .row1::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .vl {
+        border-left: 1px solid black;
+        height: 200px;
+    }
+</style>
+
+<body style="font-family: 'myfont'; display:block">
+    <header class=" jumbotron banner">
+
+        <div id="mycarousel" class="carousel slide " data-ride="carousel">
+            <ul class="carousel-indicators" style="justify-content:center;">
+                <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#mycarousel" data-slide-to="1"></li>
+                <li data-target="#mycarousel" data-slide-to="2"></li>
+
+
+
+
+            </ul>
+            <div class="carousel-inner">
+
+
+                <div class="carousel-item active">
+                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/1.jpeg" height="auto" width="100%">
+
+                </div>
+                <!-- <div class="carousel-item">
+                    <img class="img-rersponsive" src="{{STATIC_PREFIX}}images/2.jpeg" height="auto">
+
+
+                </div> -->
+                <div class="carousel-item">
+                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/3.jpeg" height="auto">
+
+                </div>
+                <div class="carousel-item">
+                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/4.jpeg" height="auto">
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <!-- <div class="container" style="padding-left:4px; text-align:left; align-content:start"> -->
+
+
+
+
+        <div class="main-text .d-sm-none .d-md-block" style="display: inline-flex; position:absolute; left: 57%;">
+
+
+            <div class="col-md-12 col-sm-12 .d-sm-none .d-md-block" style="margin-top: 80px;">
+
+                <img class="img-responsive sp_image .d-sm-none .d-md-block" src="{{STATIC_PREFIX}}images/sp.png"
+                    height=auto width="100%">
+
+
+                <!-- <div class="card mb-3 cursor-pointer transform duration-500 hover:-translate-y-2.5"
+                    style="max-width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Learn the research trends</h5>
+                        <p class="card-text">from the trend setters</p>
+                    </div>
+                </div>
+                <div class="card mb-3 cursor-pointer transform duration-500 hover:-translate-y-2.5"
+                    style="max-width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Widen networks with leaders</h5>
+                        <p class="card-text">in the academia and industries</p>
+                    </div>
+                </div>
+                <div class="card mb-3 cursor-pointer transform duration-500 hover:-translate-y-2.5"
+                    style="max-width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Develop ideas and insights</h5>
+                        <p class="card-text">with expert feedback</p>
+                    </div>
+                </div>
+
+
+                <div class="card mb-3 cursor-pointer transform duration-500 hover:-translate-y-2.5"
+                    style="max-width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Enjoy the pledge of the </h5>
+                        <p class="card-text">premier event of MIST</p>
+                    </div>
+                </div> -->
+
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="main-text" style="display:inline-flex; ">
+
+
+            <div class="col-md-12 col-sm-12">
+                <h1 class="glow" style="color:rgb(252, 253, 56); ">
+                    5th International Conference on </h1>
+
+                <h class="glow"
+                    style="color:rgb(252, 253, 56); font-size :200%;  font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); letter-spacing:-1px ">
+                    Electrical Engineering and
+
+
+                    <br>
+                    Information & Communication Technology (ICEEICT)
+                </h>
+                <!-- <h
+                    style="color:white; font-size :30px;  font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); padding-left:40px"> -->
+
+                <!-- </h> -->
+                <br>
+                <br>
+
+                <img height="135px" src="{{STATIC_PREFIX}}images/Mist Logo02.jpg" style=" margin-right:10px; ">
+                <br>
+                <br>
+                <h class="glow"
+                    style="font-size:135%;color:white;   font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); ">
+                    18-20 November 2021
+                </h>
+                <br>
+                <h class="glow"
+                    style="font-size:135%; color:white;  font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); ">
+                    Military Institute of Science & Technology (MIST)
+                </h>
+
+                <br>
+                <h class="glow"
+                    style="font-size:135%; color:white;  font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); ">
+                    Dhaka-1216, Bangladesh
+                </h>
+
+
+                <br>
+                <br>
+                <h class="glow"
+                    style="font-size:120%; color:white; font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); ">
+                    Organized By EECE Department, MIST
+                </h>
+
+                <br>
+                <br>
+
+                <h class="glow"
+                    style="font-size:120%;background-color:#04012e; color:white; font-family: 'myfont';text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.816); border-style: solid;padding:1%">
+                    IEEE Conference ID: 53905
+                </h>
+            </div>
+
+        </div>
+
+        </div>
+
+
+
+
+
+
+
+        <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+            <p>
+                {%for message,items in messages.items%}
+                <a href="{{items}}" style="text-decoration:none;color:rgb(252, 253, 56); font-size:20px "><b>{{message}}
+                </a>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+                {%endfor%}
+            </p>
+        </marquee>
+
+
+
+
+        <!--
+
+
+
+        <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+            <p>
+                <a href="http://127.0.0.1:8000/authors-call-for-paper/" style="text-decoration:none;color:inherit;">
+
+                    <b>
+
+                        ***CALL FOR PAPERS IS NOW AVAILABLE
+
+
+
+                    </b></a>
+
+                <a href="http://127.0.0.1:8000/registration/" style="text-decoration:none;color:inherit;"> <b>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+                        ***Reviewed Registration Fee Has Been Published   
+
+                    </b></a>
+            </p>
+
+        </marquee>
+
+
+-->
+
+
+
+
+        <div>
+
+
+
+
+            <div class="container" style="  display:block">
+
+                <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+                    style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px">
+
+                    <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                            src="{{STATIC_PREFIX}}images/{{conf_logo}}" style="margin-left:20%"></a>
+
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                        style=" background-color:rgba(0, 157, 255, 0.204); ">
+                        <span class="navbar-toggler-icon" style=" text-align:center"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="Navbar">
+
+                        <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                            <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                            {%for item, sub_items in nav_items.items%}
+                            {%if sub_items%}
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" style="color:white">
+                                    <button class="button nav-button"><b> {{item}}</b> </button>
+                                </a>
+
+                                <div class="dropdown-content ">
+                                    {%for sub_item, value in sub_items.items%}
+                                    {%if "https" in value %}
+
+                                    <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                                    {%else%}
+                                    <a href="{{value}}">{{sub_item}}</a>
+                                    {%endif%}
+                                    {%endfor%}
+
+                                </div>
+                            </li>
+                            {%else%}
+                            <li class="nav-item">
+                                <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                                    <button class="button nav-button"><b> {{item}}</b> </button>
+                                </a>
+                            </li>
+                            {%endif%}
+                            {%endfor%}
+                        </ul>
+
+
+                        <div class=" .d-none .d-sm-none .d-md-block">
+                            <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link"
+                                rel="home" aria-current="page" target=” _blank ”><img height="80"
+                                    src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                                    class=" .d-sm-none .d-md-block custom-logo"></a>
+                        </div>
+
+
+                    </div>
+
+                </nav>
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+    <section style="padding-left:7%;text-align:left">
+
+
+        <div class="row row-content">
+
+
+
+
+            <div class=" col-sm-7 col-md-7" style="border-radius: 4px; text-align:justify;padding-right:20px ;">
+                <h2 class="section_h text-center"
+                    style="text-align:center; color:#04012e; font-family: 'myfont'; font-size:30px;">
+                    <b>Welcome to
+                        ICEEICT 2021</b>
+                </h2>
+                <hr>
+
+
+                <div class="col-sm-12">
+                    <span style="font-family: 'myfont'; font-weight: 400;font-size:18px">
+
+
+                        The 5th International Conference on Electrical Engineering and Information &amp;
+                        Communication
+                        Technology (ICEEICT 2021) aims to bring together leading academic scientists, researchers,
+                        scholars to exchange and share their experiences, research results about all aspects of
+                        Electrical Engineering, ICT and discuss the practical challenges encountered and the
+                        solutions adopted. </span><span
+                        style="font-family: 'myfont'; font-weight: 400;font-size:18px">The conference will
+                        feature a comprehensive technical program offering numerous technical sessions with papers
+                        showcasing the latest technologies, applications and services. In addition, the conference
+                        program includes workshops, tutorials, keynote talks from renowned academics, panel
+                        discussions, poster presentations, and a large exhibition. </span><span
+                        style="font-family: 'myfont'; font-weight: 400;font-size:18px">The conference is organized
+                        by the Electrical,
+                        Electronic and Communication Engineering (EECE) Department of Military Institute of
+                        Science and Technology (MIST), Mirpur, Dhaka. </span>
+                    <br>
+                    <br>
+                    <p><span style="font-family: 'myfont'; font-weight: 400;font-size:18px"> The best paper, poster,
+                            and presentation awards
+                            will be announced during the conference based on the recommendations of reviewers and
+                            the program committee. </span><span
+                            style="font-family: 'myfont'; font-weight: 400;font-size:18px"></span><span
+                            style="font-weight: 400;font-family: 'myfont'; font-size:18px">Accepted and presented
+                            papers will be submitted for inclusion into IEEE Xplore subject to meeting IEEE Xplore’s
+                            scope and quality requirements.</span></p>
+                    <br>
+
+                    <!-- <iframe  class=" .d-sm-none .d-md-block" src="{{STATIC_PREFIX}}https://www.google.com/maps/d/embed?mid=1MZKGYqnztQJPknILOFjTvwvYoPQ" width="450" height="350"  >
+</iframe> -->
+                </div>
+            </div>
+
+            <div class="col-sm-5 col-md" style="font-family: 'myfont'; text-align:justify">
+                <div id="content" class="notopmargin notoppadding" style="margin-bottom: 0px;padding-left:3%">
+                    <!--News Ticker-->
+
+                    <!--NewsTickerModel-->
+
+
+                    <h2 class="section_h"
+                        style="font-family: 'myfont';font-size:30px; text-align:JUSTIFY; color:#04012e;padding-bottom:7px">
+                        <b>Important Dates</b>
+
+                    </h2>
+
+                    <hr style="margin-right:30%">
+
+
+
+
+                    <div class="spost clearfix">
+                        <div class="entry-image">
+                            <div class="event_date" style="font-family: 'myfont'; ">
+                                <!--<span class="date">Submission Deadline</span>-->
+
+                                <!-- Important date card -->
+                                <div class="card date-card d-flex flex-row">
+                                    <div class="datestamp small m-3">
+                                        <span class="datestamp-month badge rounded-0">
+                                            <abbr>Aug</abbr>
+                                        </span>
+                                        <span class="datestamp-day py-1"> <del>14 </del> 30 </span><span
+                                            class="sr-only">,</span>
+                                        <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                    </div>
+                                    <div class="date-body border-left p-4">
+
+                                        <h5 class="h5 font-weight-bold date-title mt-1 " style="color: red;"> Submission
+                                            System <br> is
+                                            Closed
+                                        </h5>
+                                        <!--- <div class="date-description">
+                                                <p>Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Velit
+                                                    <a href="#">sed ullamcorper</a> morbi tincidunt ornare massa eget
+                                                    egestas purus.</p>
+                                            </div>
+                                        -->
+                                    </div>
+                                </div>
+                                <!-- Important date card -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Notice Item End-->
+                    <div class="spost clearfix">
+                        <div class="entry-image">
+                            <div class="event_date">
+                                <!--<span class="date"> Result Notification</span>-->
+
+
+                                <!-- Important date card -->
+                                <div class="card date-card d-flex flex-row">
+                                    <div class="datestamp small m-3">
+                                        <span class="datestamp-month badge rounded-0">
+                                            <abbr>Oct</abbr>
+                                        </span>
+                                        <span class="datestamp-day py-1">5</span><span class="sr-only">,</span>
+                                        <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                    </div>
+                                    <div class="date-body border-left p-4">
+
+                                        <h5 class="h5 font-weight-bold date-title mt-1" style="color:red">Acceptance
+                                            <br>
+                                            Notification Sent
+                                        </h5>
+                                        <span style="font-size:Medium"><del>30 SEP 2021</del></span>
+                                        <!--- <div class="date-description">
+                <p>Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Velit
+                    <a href="#">sed ullamcorper</a> morbi tincidunt ornare massa eget
+                    egestas purus.</p>
+            </div>
+        -->
+                                    </div>
+                                </div>
+                                <!-- Important date card -->
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Notice Item End-->
+                    <div class="spost clearfix">
+                        <div class="entry-image">
+                            <div class="event_date">
+                                <!--<span class="date"> Camerea-ready Deadline</span>-->
+
+                                <!-- Important date card -->
+                                <div class="card date-card d-flex flex-row">
+                                    <div class="datestamp small m-3">
+                                        <span class="datestamp-month badge rounded-0">
+                                            <abbr>Oct</abbr>
+                                        </span>
+                                        <span class="datestamp-day py-1">21</span><span class="sr-only">,</span>
+                                        <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                                    </div>
+                                    <div class="date-body border-left p-4">
+
+                                        <h5 class="h5 font-weight-bold date-title mt-2 ">Authors
+                                            Registration
+
+                                        </h5>
+
+                                        <span style="font-size:Medium">Firm Deadline</span>
+                                        <!--- <div class="date-description">
+       <p>Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Velit
+<a href="#">sed ullamcorper</a> morbi tincidunt ornare massa eget
+egestas purus.</p>
+</div>
+-->
+                                    </div>
+                                </div>
+                                <!-- Important date card -->
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Notice Item End-->
+
+
+                    <div class="spost clearfix">
+                        <div class="entry-image">
+                            <div class="event_date">
+                                <!--<span class="date"> Registration Deadline</span>-->
+
+                                <!--
+                        <div class="card date-card d-flex flex-row">
+                            <div class="datestamp small m-3">
+                                <span class="datestamp-month badge rounded-0">
+                                    <abbr>Oct</abbr>
+                                </span>
+                                <span class="datestamp-day py-1">30</span><span class="sr-only">,</span>
+                                <span class="datestamp-year badge text-muted border-top border-grey">2021</span>
+                            </div>
+                            <div class="date-body border-left p-4">
+
+                                <h5 class="h5 font-weight-bold date-title mt-4">Registration Deadline
+                                </h5>
+
+
+                            </div>
+                        </div>
+-->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+    <br>
+    <br>
+
+    <p
+        style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle ;text-align:center;margin-left:8%; margin-right:10%">
+        Keynotes and Plenary Talks</p>
+
+    <br>
+
+
+
+
+    <div class="container" style="padding:0px !important;">
+        <div class=" row " style=" padding-top:20px;padding-bottom:20px;">
+
+            {%for item in speaker%}
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+
+                <div class="card keynote_card">
+
+                    <div class="card-header"><img width=100% height=80%
+                            src="{{STATIC_PREFIX}}images/speakers/{{item.image}}">
+                    </div>
+                    <div class="card-body" style="height: 70px;">{{item.name}}</div>
+                    <div class="card-footer" style="height: 70px;font-size:medium">
+                        <center>
+
+                            {{item.position}}
+
+                            <br>
+                            <br>
+                            <br>
+
+
+                        </center>
+                    </div>
+                    <div class="card-footer" style="height: 70px;text-align:center">
+                        <center>
+
+                            <a href="{{item.home}}" target="_blank"><button type="button" data-toggle="tooltip"
+                                    title="Home" class="btn btn-dark" style=" height:40px;"><i
+                                        class="fas fa-home"></i></button></a>
+
+
+                            <a href="{{item.scholar}}" target="_blank"> <button type="button" data-toggle="tooltip"
+                                    title="Google Scholar" class="btn btn-dark" style=" height:40px"><i
+                                        class="ai ai-google-scholar"></i></button></a>
+                            <a href="/speakers/{{item.url}}/" target="_blank"> <button type="button"
+                                    data-toggle="tooltip" title="Keynote Topic" class="btn btn-dark"
+                                    style=" height:40px;"><i class=" fa fa-briefcase"></i></button></a>
+
+
+                        </center>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+
+
+
+    <p
+        style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle ;text-align:center;margin-left:8%; margin-right:10%">
+        Industry-Academia Bridging Session to Better Prepare the Future Leaders
+    </p>
+
+    <br>
+
+
+    <div class="container-fluid" style="padding-left:8%;text-align:left; padding-right:10%">
+
+        <p style="text-align: justify; font-weight: 400;font-size:18px ">
+            A special session on the industry-academia bridging is planned to better prepare the future leaders of
+            the
+            developing and underdeveloped countries. ICEEICT 2021 are soliciting interest from the academic experts
+            and
+            representatives of the leading industries to magnify the session in supporting the dreams of our fresh
+            graduates
+            and young stars.
+
+            <br>
+            <br>
+
+            The session is expected to explore the reasons for potential gaps between academia and industries and
+            their
+            way-outs. The needs and expectations of the industries, technology development initiatives, and
+            opportunities
+            for internships and projects would also provide new insights to those future leaders to change the
+            world!
+
+
+
+        </p>
+        <!-- <h5 style="text-align:center; padding-right:50px;font-weight:bolder !important">
+            Industry Representatives
+        </h5>
+        <br>
+
+        <center>
+            <img src="{{STATIC_PREFIX}}images/industrial/all_industry2.png" alt="" class="img-fluid">
+        </center>
+
+        <br> -->
+    </div>
+
+
+
+
+    <div class="container-fluid" style="padding-left:8%;text-align:left; padding-right:10%">
+
+
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6" style="margin-bottom:-20px;">
+
+                <div class="content p-4 bg-white rounded shadow mb-5">
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/cumulus_neuro2.png">
+
+                    <h4 class="modal-title" style="padding-top: 2px; display:inline-block"> Cumulus Neuro </h4>
+
+                    <hr>
+
+
+
+                    <div class="row1">
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/laura.jpg" style="width:65%">
+
+                                <br>
+                                <br>
+
+                                <p style="padding-right:18px">Laura M. Rueda-Delgado</p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#c1"
+                                    style="margin-right: 18px;">
+                                    More Details
+                                </button>
+
+                            </center>
+
+                        </div>
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/nurul.jpg" style="width:65%">
+                                <br>
+                                <br>
+
+                                <p>Md Nurul Islam</p>
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#c2">
+                                    More Details
+                                </button>
+                            </center>
+
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="c1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=10% height=45%
+                                            src="{{STATIC_PREFIX}}images/industrial/cumulus_neuro.png">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="c1"> Cumulus Neuro </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/laura.jpg">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Laura M. Rueda-Delgado
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Laura M. Rueda-Delgado is a Marie Skłodowska Curie Research Fellow at
+                                            Cumulus Neuroscience Limited. She has pioneered the research line on EEG
+                                            applied to motor control in the Motor Control and Neuroplasticity research
+                                            group. Before that, Laura was a postdoctoral researcher in Trinity College
+                                            Dublin and BrainWaveBank Ltd. (Oct. 2019 – Sept. 2020) and Trinity College
+                                            Dublin, School of Psychology (Jul. 2017 – Sep. 2019), where she has received
+                                            SFI Industry Fellowship for developing a model for prediction of behavioral
+                                            performance in older adults with advanced machine learning methods. As a
+                                            result of her continuous research activity, 13 manuscripts have been
+                                            published in peer-reviewed journals with impact factor (IF) between 2.8 and
+                                            9.42. As part of her achievements, she received a scholarship for a 2-year
+                                            master’s in biomedical engineering in the CEMACUBE consortium, funded by the
+                                            European Commission, and got a silver medal for academic performance- best
+                                            GPA of the class from the Bachelor in Electronics Engineering, Universidad
+                                            del Norte.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="c2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=10% height=45%
+                                            src="{{STATIC_PREFIX}}images/industrial/cumulus_neuro.png">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="c2"> Cumulus Neuro </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/nurul.jpg">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Md Nurul Islam
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Md Nurul is a multidisciplinary result-driven researcher with training in
+                                            Engineering, Neuroscience, Statistics, and software development- geared with
+                                            research expertise. At present, he is an EEG Research Engineer at Cumulus
+                                            Neuroscience Limited. Before that, he was a postdoctoral associate in the
+                                            Department of Neuroscience and Center for Visual Science, University of
+                                            Rochester, NY, USA. As a Psychology, Trinity College Dublin, Ireland, Nurul
+                                            has developed an open-source, peer-reviewed, GUI-based computational
+                                            platform for systematic analysis of the large volume of data. His ongoing
+                                            research has resulted in several publications in peer-reviewed journals with
+                                            impact factor ranging between 2.7 to 13.2 (300+ citations as of Oct 8,
+                                            2021). As part of his academic excellence, he received a scholarship for a
+                                            2-year master's in Common European Master’s in Biomedical Engineering
+                                            (CEMACUBE) funded by the European Commission. Nurul graduated from
+                                            Bangladesh University of Engineering and Technology with Dean’s list award
+                                            for outstanding achievements in consecutive terms in junior years.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-0">
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/microsoft2.png">
+                    &nbsp
+
+                    <h4 class="modal-title" style="padding-top: 3px; display:inline-block"> Microsoft </h4>
+
+                    <hr>
+
+
+
+                    <div class="row1">
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/marcus2.png" style="width:65%">
+
+                                <br>
+                                <br>
+
+                                <p> Marcus Tee </p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#m1">
+                                    More Details
+                                </button>
+
+                            </center>
+
+                        </div>
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/popy2.png" style="width:65%">
+                                <br>
+                                <br>
+
+                                <p>Jannatul Popy</p>
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#m2">
+                                    More Details
+                                </button>
+                            </center>
+
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class=" modal fade bd-example-modal-lg" id="m1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img src="{{STATIC_PREFIX}}images/industrial/microsoft2.png">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="m1"> Microsoft
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/marcus2.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Marcus Tee
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Marcus is part of Microsoft Germany Global Account team, serving as
+                                            a Cloud
+                                            Solution Architect. His focus is to drive digital transformation and
+                                            public
+                                            cloud adoption to realize business outcome. Prior to this role,
+                                            Marcus was
+                                            Client Technology lead for Microsoft Singapore’s Public sector team,
+                                            which
+                                            drove several nation-wide cloud transformation projects aligning
+                                            with
+                                            Singapore’s Smart Nation Initiatives. Some notable project includes
+                                            Singapore Government Commercial Cloud, Tax System, as well as
+                                            Nationwide
+                                            Park’s Management System. In addition to enterprise customer
+                                            engagement,
+                                            Marcus is also actively engages the community to share his passion
+                                            in
+                                            technology. In the recent Microsoft Annual Internal Global
+                                            Hackathon, Marcus
+                                            took part in “Hack for Africa” with a global team and developed a
+                                            wildlife
+                                            identification system to enable non-intrusive wildlife monitoring
+                                            and
+                                            preservation using artificial intelligence. Prior to joining
+                                            Microsoft,
+                                            Marcus graduated from Nanyang Technological University (NTU) with a
+                                            degree
+                                            in Mathematics and Economics. As an undergraduate, he developed “NTU
+                                            Bus
+                                            Arrival”, an AI chatbot that served 20,000 students on campus, and
+                                            was
+                                            featured in The Nanyang Chronicle and Vulcan Post. This chatbot
+                                            received
+                                            high demand and reached 100,000 messages in less than two months
+                                            from the
+                                            day that the chatbot is published.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="m2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img src="{{STATIC_PREFIX}}images/industrial/microsoft2.png">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="m2"> Microsoft </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/popy2.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Jannatul Popy
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Popy is a tech enthusiast currently working as Partner Technical Strategist
+                                            at Microsoft Bangladesh and leading the partner technical transformation for
+                                            the Microsoft Bangladesh ecosystem. As part of her role at Microsoft she has
+                                            taken care of partner transformation from other countries like Myanmar,
+                                            Nepal, Brunei etc. As a proud ex-student of MIST, Popy is very keen and
+                                            working towards the goal of bringing the right technical enablement which
+                                            will drive the overall digital transformation across organizations. Prior
+                                            working at Microsoft Popy has worked with one of the largest IT Solution
+                                            Providers in the country for over 7 years where she drove the Cloud Business
+                                            as a Technical and Solutions Lead starting from very scratch at the time
+                                            when the country was trying to evangelize the new cloud solutions. Popy has
+                                            completed here BSc in EECE from MIST in year 2011 and with the growth
+                                            mindset towards technological learning, her passion for innovation and
+                                            adoption of technology has brought the digital transformation in many major
+                                            organizations in the country including Banks, large conglomerates, telcos
+                                            and the regional Microsoft partners who are the key stakeholders when comes
+                                            to innovation and transformation in areas like cloud computing, data and AI,
+                                            advanced security etc.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="row" style="margin-bottom:-20px;">
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-5">
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/samsung2.png">
+
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Samsung </h4>
+
+                    <hr>
+                    <br>
+
+
+                    <div class="row1">
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/raquibul2.png" style="width:65%">
+
+                                <br>
+                                <br>
+
+                                <p>Raquibul Hasan</p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#s1">
+                                    More Details
+                                </button>
+
+                            </center>
+
+                        </div>
+                        <div class="column1">
+                            <center>
+                                <img src="{{STATIC_PREFIX}}images/industrial/hissian2.png" style="width:65%">
+                                <br>
+                                <br>
+
+                                <p>Md. Sazzad Hissain Khan</p>
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#s2">
+                                    More Details
+                                </button>
+                            </center>
+
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="s1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img src="{{STATIC_PREFIX}}images/industrial/samsung2.png"
+                                            style="padding-top: 10px;">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="s1"> Samsung</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/raquibul_hasan.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Raquibul Hasan
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Raquibul Hasan has 16+ years of experience in software engineering industry,
+                                            currently serving as Head of the Department, Health Application Group,
+                                            Samsung Electronics, Bangladesh (SRBD). His interest lies in mobile and
+                                            wearable computing especially in Health and fitness domain. Raquibul started
+                                            his career as a software engineering intern in 2003, and after completing
+                                            his BSc from RMIT, Melbourne, AUS he worked full time as a developer and
+                                            database engineer. He then completed his master’s part time while working.
+                                            He moved to USA in 2008 and worked for various teams in Microsoft for almost
+                                            7 years before returning to Bangladesh in 2014 when he joined Samsung.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="s2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=10% height=45% src="{{STATIC_PREFIX}}images/industrial/samsung2.png"
+                                            style="padding-top: 15px;">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 20px;" id="s2"> Samsung </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/sazzad_hissain_khan.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Md. Sazzad Hissain Khan
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            Md. Sazzad Hissain Khan received his Bachelor of Science in 2010 and Master
+                                            of Computer Science and Engineering degree in 2011 from University of Dhaka,
+                                            Bangladesh. He joined Samsung R&D Institute Bangladesh (SRBD) as a Software
+                                            Engineer and throughout his 10+ years of experience on mobile software
+                                            development he has acquired a deep understanding on how to overcome the real
+                                            hurdles of developing performant, robust, testable and maintainable
+                                            applications from the requirement analysis to the architecture, design,
+                                            development, continuous integration and continuous deployment. He has a
+                                            strong fascination for CLEAN coding and precise communication. Problem
+                                            solving is his passion regardless of if its design related or architectural
+                                            and he values the passion for problem solving minds. Usability, especially
+                                            user intuitive and interactive UX for frontends and fault tolerance and
+                                            resilience for backends are his prime concerns on developing any product. He
+                                            achieved his Associate Software Architect certification from SATTI (Samsung
+                                            Advance Technical Training Institute, South Korea) in 2019 and till then he
+                                            has been working to improve Samsung Health iOS which is a popular health
+                                            application of Samsung Electronics for Apple users. In 2019, one of his
+                                            developed products CareBot, received the best product award on robotic
+                                            category in CES'2019 (Consumer Electronics Show - 2019, Las Vegas, US).
+                                            Throughout his engineering career he received many awards and
+                                            certifications. Mr Khan attained two utility patents in 2021.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <div class="col-xs-12 col-sm-6">
+
+                <div class="content p-4 bg-white rounded shadow mb-5">
+
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/grammenphone2.jpg">
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Grameenphone </h4>
+
+                    &nbsp
+                    &nbsp
+
+                    &nbsp
+                    &nbsp
+
+                    &nbsp
+                    &nbsp
+
+
+
+                    &nbsp
+                    &nbsp
+
+
+
+                    &nbsp
+
+                    &nbsp
+                    &nbsp
+
+
+
+                    &nbsp
+
+
+
+
+
+                    <img src="{{STATIC_PREFIX}}images/industrial/walton2.jpg">
+
+
+                    <h4 class="modal-title" style="padding-top: 10px; display:inline-block"> Walton </h4>
+                    <hr>
+                    <br>
+
+
+
+
+                    <div class="row1">
+
+                        <div class="column1">
+
+                            <center>
+
+                                <img src="{{STATIC_PREFIX}}images/industrial/monirul.jpg" style="width:65%;">
+
+
+                                <br>
+                                <br>
+
+                                <p>S M Monirul Haque </p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#g1">
+                                    More Details
+                                </button>
+                            </center>
+
+
+                        </div>
+
+
+
+
+                        <div class="column1">
+
+                            <center>
+
+                                <img src="{{STATIC_PREFIX}}images/industrial/tapash1.png" style="width:65%;">
+
+
+                                <br>
+                                <br>
+
+                                <p> Tapash Kumer Mojumder </p>
+
+
+                                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#w1">
+                                    More Details
+                                </button>
+                            </center>
+
+
+                        </div>
+
+
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="g1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=8% height=40%
+                                            src="{{STATIC_PREFIX}}images/industrial/grammenphone2.jpg">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 12px;" id="g1"> Grameenphone
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/monirul.jpg">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> S M Monirul Haque
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+
+                                            S M Monirul Haque, well known as Murad, has a long professional career in
+                                            corporate world. After having graduation in EEE, he was a faculty member in
+                                            University of Asia Pacific, Bangladesh for a year. After that he started his
+                                            journey in telecommunication area in 2002 at Grameenphone. He has worked,
+                                            moved and lead various functions in Technology division covering
+                                            Implementation, Operation and Planning in NW & IT and presently working as
+                                            Director and Head of IT at GP. Throughout his career he has been an
+                                            ambassador for Change Management and People Leadership. He has been part of
+                                            and lead so many technical projects, Operating model change and various
+                                            critical modernization drive. He is graduated from BUET in Electrical &
+                                            Electronics Engineering and also earned his MBA degree from IBA, Dhaka
+                                            University. He has undergone professional trainings in LUMS, Norwegian
+                                            School of Economics, London Business School, McKinsey Academy, INSEAD to
+                                            keep him relevant in this changing world.
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" id="w1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <img width=8% height=40% src="{{STATIC_PREFIX}}images/industrial/walton2.jpg">
+                                        &nbsp
+                                        <h5 class="modal-title" style="padding-top: 12px;" id="w1"> Walton
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+
+
+
+                                    <div class="modal-body">
+                                        <center>
+                                            <img width=30% height=80%
+                                                src="{{STATIC_PREFIX}}images/industrial/tapash1.png">
+
+
+
+                                        </center>
+                                        <br>
+                                        <center>
+                                            <span style="font-weight: bolder;"> Tapash Kumer Mojumder
+                                            </span>
+
+                                        </center>
+
+
+                                        <hr>
+                                        <p>
+                                            Tapash is leading Research and Innovation of Walton, a top ranked Company on
+                                            Electrical and Electronic Home appliances in Bangladesh. He joined with
+                                            Walton family in 2008 as a Product Design Engineer. Currently he is holding
+                                            Senior Executive Director of Walton and participating as a CTO of NUSDAT-
+                                            UTS (laboratory, accredited on ISO 17025). His focus is to incorporate
+                                            innovations with Electrical and Electronics Industries to make better
+                                            Bangladesh Tomorrow. He is collaborating research issues with Universities.
+                                            He has been contributing a lot of significant activities to reduce ODP and
+                                            GWP since 2010. Prior to this role, He was a lead Industrial Engineer of
+                                            various Garment Industry in Dhaka, Bangladesh. Overall, he has 17 years of
+                                            professional experience. He received one year CAD experience from Japan on
+                                            2006. He completed his BSc. Engineering on Industrial and Production
+                                            Engineering from Shahjalal University of Science and Technology (SUST) in
+                                            2005.
+
+                                        </p>
+                                    </div>
+
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="content p-4 bg-white rounded shadow mb-4">
+
+
+
+            <img src="{{STATIC_PREFIX}}images/industrial/code19_2.png" class="img-fluid">
+
+
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+
+
+
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+
+
+            &nbsp
+            &nbsp
+
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+
+            &nbsp
+            &nbsp
+
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+            &nbsp
+            &nbsp
+
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+
+            <img src="{{STATIC_PREFIX}}images/industrial/lnmiit.png" class="img-fluid">
+
+
+
+            <hr>
+
+
+
+
+            <div class="container-fluid">
+
+                <center>
+                    <div class="row">
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/1.jpg">
+                            <br>
+                            <br>
+                            <p>Imtiaz Farhan</p>
+
+
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f1">
+                                More Details
+                            </button>
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f1" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=12% height=45%
+                                                src="{{STATIC_PREFIX}}images/industrial/code19_2.png">
+                                            &nbsp
+
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/industrial/imtiaz_farhan.jpg">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Imtiaz Farhan
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Imtiaz Farhan is a dynamic entrepreneur with expertise in marketing,
+                                                business development, financial analysis and information technology. He
+                                                is leading Code 19 Business and challenging operations in Bangladesh
+                                                with an extraordinary.
+
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/2.png">
+
+                            <br>
+                            <br>
+                            <p>Massimo Sacchi</p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f2">
+                                More Details
+                            </button>
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f2" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=12% height=45%
+                                                src="{{STATIC_PREFIX}}images/industrial/code19_2.png">
+                                            &nbsp
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/industrial/massimo_sacchi.png">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Massimo Sacchi
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Massimo Sacchi is an enthusiastic and determined engineer, featuring a
+                                                vivid interest for innovation, with a solid background in industrial
+                                                automation based on over 13 years of extensive experience in managing
+                                                projects in multinational contests. He has deep knowledge of markets and
+                                                technologies of automated plants for the steel and logistic industries
+                                                that turns him into an experienced decision maker, always lined up with
+                                                the company business vision. almost 7 years before returning to
+                                                Bangladesh in 2014 when he joined Samsung.
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/3.png">
+
+                            <br>
+                            <br>
+                            <p>Ms Khadija Akhter</p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f3">
+                                More Details
+                            </button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f3" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=12% height=45%
+                                                src="{{STATIC_PREFIX}}images/industrial/code19_2.png">
+                                            &nbsp
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/industrial/khadija_akhter.png">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Ms Khadija Akhter
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Khadija Akhter is an experienced IoT engineer and lead trainer on
+                                                Arduino boards. She is currently working as an IoT engineer at Code 19
+                                                and has extensive experience in IoT based product development for smart
+                                                agriculture, smart security and automation. Her skills and interest are
+                                                Arduino, IoT systems, cloud architecture and advanced industry 4.0
+                                                technology.
+
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="vl"></div>
+
+                        <div class="col">
+                            <img src="{{STATIC_PREFIX}}images/industrial/4.jpg">
+
+                            <br>
+                            <br>
+                            <p>Anirudh Agarwal</p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#f4">
+                                More Details
+                            </button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade bd-example-modal-lg" id="f4" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+
+                                            <img width=15% height=50%
+                                                src="{{STATIC_PREFIX}}images/industrial/lnmiit.png">
+                                            &nbsp
+
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+
+
+
+                                        <div class="modal-body">
+                                            <center>
+                                                <img width=30% height=80%
+                                                    src="{{STATIC_PREFIX}}images/speakers/anirudh_agarwal.jpg">
+
+
+
+                                            </center>
+                                            <br>
+                                            <center>
+                                                <span style="font-weight: bolder;"> Anirudh Agarwal
+                                                </span>
+
+                                            </center>
+
+
+                                            <hr>
+                                            <p>
+                                                Dr. Agarwal received the Ph.D. in wireless communications from
+                                                LNMIIT, Jaipur, India, where he is currently working as an Assistant
+                                                Professor in the Dept. of ECE. He has published several papers in
+                                                refereed journals and conferences including IEEE Wireless Comm Letter,
+                                                Networking Letter, Globecom and ICC. Dr. Agarwal is the reviewer of
+                                                various peer-reviewed journals, viz. IEEE TCOM, IEEE TMC, IEEE TCCN,
+                                                IEEE WCL, IEEE Access, ETT (Wiley). His research interests include
+                                                reflecting intelligent surfaces assisted 6G, UAV and D2D communication,
+                                                intrabody communication, with special emphasis on applied deep learning
+                                                and
+                                                optimization techniques for resource allocation.
+
+                                            </p>
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-dark"
+                                                data-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </center>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <p
+        style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle ;text-align:center;margin-left:8%; margin-right:10%">
+        Special Session and Expected Journal or Book Publications
+    </p>
+
+
+    <h5 style="text-align:center; padding-right:50px;font-weight:bolder !important">
+        Session Title : Imaging and Next Generation Networks for Smart Applications (iNGN4SmartApp)
+    </h5>
+
+    <br>
+
+    <div class="container-fluid" style="padding-left:8%;text-align:left; padding-right:10%">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-6">
+
+                <p style="text-align: justify; font-weight: 400;font-size:18px ">
+                    In support of engaging a timely discussion on the advances of smart applications, a
+                    special
+                    session is included in the ICEEICT technical program. This session primarily focuses on
+                    new
+                    smart applications of imaging and next generation of network capturing intelligent,
+                    contextual, proactive, cooperative, and distant systems and services in different areas
+                    including medical, space, military, security, surveillance, communication, control etc.
+
+
+                    <a href="/program-summary-sts">
+                        <button style="display:inline-block;margin:2% 0px" type="button"
+                            class="btn btn-dark float-right">
+                            More
+                            Details
+                        </button>
+                    </a>
+                    <br>
+                    <br>
+
+
+                </p>
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="col-xs-12 col-sm-6">
+
+                <h5 style="text-align:left;font-weight:bolder !important">Expected Journal and/or Book Publications:
+                </h5>
+
+                <p style="text-align: justify;font-weight: 400;font-size:18px">A set of selected papers for
+                    the sessions would be invited
+                    for
+                    submitting the extended
+                    versions of the presented papers to the selected special issues of the following book
+                    chapters/journals:</p>
+
+
+                <div class="container" style="margin-top: 5%;">
+                    <div class="row">
+
+
+                        <div class="col-xs-12 col-sm-4">
+
+                            <img style="flex:33%;" src="{{STATIC_PREFIX}}images/Special_Sessions/springer_5.png">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4">
+
+                            <img style="flex:33%; padding-top:5%"
+                                src="{{STATIC_PREFIX}}images/Special_Sessions/electronics_5.jpg">
+                        </div>
+
+                        <div class="col-xs-12 col-sm-4">
+
+                            <img style="flex:33%;" src="{{STATIC_PREFIX}}images/Special_Sessions/taylor_francis_5.png">
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <br>
+        <br>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    <br>
+    <br>
+
+
+
+
+
+
+
+
+
+
+    <div>
+
+
+
+        <p
+            style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle;text-align:center;margin-left:8%; margin-right:10%">
+            <b>
+                Awards</b></p>
+
+
+        <br>
+
+
+        <div class="container-fluid " style="padding-left:8%;text-align:left; padding-right:10%">
+
+            <div class="row">
+
+                <center>
+
+                    <img class="img-responsive" src="{{STATIC_PREFIX}}images/awards/best_paper5.png" alt=""
+                        class="img-fluid">
+
+                    <img class="img-responsive" style="padding-top:10px;padding-left:38px"
+                        src="{{STATIC_PREFIX}}images/awards/industry_sponsored5.png" alt="" class="img-fluid">
+                </center>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <center>
+        <p
+            style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle;text-align:center;margin-left:8%; margin-right:10%">
+            <b>
+                ICEEICT 2021 Conveners</b></p>
+
+
+        <br>
+
+
+        <center>
+
+            <div class="container" style="padding:0px !important;">
+                <div class=" row " style=" padding-top:20px;padding-bottom:20px;">
+                    <div class="col" style="margin-right:40px">
+
+                        <div class="card" style="width: 100%">
+
+                            <div class="card-header"><a href="https://mist.ac.bd/page/commandant" target="_blank"><img
+                                        width=100% height=80%
+                                        src="{{STATIC_PREFIX}}images/conveners/Commandant.jpg"></a>
+                            </div>
+
+                            <div class="card-body conve_name"><a href="https://mist.ac.bd/page/commandant"
+                                    target="_blank" style=" text-decoration:none;color:inherit;">Major General
+                                    Md
+                                    Wahid-Uz-Zaman </a></div>
+
+
+                            <div class="card-footer">
+                                <h> Commandant, <br>MIST
+                                    <br>
+                                    Chief Patron
+                                </h>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" style="margin-right:40px">
+
+                        <div class="card" style="width:100%">
+
+                            <div class="card-header">
+
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/brigadier_general_a_k_m_nazrul_islam_phd-153"
+                                    target="_blank"><img width="100%" height="100%"
+                                        src="{{STATIC_PREFIX}}images/conveners/BG_Nazrul_Islam.jpg"></a>
+                            </div>
+                            <div class="card-body conve_name" style="padding-bottom: 2px;"> <a
+                                    href="https://mist.ac.bd/department/eece/facultyMembers/brigadier_general_a_k_m_nazrul_islam_phd-153"
+                                    target="_blank" style=" text-decoration:none;color:inherit;">Brigadier
+                                    General A
+                                    K M
+                                    Nazrul
+                                    Islam</a>
+
+
+
+
+
+
+                            </div>
+                            <br>
+                            <div class="card-footer">
+                                <h> Head, EECE Dept
+                                    <br>
+                                    Patron & Technical Chair
+
+                                </h>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="col" style="margin-right:40px">
+
+                        <div class="card" style="width:100%">
+                            <div class="card-header">
+
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/air_commodore_mohammed_hossam_e_haiderphd_retd-148"
+                                    target="_blank"><img width="100%" height="60%"
+                                        src="{{STATIC_PREFIX}}images/conveners/Prof_haider2.jpg"></a>
+                            </div>
+                            <div class="card-body conve_name">
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/air_commodore_mohammed_hossam_e_haiderphd_retd-148"
+                                    target="_blank" style=" text-decoration:none;color:inherit;">
+                                    Mohammed Hossam-E-Haider
+                                </a>
+                            </div>
+
+                            <div class="card-footer">
+                                <h>
+                                    Professor, <br>EECE Dept
+                                    <br>
+                                    General Chair
+
+                                </h>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-right:40px">
+
+                        <div class="card" style="width:100%">
+
+                            <div class="card-header">
+
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/group_captain_md_abdul_halim_psc_engg_baf-163"
+                                    target="_blank"> <img width="100%" height="77%"
+                                        src="{{STATIC_PREFIX}}images/conveners/Gp_Capt_Halim.jpg"></a>
+                            </div>
+                            <div class="card-body conve_name">
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/group_captain_md_abdul_halim_psc_engg_baf-163"
+                                    target="_blank" style=" text-decoration:none;color:inherit;">Group
+                                    Captain Md Abdul Halim
+                                </a>
+
+
+
+
+                            </div>
+
+                            <div class="card-footer" style="margin-top:1%">
+
+                                <h>
+                                    Senior Instructor, <br>EECE Dept
+                                    <br>
+                                    Organizing Chair</h>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col" style="margin-right:30px">
+
+                        <div class="card" style="width:100%">
+
+                            <div class="card-header">
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/colonel_md_golam_mostafa_phd_lpr-156"
+                                    target="_blank"><img width="100%" height="80%"
+                                        src="{{STATIC_PREFIX}}images/conveners/Prof_Mostofa.jpg"></a>
+                            </div>
+                            <div class="card-body conve_name">
+
+                                <a href="https://mist.ac.bd/department/eece/facultyMembers/colonel_md_golam_mostafa_phd_lpr-156"
+                                    target="_blank" style=" text-decoration:none;color:inherit;"> Md Golam
+                                    Mostafa </a>
+
+
+
+
+
+
+                            </div>
+                            <br>
+
+                            <div class="card-footer" style="margin-bottom:1%">
+
+
+                                Professor, <br>EECE Dept
+                                <br>
+                                Technical Co-Chair
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+                <br>
+                <br>
+            </div>
+
+            <div class="container-fluid">
+
+                <center>
+                    <p
+                        style="background-color: #04012e;color:white; font-size:30px; font-family:myfont;vertical-align:middle;text-align:center;margin-left:8%; margin-right:10%">
+                        <b>
+                            Sponsors </b></p>
+
+
+                    <br>
+
+                    <center>
+
+
+
+
+                        <div class="container-fluid" style="padding-left:8%;text-align:left; padding-right:10%">
+
+                            <center>
+                                <div class="row">
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/adn_smaller1.png">
+                                    </div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/wel_small1.png"></div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/rpcl_smaller1.png">
+                                    </div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/ugc1.png"></div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/dewn_smaller1.png">
+                                    </div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/dpdc1.jpg">
+                                    </div>
+                                    <div class='w-100 d-md-none'></div>
+
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/fm_small1.png"></div>
+                                </div>
+                            </center>
+
+                            <center>
+                                <div class="row">
+
+                                    <div class="col"> <img
+                                            src="{{STATIC_PREFIX}}images/sponsors/poly_cables_smaller.png">
+                                    </div>
+                                    <div class="col"> <img
+                                            src="{{STATIC_PREFIX}}images/sponsors/mk_traders_smaller2.png"></div>
+
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/ksy_smaller1.png">
+                                    </div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/desco_smaller2.png"
+                                            style="padding-top: 30px;">
+                                    </div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/bpel_smaller1.png"
+                                            style="padding-top: 20px;">
+                                    </div>
+                                    <div class='w-100 d-md-none'></div>
+                                    <div class="col"> <img src="{{STATIC_PREFIX}}images/sponsors/energypac_smaller1.png"
+                                            style="padding-top: 40px;">
+                                    </div>
+
+
+
+                                </div>
+                            </center>
+
+
+
+
+
+
+
+                        </div>
+
+            </div>
+
+
+        </center>
+
+    </center>
+
+
+    <br>
+    <br>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+
+    {{footer}}
+
+</body>
+
+
+</html>

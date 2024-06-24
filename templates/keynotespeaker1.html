@@ -1,0 +1,481 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX }}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Keynote Speakers</title>
+</head>
+<style>
+    body {
+        overflow-x: hidden;
+
+        border: none;
+
+        padding: 0px;
+
+    }
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: absolute;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    /* Show the dropdown menu on hover */
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+    /* Calender */
+    .date-card {
+        width: 25rem;
+    }
+
+    .datestamp {
+        width: 4rem;
+    }
+
+    .datestamp *:not(.sr-only) {
+        display: block;
+        font-size: 1rem;
+        line-height: 1rem;
+        text-align: center;
+    }
+
+    .datestamp .datestamp-month {
+        background-color: black;
+        color: white;
+        position: relative;
+    }
+
+    .datestamp .datestamp-month abbr {
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .datestamp .datestamp-day {
+        color: #1f7bc1;
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    .datestamp.small {
+        width: 3rem;
+    }
+
+    .datestamp.small *:not(.sr-only) {
+        font-size: 0.875rem;
+    }
+
+    .datestamp.small .datestamp-day {
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .date-summary .date-time,
+    .date-card .date-time,
+    .date-summary .date-location,
+    .date-card .date-location {
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .date-summary .date-time::before,
+    .date-card .date-time::before,
+    .date-summary .date-location::before,
+    .date-card .date-location::before {
+        color: rgba(0, 0, 0, 0.4);
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        width: 1rem;
+    }
+
+    .date-summary .date-time::before,
+    .date-card .date-time::before {
+        content: "\f017";
+    }
+
+    .date-summary .date-location::before,
+    .date-card .date-location::before {
+        content: "\f3c5";
+    }
+
+    .date-card {
+        padding-top: -2px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .date-card:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+
+    .date-card .datestamp,
+    .date-card .date-body {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+    }
+
+    .date-card.js-date-clickthrough:hover {
+        border-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .date-card.js-date-clickthrough:hover::before {
+        transform: scale(4);
+    }
+
+
+
+
+    /* Dropdown arrow */
+
+
+    /* Nav bar button padding */
+
+    .nav-button {
+
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+
+    /*Image responsive*/
+
+
+    @media (max-width: 768px) {
+        .navbar {
+            position: absolute;
+        }
+
+
+    }
+
+
+    @media (max-width: 768px) {
+
+        .date-card {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+            position: relative;
+
+            width: 107%;
+
+
+            transition: all 0.25s;
+        }
+
+        .date-card:hover {
+
+            box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 107%;
+
+            transition: all 0.25s;
+
+
+        }
+
+
+    }
+
+
+    .container.body-container {
+        padding: 0px;
+
+    }
+
+
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+
+
+
+    .conve_name {
+        font-size: smaller;
+        font-weight: bolder;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+            </div>
+
+        </nav>
+
+
+    </div>
+    <div class="container" style="padding-top:5%">
+        <div class="row  ">
+            <div class=" col-sm-12 col-md-5">
+                <div class="card ">
+                    <div class="card-header">
+                        <img src="{{STATIC_PREFIX}}images/speakers/{{image}}" style="width: 100%; padding-left:4% "
+                            alt="Avatar">
+                    </div>
+                    <div class="card-body">
+                        <h2><b>{{name}} </b></h2>
+
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+
+                    <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>
+                        {{position}}
+                    </p>
+
+                    {% if not address == "" %}
+                    <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> {{address}}</p>
+
+                    {% endif %}
+
+                    {% if not email == "" %}
+
+                    <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>
+                        {{email}} </p>
+
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-7">
+
+
+                {% if description == "" %}
+
+                <div class="container" style="padding-bottom:30px">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="card">
+                                <h2 style="padding-left: 20px; padding-top:10px"><i
+                                        class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><b>
+                                        Biography </b>
+                                </h2>
+                                <!-- <h4 style="padding-left:20px"> <b>Abstract</b></h4> -->
+                                <div class="card-body">
+
+                                    <p style="text-align:justify">
+                                        {{bio}}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+                <div class="container" style="padding-bottom:30px">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="card">
+                                <h2 style="padding-top:20px; padding-left:20px; padding-right: 20px;">
+                                    <!-- <i
+                        class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"> 
+                    </i>  -->
+                                    <b>
+                                        {{title}}
+                                    </b>
+                                </h2>
+                                <!-- <h4 style="padding-left:20px"> <b>Abstract</b></h4> -->
+                                <div class="card-body">
+
+                                    <p style="text-align:justify">
+                                        {{description}}
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <br>
+
+    {% if not description == "" %}
+
+    <div class="container" style="padding-bottom:30px">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card">
+                    <h2 style="padding-left: 20px; padding-top:10px"><i
+                            class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><b> Biography </b>
+                    </h2>
+                    <!-- <h4 style="padding-left:20px"> <b>Abstract</b></h4> -->
+                    <div class="card-body">
+
+                        <p style="text-align:justify">
+                            {{bio}}
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+</body>
+
+
+{{footer}}
+
+
+</html>

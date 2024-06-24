@@ -1,0 +1,1157 @@
+{%load static%}
+{% get_static_prefix as STATIC_PREFIX %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description"
+        content="The 5th International Conference on Electrical Engineering and Information & Communication Technology (iCEEiCT 2021) aims to bring together leading academic scientists, researchers, scholars to exchange and share their experiences, research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges encountered and the solutions adopted." />
+    <link rel="icon" href="{{STATIC_PREFIX }}images/Mist Logo01.jpg">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link rel="stylesheet" href="{{STATIC_PREFIX }}{{styles.styles}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="styles/stylesheet.css"> -->
+    <title>Call for Paper</title>
+</head>
+<style>
+    section {
+        padding-left: 12%;
+        padding-right: 12%;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        .container-fluid {
+
+
+            background-image: url('{{STATIC_PREFIX}}images/template_footer_4.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+            display: block;
+
+        }
+
+
+        h2 {
+            font-size: 40px;
+            color: white;
+            padding-top: 70px;
+            height: 150px;
+            text-align: center;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+        .container-fluid {
+
+            background-image: url('{{STATIC_PREFIX}}images/template.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-attachment: fixed;
+
+
+
+
+            display: block;
+
+        }
+
+        h2 {
+            font-size: 20px;
+            color: white;
+            padding-top: 18%;
+            padding-bottom: 5%;
+            text-align: center;
+            padding-left: 10px;
+
+        }
+
+    }
+
+
+    .dropdown-content {
+        text-align: left;
+        display: none;
+        position: fixed;
+        background-color: #04012e;
+        color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+
+    }
+
+    .dropdown-content a {
+        color: white;
+
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+
+    .dropdown-content a:hover {
+        background-color: white;
+        color: #04012e
+    }
+
+
+    .nav-item:hover .dropdown-content {
+        display: block;
+    }
+
+
+    li {
+        text-align: left;
+
+
+    }
+
+    .track {
+
+        font-size: large;
+        font-weight: 700;
+
+    }
+
+    ul {
+        list-style-type: none;
+
+        padding: 0px;
+    }
+
+    .box {
+
+        padding: 20px 20px 20px 20px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+    }
+
+    .box:hover {
+
+        box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+
+
+    }
+
+
+
+    .download_btn {
+        background-color: rgba(0, 0, 0, 0.2);
+        border: none;
+        color: white;
+        padding: 12px 30px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    /* Darker background on mouse-over */
+    .download_btn:hover {
+        background-color: black;
+    }
+</style>
+
+<body style="font-family: 'myfont'; ">
+    <div class="container-fluid" style="  display:block;">
+
+        <nav class="navbar navbar-dark navbar-expand-sm fixed-top"
+            style=" background-color: rgba(0, 0, 0, 0.449) ; padding-right:20px;height:70px">
+
+            <a href="/" rel="home" aria-current="page"><img height="65" width="130"
+                    src="{{STATIC_PREFIX}}images/{{conf_logo}}"></a>
+
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar"
+                style=" background-color:rgba(0, 157, 255, 0.204); ">
+                <span class="navbar-toggler-icon" style=" text-align:center"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="Navbar">
+
+
+                <ul class=" navbar-nav  ml-auto" style="text-align:center">
+
+                    <!--tips: to change the .nav alignment use .justify-content-center,.justify-content-end or use .flex-column to vertical alignment-->
+                    {%for item, sub_items in nav_items.items%}
+                    {%if sub_items%}
+                    <li class="nav-item">
+                        {%if item == "ABOUT"%}
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button" style="width:80px"><b> {{item}}</b> </button>
+                        </a>
+                        {% else %}
+
+                        <a class="nav-link " href="#" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                        {%endif%}
+
+                        <div class="dropdown-content ">
+                            {%for sub_item, value in sub_items.items%}
+                            {%if "https" in value %}
+
+                            <a href="{{value}}" target="_blank">{{sub_item}}</a>
+                            {%else%}
+                            <a href="{{value}}">{{sub_item}}</a>
+                            {%endif%}
+                            {%endfor%}
+
+                        </div>
+                    </li>
+                    {%else%}
+                    <li class="nav-item">
+                        <a class="nav-link " href="/{{item|lower}}" style="color:white">
+                            <button class="button nav-button"><b> {{item}}</b> </button>
+                        </a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                </ul>
+
+
+
+                <div class=" .d-none .d-sm-none .d-md-block">
+                    <a href="https://mujib100.gov.bd/" class=" .d-sm-none .d-md-block custom-logo-link" rel="home"
+                        aria-current="page" target=”_blank”><img height="80"
+                            src="{{STATIC_PREFIX}}images/mujib logo001.png"
+                            class=" .d-sm-none .d-md-block custom-logo"></a>
+                </div>
+
+
+
+            </div>
+
+        </nav>
+        <h2><b>Call for papers</b></h2>
+    </div>
+
+
+    <section>
+
+
+        <div class="container">
+
+            <div class="box">
+                Department of Electrical, Electronic and Communication Engineering (EECE) , Military Institute of
+                Science
+                and
+                Technology (MIST) invites you to participate in the International Conference on Electrical Engineering
+                and
+                Information Communication Technology (ICEEICT) which is going to be held on 18-20th Nov 2021. ICEEICT
+                aims
+                to bring
+                together leading academic scientists, researchers, scholars to exchange and share their experiences,
+                research results about all aspects of Electrical Engineering, ICT and discuss the practical challenges
+                encountered and the solutions adopted.
+
+
+
+
+            </div>
+
+            <br>
+
+            <!--CFP-->
+            <center>
+
+                <iframe src="
+                https://drive.google.com/file/d/1r6EeFp_W3nik-KJyfkpWy1WBxWMvvEwx/preview" width="90%"
+                    height="480"></iframe>
+                <!-- <embed src="{{STATIC_PREFIX}}pdfs/ICEEICT_CFT.pdf" width="100%" height="500" alt="pdf"
+                    pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">-->
+                <br>
+                <br>
+
+
+
+
+                <a href="{{STATIC_PREFIX}}pdfs/ICEEICT_2021_CFP.pdf" download="ICEEICT Call for Paper"><button
+                        class="download_btn"><i class="fa fa-download"></i> Download</button></a>
+            </center>
+
+
+
+            <br>
+
+
+
+
+
+
+
+            <!--
+
+
+            <span class="track"><i class="fas fa-book"></i> Track 1 : A.I. and Soft Computing </span>
+
+            <hr>
+
+
+
+
+            <ul class="tracks">
+
+                <li><i class="fas fa-check"></i> Decision Support System</li>
+
+
+                <li><i class="fas fa-check"></i> Distributed and Cloud Computing </li>
+
+
+                <li><i class="fas fa-check"></i> Evolutionary Computation</li>
+
+                <li><i class="fas fa-check"></i> Human-Computer Interaction </li>
+
+
+                <li><i class="fas fa-check"></i> Machine Learning and Expert Systems</li>
+
+
+                <li><i class="fas fa-check"></i> Mobile Computing</li>
+                <li><i class="fas fa-check"></i> Neural Network and Fuzzy Logic
+                </li>
+                <li><i class="fas fa-check"></i> Pattern Recognition</li>
+                <li><i class="fas fa-check"></i> Reconfigurable Computing</li>
+                <li><i class="fas fa-check"></i> Robotics and Automation</li>
+
+
+
+                </ol>
+
+
+                <br>
+
+                <span class="track"><i class="fas fa-book"></i> Track 2 : Biomedical Engineering </span>
+
+                <hr>
+
+
+
+
+                <ul class="tracks">
+
+                    <li><i class="fas fa-check"></i> Biomedical Devices and Instrumentations
+                    </li>
+
+
+                    <li><i class="fas fa-check"></i> Biosensors and Bioelectronics </li>
+
+
+                    <li><i class="fas fa-check"></i> Bioinformatics</li>
+
+                    <li><i class="fas fa-check"></i> Biomechanics and Rehabilitation </li>
+
+
+                    <li><i class="fas fa-check"></i> Healthcare Engineering</li>
+
+
+                    <li><i class="fas fa-check"></i> Tissue Engineering</li>
+
+
+
+
+                    </ol>
+
+                    <br>
+
+
+                    <span class="track"><i class="fas fa-book"></i> Track 3 : Computer Network and Security </span>
+
+                    <hr>
+
+
+
+
+                    <ul class="tracks">
+
+                        <li><i class="fas fa-check"></i> Computer Architecture</li>
+
+
+                        <li><i class="fas fa-check"></i> Cyber-Physical System
+                        </li>
+
+
+                        <li><i class="fas fa-check"></i> Cryptography</li>
+
+                        <li><i class="fas fa-check"></i> Data Communication and Networking
+                        </li>
+
+
+                        <li><i class="fas fa-check"></i> Distributed and Network Security</li>
+
+
+                        <li><i class="fas fa-check"></i> Internet of Things/Everything</li>
+
+
+                        </ol>
+
+                        <br>
+
+                        <span class="track"><i class="fas fa-book"></i> Track 4 : Communication Technology</span>
+
+                        <hr>
+
+
+
+
+                        <ul class="tracks">
+
+                            <li><i class="fas fa-check"></i> Antenna and Wave Propagation </li>
+
+
+                            <li><i class="fas fa-check"></i> Microwave and Radar Engineering </li>
+
+
+                            <li><i class="fas fa-check"></i> Multimedia Communication</li>
+
+                            <li><i class="fas fa-check"></i> Optical Communication </li>
+
+
+                            <li><i class="fas fa-check"></i> Satellite Communication and Navigation </li>
+
+
+                            <li><i class="fas fa-check"></i> Trans-Ionospheric Propagation Technology
+                            </li>
+                            <li><i class="fas fa-check"></i> Wireless Communication
+                            </li>
+
+                            </ol>
+
+                            <br>
+
+
+                            <span class="track"><i class="fas fa-book"></i> Track 5 : Power Electronics and Drives
+                            </span>
+
+                            <hr>
+
+
+
+
+                            <ul class="tracks">
+
+                                <li><i class="fas fa-check"></i> Drives and Motion Control
+                                </li>
+
+
+                                <li><i class="fas fa-check"></i> Energy Storage System </li>
+
+
+                                <li><i class="fas fa-check"></i> Power Semiconductor Devices
+                                </li>
+
+                                <li><i class="fas fa-check"></i> Power Electronics for Sustainable Sources</li>
+
+
+                                <li><i class="fas fa-check"></i> Power ICs and Passive Components</li>
+
+
+
+                                </ol>
+
+                                <br>
+
+
+                                <span class="track"><i class="fas fa-book"></i> Track 6 : Power System and Renewable
+                                    Energy
+                                </span>
+
+                                <hr>
+
+
+
+
+                                <ul class="tracks">
+
+                                    <li><i class="fas fa-check"></i> Distributed Generation</li>
+
+
+                                    <li><i class="fas fa-check"></i> High Voltage Engineering and Protection</li>
+
+
+                                    <li><i class="fas fa-check"></i> Power System
+                                    </li>
+
+                                    <li><i class="fas fa-check"></i> Renewable Energy</li>
+
+
+                                    <li><i class="fas fa-check"></i> SCADA and Smart Power Grid</li>
+
+
+                                    </ol>
+
+                                    <br>
+
+
+                                    <span class="track"><i class="fas fa-book"></i> Track 7 : Semiconductor Device and
+                                        Circuits
+
+                                    </span>
+
+                                    <hr>
+
+
+
+
+                                    <ul class="tracks">
+
+                                        <li><i class="fas fa-check"></i> Advanced Integrated Circuits and Systems</li>
+
+
+                                        <li><i class="fas fa-check"></i> Electronic Materials, Devices and Processing
+                                        </li>
+
+
+                                        <li><i class="fas fa-check"></i> Micro-Electro-Mechanical Systems (MEMS)
+                                        </li>
+
+                                        <li><i class="fas fa-check"></i> Nano-Photonics and Bioelectronics
+                                        </li>
+
+
+                                        <li><i class="fas fa-check"></i>Nanodevice and Nanotechnology</li>
+
+
+                                        <li><i class="fas fa-check"></i> Photonics
+                                        </li>
+                                        <li><i class="fas fa-check"></i> Semiconductors and Advanced Materials
+                                        </li>
+                                        <li><i class="fas fa-check"></i> VLSI/ULSI Design and Fabrication</li>
+
+
+
+
+                                        </ol>
+
+
+                                        <br>
+                                        <span class="track"><i class="fas fa-book"></i> Track 8 : Signal
+                                            Processing</span>
+
+                                        <hr>
+
+
+
+
+                                        <ul class="tracks">
+
+                                            <li><i class="fas fa-check"></i> Audio, Image and Video Processing</li>
+
+
+                                            <li><i class="fas fa-check"></i> Computer Vision for Pandemic Control
+                                            </li>
+
+
+                                            <li><i class="fas fa-check"></i> Computer Graphics and Virtual Reality</li>
+
+                                            <li><i class="fas fa-check"></i> 3D, Stereo and High Spectral Imaging </li>
+
+
+                                            <li><i class="fas fa-check"></i> Data Compression/Coding
+                                            </li>
+
+
+                                            <li><i class="fas fa-check"></i> Data Hiding and Watermarking</li>
+                                            <li><i class="fas fa-check"></i> Multimedia Analytics
+                                            </li>
+                                            <li><i class="fas fa-check"></i> Natural Language Processing</li>
+                                            <li><i class="fas fa-check"></i> Signal Detection, Classification and
+                                                Tracking</li>
+                                            <li><i class="fas fa-check"></i> Signal-based Prediction and Control
+                                            </li>
+
+
+
+                                            </ol>
+
+                                            <br>
+
+
+                                            -->
+
+
+        </div>
+
+
+
+
+
+        <center>
+
+            <h3>Scopes</h3>
+
+            <hr>
+
+        </center>
+
+
+        <section>
+
+
+            <center>
+
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+
+
+                            <img src="{{STATIC_PREFIX}}images/machine-learning.svg" width="80%" height="80%">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 1 : Artificial Intelligence and Data Analytics </span>
+
+                                <hr>
+
+
+
+
+                                <ol class="tracks">
+
+                                    <li>Big Data Analytics
+                                    </li>
+
+
+                                    <li>Distributed and Cloud Computing </li>
+
+
+                                    <li>Reconfigurable Computing</li>
+
+                                    <li>Human-Computer Interaction </li>
+
+
+                                    <li>Machine Learning and Expert Systems</li>
+
+
+                                    <li>Mobile Computing</li>
+                                    <li>Neural Network and Fuzzy Logic
+                                    </li>
+                                    <li>Pattern Recognition</li>
+
+                                    <li>Robotics and Automation</li>
+
+
+
+                                </ol>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </center>
+
+            <br>
+            <br>
+
+
+
+
+            <center>
+
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 2 : Biomedical Engineering </span>
+
+                                <hr>
+
+
+
+
+                                <ol class="tracks">
+
+                                    <li>Biomedical Devices and Instrumentations</li>
+
+
+                                    <li>Biosensors, Bioelectronics and Bioinformatics</li>
+
+
+
+
+                                    <li>Biomechanics and Rehabilitation </li>
+
+
+                                    <li>Biomedical Imaging and Signal Processing</li>
+
+
+                                    <li>Cognitive Engineering
+                                    </li>
+
+                                    <li>Healthcare Engineering
+                                    </li>
+
+
+
+
+                                </ol>
+
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6">
+
+                            <img src="{{STATIC_PREFIX}}images/bio.png" width="90%" height="80%"
+                                class="d-none d-md-block">
+
+                        </div>
+                    </div>
+
+                </div>
+            </center>
+
+
+            <br>
+            <br>
+
+            <center>
+
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+
+
+                            <img src="{{STATIC_PREFIX}}images/comnet1.svg" width="80%" height="80%"
+                                class="d-none d-md-block">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 3 : Computer Network and Security </span>
+
+                                <hr>
+
+
+
+
+                                <ol class="tracks">
+
+                                    <li>Computer Architecture
+                                    </li>
+
+
+                                    <li>Cyber-Physical System </li>
+
+
+                                    <li>Cryptography
+                                    </li>
+
+                                    <li>Data Communication and Networking
+                                    </li>
+
+
+                                    <li>Distributed and Network Security</li>
+
+
+                                    <li>Internet of Things (IoT)
+
+                                    </li>
+
+
+
+                                </ol>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </center>
+
+
+
+            <br>
+            <br>
+
+            <center>
+
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 4 : Communication Technology </span>
+
+                                <hr>
+
+
+
+
+                                <ol class="tracks">
+
+                                    <li>Antenna and Propagation</li>
+
+
+                                    <li>Microwave and Radar Engineering </li>
+
+
+                                    <li>Multimedia Communication
+
+
+                                    </li>
+
+                                    <li>Optical Communication and Networks
+
+                                    </li>
+
+
+                                    <li>Satellite Communication and Navigation
+                                    </li>
+
+
+                                    <li>Trans-Ionospheric Propagation Technology
+                                    </li>
+
+                                    <li>Wireless Communication
+                                    </li>
+
+                                    <li>Cognitive Radio
+
+                                    </li>
+
+
+
+
+                                </ol>
+
+
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6">
+
+                            <img src="{{STATIC_PREFIX}}images/antenna.svg" width="75%" height="75%"
+                                class="d-none d-md-block">
+
+                        </div>
+                    </div>
+
+                </div>
+            </center>
+
+            <br>
+            <br>
+
+            <center>
+
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+
+
+                            <img src="{{STATIC_PREFIX}}images/IC2.jpeg" width="80%" height="80%"
+                                class="d-none d-md-block">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 5 : Power Electronics and Drives </span>
+
+                                <hr>
+
+                                <ol class="tracks">
+
+                                    <li>Drives and Motion Control
+                                    </li>
+
+
+                                    <li>Energy Storage System </li>
+
+
+                                    <li>Power Semiconductor Devices
+                                    </li>
+
+
+
+
+                                    <li>Power ICs and Passive Components</li>
+
+
+                                </ol>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </center>
+
+
+            <br>
+            <br>
+
+
+            <center>
+
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 6 : Power System and Renewable Energy </span>
+
+                                <hr>
+
+
+
+
+                                <ol class="tracks">
+
+                                    <li>Distributed Generation
+                                    </li>
+                                    <li>High Voltage Engineering and Protection
+                                    </li>
+                                    <li>Power System
+
+                                    </li>
+
+                                    <li>Nuclear and Renewable Energy
+                                    </li>
+                                    <li>Smart Grid
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6">
+
+                            <br>
+
+                            <img src="{{STATIC_PREFIX}}images/electric-tower.svg" width="75%" height="75%"
+                                class="d-none d-md-block">
+
+                        </div>
+                    </div>
+
+                </div>
+            </center>
+
+
+            <br>
+            <br>
+
+            <center>
+
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+
+
+                            <img src="{{STATIC_PREFIX}}images/semiconductor.png" width="80%" height="80%"
+                                class="d-none d-md-block">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 7 : Semiconductor Device and Circuits
+                                </span>
+
+                                <hr>
+
+                                <ol class="tracks">
+
+                                    <li>Advanced Integrated Circuits and Systems
+
+                                    </li>
+
+
+                                    <li>Electronic Materials, Devices and Processing
+                                    </li>
+
+
+                                    <li>Micro-Electro-Mechanical Systems (MEMS)
+
+                                    </li>
+
+                                    <li>Photonics and Nano-Photonics
+
+                                    </li>
+
+                                    <li>Nanodevice and Nanotechnology
+
+
+                                    </li>
+
+
+
+
+                                    <li>Semiconductors and Advanced Materials
+
+                                    </li>
+
+                                    <li>VLSI/ULSI Design and Fabrication
+                                    </li>
+
+                                </ol>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </center>
+
+
+
+            <br>
+            <br>
+
+
+
+            <center>
+
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="box">
+
+
+                                <span class="track">Track 8 :Multimedia and Signal Processing </span>
+
+                                <hr>
+
+
+
+
+                                <ol class="tracks">
+
+                                    <li>Audio, Image and Video Processing
+
+                                    </li>
+                                    <li>Computer Vision
+                                    </li>
+                                    <li>Computer Graphics and Virtual Reality
+
+
+                                    </li>
+
+                                    <li>3D, Stereo and High Spectral Imaging
+                                    </li>
+                                    <li>Data Compression/Coding
+                                    </li>
+                                    <li>Data Hiding and Watermarking
+
+                                    </li>
+                                    <li>Multimedia Analytics
+                                    </li>
+
+                                    <li>Signal Detection, Classification and Tracking
+
+                                    </li>
+
+                                    <li>Signal-based Prediction and Control
+                                    </li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6">
+
+                            <img src="{{STATIC_PREFIX}}images/Signal_processing.png" width="75%" height="75%"
+                                class="d-none d-md-block">
+
+                        </div>
+                    </div>
+
+                </div>
+            </center>
+
+
+            <br>
+            <br>
+        </section>
+
+
+
+
+
+
+
+
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+{{footer}}
+
+
+</html>
