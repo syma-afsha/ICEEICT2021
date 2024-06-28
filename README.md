@@ -3,4 +3,4 @@ The FrontEnd is done by using Bootstrap, HTML, and CSS.
 The BackEnd is done by using django.
 
 
-![Website]([https://example.com/path/to/image.png](https://github.com/syma-afsha/ICEEICT2021/blob/main/static/images/Special_Sessions/Screenshot%20from%202024-06-27%2012-25-40.png))
+![Website]([https://example.com/path/to/image.png](https://github.com/syma-afsha/ICEEICT2021/blob/main/static/images/Special_Sessions/Screenshot%20from%202024-06-27%2012-25-40.png)]
