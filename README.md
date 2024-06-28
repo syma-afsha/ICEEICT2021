@@ -3,3 +3,4 @@ The FrontEnd is done by using Bootstrap, HTML, and CSS.
 The BackEnd is done by using django.
 
 
+![Alt text](https://example.com/path/to/image.png)
